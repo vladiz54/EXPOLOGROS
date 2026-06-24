@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Planificador de Viajes</title>
+    <style>
+        /* ==========================================================================
+           1. VARIABLES DE MARCA Y CONFIGURACIÓN BASE
+           ========================================================================== */
+        :root {
+            --azul-profundo: #073549;
+            --coral-marca: #fb923c;
+            --verde-turquesa: #00a896;
+            --gris-fondo: #f8fafc;
+            --texto-suave: #475569;
+            --borde: #e2e8f0;
+            --rojo-alerta: #ef4444;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--azul-profundo);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* BARRA DE NAVEGACIÓN SUPERIOR */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .menu-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-links li { margin: 0 15px; }
+        .menu-links a {
+            text-decoration: none;
+            color: var(--texto-suave);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .menu-links a.active {
+            color: var(--azul-profundo);
+            border-bottom: 2px solid var(--azul-profundo);
+            padding-bottom: 4px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            background-color: var(--azul-profundo);
+            border-radius: 50%;
+        }
+
+        /* ==========================================================================
+           2. DISTRIBUCIÓN DEL PLANIFICADOR (Dos Columnas)
+           ========================================================================== */
+        .planner-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* COLUMNA IZQUIERDA: Configuración e Itinerario sugerido */
+        .main-planner-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Cajas de diseño comunes */
+        .planner-card {
+            background-color: #ffffff;
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+        .planner-card h2 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Formulario de Parámetros iniciales */
+        .input-inline-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .form-control {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-control label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--texto-suave);
+            text-transform: uppercase;
+        }
+
+        .form-control input, .form-control select {
+            padding: 12px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--azul-profundo);
+            font-weight: 600;
+            outline: none;
+            background-color: var(--gris-fondo);
+        }
+
+        /* Línea de tiempo / Itinerario */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px dashed var(--borde);
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background-color: var(--gris-fondo);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--borde);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--coral-marca);
+            border: 2px solid #ffffff;
+        }
+
+        .time-badge {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--coral-marca);
+            background-color: #fff3e0;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .timeline-item h3 {
+            margin: 8px 0 4px 0;
+            font-size: 16px;
+        }
+
+        .timeline-item p {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            color: var(--texto-suave);
+        }
+
+        .item-cost {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--verde-turquesa);
+        }
+
+        /* Simulador de Mapa Estático */
+        .map-placeholder {
+            height: 220px;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--texto-suave);
+            font-weight: 600;
+            border: 1px solid var(--borde);
+            background-image: radial-gradient(var(--borde) 15%, transparent 16%);
+            background-size: 16px 16px;
+        }
+
+        /* COLUMNA DERECHA: El Módulo de Gastos Fijo (Calculadora de Presupuesto) */
+        .sidebar-budget-panel {
+            width: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+        }
+
+        .budget-header {
+            text-align: center;
+        }
+
+        .budget-main-number {
+            font-size: 36px;
+            font-weight: 900;
+            margin: 10px 0;
+            color: var(--azul-profundo);
+        }
+
+        /* Barra de Progreso Dinámica */
+        .progress-container {
+            background-color: var(--gris-fondo);
+            border-radius: 10px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid var(--borde);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 45%; /* Cambia dinámicamente con JS */
+            background-color: var(--verde-turquesa);
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .budget-summary-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--texto-suave);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Calculadora Rápida Interna */
+        .calc-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .calc-row input {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid var(--borde);
+            border-radius: 6px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--azul-profundo);
+        }
+
+        .btn-save-plan {
+            width: 100%;
+            background-color: var(--azul-profundo);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-save-plan:hover {
+            background-color: #0c4a66;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .planner-layout { flex-direction: column; }
+            .sidebar-budget-panel { width: 100%; position: relative; top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV PRINCIPAL -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📍 ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="#" class="active">Planificador</a></li>
+                    <li><a href="#">Perfil</a></li>
+                </ul>
+                <div class="avatar"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DEL PLANIFICADOR -->
+    <main class="container">
+        <div class="planner-layout">
+            
+            <!-- SECCIÓN IZQUIERDA: CONFIGURADOR E ITINERARIO -->
+            <section class="main-planner-content">
+                
+                <!-- Tarjeta 1: Parámetros del viaje -->
+                <div class="planner-card">
+                    <h2>⚙️ Configura tu Salida</h2>
+                    <div class="input-inline-group">
+                        <div class="form-control">
+                            <label for="destino-select">Destino base</label>
+                            <select id="destino-select">
+                                <option value="boqueron">Ruta Boquerón</option>
+                                <option value="coatepeque">Lago de Coatepeque</option>
+                                <option value="surfcity">Surf City / Puerto de La Libertad</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label for="input-presupuesto">Tu Presupuesto Máximo</label>
+                            <input type="number" id="input-presupuesto" value="50" min="1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Ruta e Itinerario Sugerido -->
+                <div class="planner-card">
+                    <h2>📋 Cronograma de Ruta Sugerida</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="time-badge">08:00 AM</span>
+                            <h3>Punto de Salida hacia el Destino</h3>
+                            <p>Inicio del viaje en transporte hacia la zona asignada. Se recomienda salir temprano para aprovechar el clima fresco.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">10:30 AM</span>
+                            <h3>Actividad Recreativa principal</h3>
+                            <p>Caminatas guiadas por los senderos autorizados, miradores y toma de fotografías de paisajes locales.</p>
+                            <span class="item-cost">Costo entrada aprox: $3.00</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="time-badge">01:00 PM</span>
+                            <h3>Parada Gastronómica Local</h3>
+                            <p>Almuerzo en comedores o restaurantes típicos de la zona. Opción sugerida: Platos típicos o mariscos según región.</p>
+                            <span class="item-cost">Costo almuerzo aprox: $8.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Indicador de Ubicación / Mapa (Requisito de Plan de Proyecto) -->
+                <div class="planner-card">
+                    <h2>🗺️ Direcciones de la Ruta</h2>
+                    <div class="map-placeholder">
+                        <span style="font-size: 30px;">🗺️</span>
+                        <span>Simulador de Mapa (Google Maps API)</span>
+                        <span style="font-size: 11px; font-weight: normal; margin-top: 5px;">Ruta trazada óptima para evitar calles de mal estado</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SECCIÓN DERECHA: REGISTRO DE GASTOS Y CALCULADORA (Fijo en pantalla) -->
+            <aside class="sidebar-budget-panel">
+                
+                <div class="planner-card budget-header">
+                    <h2>Calculadora de Salida</h2>
+                    
+                    <!-- Dinamismo de presupuesto -->
+                    <div class="budget-summary-text">
+                        <span>GASTADO: <b id="txt-gastado">$0.00</b></span>
+                        <span>LÍMITE: <b id="txt-limite">$50.00</b></span>
+                    </div>
+                    
+                    <div class="budget-main-number" id="txt-restante">$50.00</div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--texto-suave); margin-bottom: 15px;" id="txt-status-label">DISPONIBLE PARA GASTAR</div>
+
+                    <!-- Barra visual de control financiero -->
+                    <div class="progress-container">
+                        <div class="progress-bar" id="barra-progreso" style="width: 0%;"></div>
+                    </div>
+
+                    <!-- REQUISITO: Registro estructurado de gastos por categoría -->
+                    <div class="calc-inputs">
+                        <div class="calc-row">
+                            <label>🚗 Transporte / Gas:</label>
+                            <input type="number" id="gast-transporte" value="10" min="0" class="calc-trigger">
+                        </div>
+                        <div class="calc-row">
+                            <label>🍲 Alimentación:</label>
+                            <input type="number" id="gast-comida" value="12" min="0" class="calc-trigger">
+                        </div>
+                        <div class="calc-row">
+                            <label>🎟️ Entradas / Tickets:</label>
+                            <input type="number" id="gast-entradas" value="3" min="0" class="calc-trigger">
+                        </div>
+                        <div class="calc-row">
+                            <label>🛍️ Souvenirs / Extras:</label>
+                            <input type="number" id="gast-extras" value="5" min="0" class="calc-trigger">
+                        </div>
+                    </div>
+
+                    <button class="btn-save-plan">💾 Guardar en mi Historial</button>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- LÓGICA DE LA CALCULADORA AUTOMÁTICA -->
+    <script>
+        // Elementos del DOM
+        const inputPresupuestoMax = document.getElementById('input-presupuesto');
+        const inputsGastos = document.querySelectorAll('.calc-trigger');
+        
+        const txtGastado = document.getElementById('txt-gastado');
+        const txtLimite = document.getElementById('txt-limite');
+        const txtRestante = document.getElementById('txt-restante');
+        const txtStatusLabel = document.getElementById('txt-status-label');
+        const barraProgreso = document.getElementById('barra-progreso');
+
+        function calcularPresupuesto() {
+            // 1. Obtener el límite que puso el usuario
+            const limite = parseFloat(inputPresupuestoMax.value) || 0;
+            
+            // 2. Sumar todos los inputs de la calculadora
+            let totalGastado = 0;
+            inputsGastos.forEach(input => {
+                totalGastado += parseFloat(input.value) || 0;
+            });
+
+            // 3. Calcular la diferencia
+            const restante = limite - totalGastado;
+            const porcentajeConstruido = (totalGastado / limite) * 100;
+
+            // 4. Actualizar textos en pantalla
+            txtLimite.innerText = `$${limite.toFixed(2)}`;
+            txtGastado.innerText = `$${totalGastado.toFixed(2)}`;
+            txtRestante.innerText = `$${Math.abs(restante).toFixed(2)}`;
+
+            // 5. Cambiar comportamiento visual si se pasa del dinero disponible
+            if (restante >= 0) {
+                txtRestante.style.color = 'var(--verde-turquesa)';
+                txtStatusLabel.innerText = "DISPONIBLE PARA GASTAR";
+                txtStatusLabel.style.color = 'var(--texto-suave)';
+                barraProgreso.style.backgroundColor = 'var(--verde-turquesa)';
+                barraProgreso.style.width = `${Math.min(porcentajeConstruido, 100)}%`;
+            } else {
+                txtRestante.style.color = 'var(--rojo-alerta)';
+                txtStatusLabel.innerText = "¡TE HAS EXCEDIDO DEL PRESUPUESTO!";
+                txtStatusLabel.style.color = 'var(--rojo-alerta)';
+                barraProgreso.style.backgroundColor = 'var(--rojo-alerta)';
+                barraProgreso.style.width = '100%';
+            }
+        }
+
+        // Oyentes de eventos para recalcular al instante cuando el usuario escriba algo
+        inputPresupuestoMax.addEventListener('input', calcularPresupuesto);
+        inputsGastos.forEach(input => {
+            input.addEventListener('input', calcularPresupuesto);
+        });
+
+        // Ejecutar cálculo inicial al cargar la página
+        calcularPresupuesto();
+    </script>
+</body>
+</html>

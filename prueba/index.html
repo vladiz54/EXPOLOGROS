@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - El Salvador</title>
+    <style>
+        /* ==========================================================================
+           1. VARIABLES DE MARCA Y ESTILOS BASE
+           ========================================================================== */
+        :root {
+            --azul-profundo: #073549;
+            --coral-marca: #fb923c;
+            --verde-turquesa: #00a896;
+            --gris-fondo: #f8fafc;
+            --texto-suave: #475569;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--azul-profundo);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* ==========================================================================
+           2. NAV SUPERIOR (Completa con Perfil)
+           ========================================================================== */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .menu-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-links li {
+            margin: 0 15px;
+        }
+
+        .menu-links a {
+            text-decoration: none;
+            color: var(--texto-suave);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .menu-links a:hover, .menu-links a.active {
+            color: var(--azul-profundo);
+            border-bottom: 2px solid var(--azul-profundo);
+            padding-bottom: 4px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            background-color: var(--azul-profundo);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. BANNER PRINCIPAL (Hero Section) Y BUSCADOR
+           ========================================================================== */
+        .hero {
+            background: linear-gradient(rgba(7, 53, 73, 0.5), rgba(7, 53, 73, 0.6)), 
+                        linear-gradient(135deg, #2b5876 0%, #4e4376 100%); /* Simulación del paisaje del lago */
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            color: #ffffff;
+            text-align: left;
+            position: relative;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            max-width: 600px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin: 0 0 30px 0;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--azul-profundo);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--verde-turquesa);
+        }
+
+        .btn-outline {
+            background-color: #ffffff;
+            color: var(--azul-profundo);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Barra de búsqueda integrada flotante */
+        .search-bar {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 15px 25px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto -120px auto;
+            position: relative;
+            z-index: 10;
+            align-items: center;
+        }
+
+        .search-input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .search-input-group label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--texto-suave);
+            text-transform: uppercase;
+        }
+
+        .search-input-group input, .search-input-group select {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: var(--azul-profundo);
+            font-weight: 600;
+            background: transparent;
+        }
+
+        .btn-search {
+            background-color: var(--azul-profundo);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .btn-search:hover {
+            background-color: var(--verde-turquesa);
+        }
+
+        /* ==========================================================================
+           4. SECCIÓN CONTENIDO 1: CATEGORÍAS + CUADRÍCULA RECOMENDADOS
+           ========================================================================== */
+        .main-content {
+            margin-top: 70px;
+            padding-top: 30px;
+        }
+
+        .categories-container {
+            margin-bottom: 35px;
+        }
+
+        .categories-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding-bottom: 10px;
+        }
+
+        .cat-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--texto-suave);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .cat-card.active, .cat-card:hover {
+            background-color: var(--azul-profundo);
+            color: white;
+            border-color: var(--azul-profundo);
+        }
+
+        /* Cuadrícula Mejorada de Destinos (Grid de 4 columnas) */
+        .grid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .grid-destinos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .destino-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dest-img-sim {
+            height: 140px;
+            background: linear-gradient(45deg, var(--azul-profundo), var(--verde-turquesa));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .dest-body {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dest-body h4 {
+            margin: 0 0 2px 0;
+            font-size: 16px;
+        }
+
+        .dest-body .dpto {
+            font-size: 12px;
+            color: var(--texto-suave);
+            margin: 0 0 12px 0;
+        }
+
+        .dest-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .price { color: var(--verde-turquesa); }
+        .rating { color: var(--coral-marca); }
+
+        /* ==========================================================================
+           5. SECCIÓN CONTENIDO 2: SCROLL INTELIGENTE (¡Tu otra idea añadida abajo!)
+           ========================================================================== */
+        .smart-recommendation-section {
+            background-color: #ffffff;
+            padding: 50px 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 50px;
+        }
+
+        .flex-recommendations {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .preference-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: #e0f2fe;
+            border-radius: 16px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .featured-dest-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        /* Separador dinámico de presupuesto */
+        .budget-banner {
+            background-color: #f1f5f9;
+            border-radius: 16px;
+            padding: 25px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .budget-banner h3 { margin: 0 0 5px 0; font-size: 18px; }
+        .budget-banner p { margin: 0; color: var(--texto-suave); font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER Y MENÚ COMPLETO -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📍 ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Explorar destinos</a></li>
+                    <li><a href="#">Planificador</a></li>
+                    <li><a href="#">Perfil</a></li>
+                </ul>
+                <div class="avatar" title="Mi Perfil"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. HERO BANNER PRINCIPAL -->
+    <section class="hero">
+        <div class="container">
+            <h1>Descubre El Salvador sin salirte de tu presupuesto</h1>
+            <p>Encuentra destinos, actividades y experiencias adaptadas a tu bolsillo.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Planificar mi viaje ➔</a>
+                <a href="#" class="btn btn-outline">Explorar destinos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BARRA DE BÚSQUEDA INTEGRADA -->
+    <div class="search-bar">
+        <div class="search-input-group">
+            <label>¿Qué lugar quieres explorar?</label>
+            <input type="text" placeholder="Ej: Playas, volcanes, pueblos...">
+        </div>
+        <div class="search-input-group">
+            <label>Todos los departamentos</label>
+            <select>
+                <option>Todos los departamentos</option>
+                <option>La Libertad</option>
+                <option>Santa Ana</option>
+                <option>Cuscatlán</option>
+                <option>Ahuachapán</option>
+            </select>
+        </div>
+        <div class="search-input-group">
+            <label>¿Cuándo viajas?</label>
+            <input type="text" placeholder="Seleccionar fecha" onfocus="(this.type='date')">
+        </div>
+        <button class="btn btn-search">Buscar</button>
+    </div>
+
+    <!-- MAIN CONTAINER (CONTENIDO SUPERIOR) -->
+    <main class="container main-content">
+
+        <!-- 4. CARRUSEL HORIZONTAL DE CATEGORÍAS -->
+        <section class="categories-container">
+            <ul class="categories-list">
+                <li><button class="cat-card active">🏖️ Playa</button></li>
+                <li><button class="cat-card">🌿 Naturaleza</button></li>
+                <li><button class="cat-card">🌋 Aventura</button></li>
+                <li><button class="cat-card">🏛️ Cultura</button></li>
+                <li><button class="cat-card">🍲 Gastronomía</button></li>
+                <li><button class="cat-card">🏡 Pueblos Vivos</button></li>
+                <li><button class="cat-card">👥 Familiar</button></li>
+            </ul>
+        </section>
+
+        <!-- 5. CUADRÍCULA DE DESTINOS RECOMENDADOS (Espacio ampliado y optimizado) -->
+        <section>
+            <div class="grid-header">
+                <h2 style="margin: 0; font-size: 22px;">Destinos recomendados</h2>
+                <a href="#" style="color: var(--azul-profundo); font-weight: 700; font-size: 14px; text-decoration: none;">Ver todos ➔</a>
+            </div>
+
+            <div class="grid-destinos">
+                <!-- Tarjeta 1 -->
+                <div class="destino-card">
+                    <div class="dest-img-sim">🏞️</div>
+                    <div class="dest-body">
+                        <div>
+                            <h4>Lago de Coatepeque</h4>
+                            <p class="dpto">Santa Ana</p>
+                        </div>
+                        <div class="dest-footer">
+                            <span class="price">Desde $15</span>
+                            <span class="rating">⭐ 4.8 (230)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="destino-card">
+                    <div class="dest-img-sim">🌸</div>
+                    <div class="dest-body">
+                        <div>
+                            <h4>Ruta de las Flores</h4>
+                            <p class="dpto">Ahuachapán</p>
+                        </div>
+                        <div class="dest-footer">
+                            <span class="price">Desde $20</span>
+                            <span class="rating">⭐ 4.9 (185)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="destino-card">
+                    <div class="dest-img-sim">🌋</div>
+                    <div class="dest-body">
+                        <div>
+                            <h4>Cerro Verde</h4>
+                            <p class="dpto">Santa Ana</p>
+                        </div>
+                        <div class="dest-footer">
+                            <span class="price">Desde $18</span>
+                            <span class="rating">⭐ 4.6 (115)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="destino-card">
+                    <div class="dest-img-sim">🏄‍♂️</div>
+                    <div class="dest-body">
+                        <div>
+                            <h4>Playa El Tunco</h4>
+                            <p class="dpto">La Libertad</p>
+                        </div>
+                        <div class="dest-footer">
+                            <span class="price">Desde $12</span>
+                            <span class="rating">⭐ 4.6 (210)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. SECCIÓN INFERIOR AUTOMÁTICA (SCROLL INTELIGENTE) -->
+    <section class="smart-recommendation-section">
+        <div class="container">
+            <h2 style="margin: 0; font-size: 24px; font-weight: 800;">Descubre qué lugares son para ti</h2>
+            <p style="margin: 5px 0 0 0; color: var(--texto-suave); font-size: 15px;">Recomendaciones inteligentes según tu estilo y preferencias de aventura.</p>
+
+            <div class="flex-recommendations">
+                <!-- Tarjeta de Preferencia -->
+                <div class="preference-box">
+                    <span style="color: #0369a1; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tu categoría ideal</span>
+                    <h3 style="margin: 5px 0 15px 0; font-size: 24px;">Cultura y Gastronomía</h3>
+                    <p style="margin: 0 0 20px 0; font-size: 14px; line-height: 1.6; color: #334155;">Para ti, los mejores viajes son los que exploran historias milenarias y sabores locales. Te encantarán los museos, la arquitectura histórica y probar platillos tradicionales.</p>
+                    <a href="#" class="btn btn-primary" style="font-size: 13px; padding: 10px 20px;">Explorar Categoría</a>
+                </div>
+
+                <!-- Tarjeta de Destino Sugerido Directo -->
+                <div class="featured-dest-box">
+                    <div style="width: 40%; background: linear-gradient(135deg, var(--coral-marca), var(--verde-turquesa)); display: flex; align-items: center; justify-content: center; font-size: 40px; color: white;">🌅</div>
+                    <div style="width: 60%; padding: 25px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+                        <span style="color: var(--coral-marca); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Destino Sugerido</span>
+                        <h3 style="margin: 5px 0 2px 0; font-size: 22px;">Suchitoto</h3>
+                        <div style="color: var(--texto-suave); font-size: 13px; margin-bottom: 12px; font-weight: 500;">Cuscatlán — Histórico</div>
+                        <p style="margin: 0 0 15px 0; font-size: 13px; color: #475569; line-height: 1.4;">Un hermoso pueblo colonial que resguarda la esencia cultural, con calles empedradas y vistas perfectas al Lago de Suchitlán.</p>
+                        <a href="#" class="btn btn-primary" style="background-color: var(--verde-turquesa); font-size: 13px; padding: 10px 20px; align-self: flex-start;">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- banner de Presupuesto Integrado -->
+            <div class="budget-banner">
+                <div>
+                    <h3>¿No sabes cuánto gastar?</h3>
+                    <p>Ingresa tu presupuesto y encuentra planes ideales para tu próxima aventura.</p>
+                </div>
+                <a href="#" class="btn btn-primary" style="background-color: var(--azul-profundo);">Comenzar Ahora ➔</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
