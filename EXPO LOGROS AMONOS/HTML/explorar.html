@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Explorar Destinos</title>
+    <link rel="stylesheet" href="CSS/explorar.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">📍 ÁMONOS</a>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html" class="active">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container explore-content">
+        
+        <div class="explore-header">
+            <h1>Explora todos los destinos</h1>
+            <p>Filtra por tus gustos, zona geográfica o rango de precio.</p>
+        </div>
+
+        <section class="filter-sidebar">
+            <form>
+                <div class="filter-group">
+                    <label>Zona Geográfica</label>
+                    <select>
+                        <option value="todas">Todas las zonas</option>
+                        <option value="occidente">Occidente (Santa Ana, Ahuachapán, Sonsonate)</option>
+                        <option value="central">Central / Paracentral (San Salvador, La Libertad)</option>
+                        <option value="oriente">Oriente (San Miguel, Usulután, La Unión)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Presupuesto Máximo</label>
+                    <select>
+                        <option value="todos">Cualquier presupuesto</option>
+                        <option value="bajo">Económico (Menos de $15)</option>
+                        <option value="medio">Moderado ($15 - $35)</option>
+                        <option value="alto">Premium (Más de $35)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary">Aplicar Filtros</button>
+            </form>
+        </section>
+
+        <section class="grid-destinos">
+            
+            <a href="detalles.html?destino=coatepeque" class="destino-card">
+                <div class="dest-img-sim">🏞️</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Lago de Coatepeque</h4>
+                        <p class="dpto">Santa Ana</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $15</span>
+                        <span class="rating">⭐ 4.8</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=flores" class="destino-card">
+                <div class="dest-img-sim">🌸</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Ruta de las Flores</h4>
+                        <p class="dpto">Ahuachapán</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $20</span>
+                        <span class="rating">⭐ 4.9</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=cerroverde" class="destino-card">
+                <div class="dest-img-sim">🌋</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Cerro Verde</h4>
+                        <p class="dpto">Santa Ana</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $18</span>
+                        <span class="rating">⭐ 4.6</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=eltunco" class="destino-card">
+                <div class="dest-img-sim">🏄‍♂️</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Playa El Tunco</h4>
+                        <p class="dpto">La Libertad</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $12</span>
+                        <span class="rating">⭐ 4.6</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=suchitoto" class="destino-card">
+                <div class="dest-img-sim">🌅</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Suchitoto</h4>
+                        <p class="dpto">Cuscatlán</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $10</span>
+                        <span class="rating">⭐ 4.7</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=izalco" class="destino-card">
+                <div class="dest-img-sim">🥾</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Volcán de Izalco</h4>
+                        <p class="dpto">Sonsonate</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $22</span>
+                        <span class="rating">⭐ 4.8</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=boqueron" class="destino-card">
+                <div class="dest-img-sim">🍃</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Parque El Boquerón</h4>
+                        <p class="dpto">San Salvador</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $5</span>
+                        <span class="rating">⭐ 4.5</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detalles.html?destino=elcuco" class="destino-card">
+                <div class="dest-img-sim">🏖️</div>
+                <div class="dest-body">
+                    <div>
+                        <h4>Playa El Cuco</h4>
+                        <p class="dpto">San Miguel</p>
+                    </div>
+                    <div class="dest-footer">
+                        <span class="price">Desde $15</span>
+                        <span class="rating">⭐ 4.4</span>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+    </main>
+
+</body>
+</html>
