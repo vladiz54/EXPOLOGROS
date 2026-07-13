@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Detalles del Destino</title>
+    <style>
+        /* ==========================================================================
+           1. MARCA Y CONFIGURACIÓN GENERAL
+           ========================================================================== */
+        :root {
+            --azul-profundo: #073549;
+            --coral-marca: #fb923c;
+            --verde-turquesa: #00a896;
+            --gris-fondo: #f8fafc;
+            --texto-suave: #475569;
+            --borde: #e2e8f0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--azul-profundo);
+            scroll-behavior: smooth; /* Hace que el salto hacia abajo sea suave */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo { font-size: 22px; font-weight: 900; }
+        .menu-links { list-style: none; display: flex; margin: 0; padding: 0; }
+        .menu-links li { margin: 0 15px; }
+        .menu-links a { text-decoration: none; color: var(--texto-suave); font-weight: 600; }
+
+        /* BOTÓN ATRÁS */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e2e8f0;
+            color: var(--azul-profundo);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        /* ==========================================================================
+           2. SECCIÓN 1: CABECERA Y CARRUSEL DE IMÁGENES (Boceto 1)
+           ========================================================================== */
+        .destination-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .title-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--borde);
+        }
+
+        .title-area h1 { margin: 0; font-size: 24px; font-weight: 800; }
+        .stars { color: #f59e0b; font-size: 18px; letter-spacing: 2px; }
+
+        /* Botón de Interacción Rápida Sugerido */
+        .btn-action-trigger {
+            background-color: var(--azul-profundo);
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(7, 53, 73, 0.2);
+            transition: background-color 0.2s;
+        }
+
+        .btn-action-trigger:hover { background-color: var(--verde-turquesa); }
+
+        /* Estructura del Carrusel de Fotos */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 300%; /* Para 3 imágenes */
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        /* Flechas del carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--azul-profundo);
+            z-index: 10;
+        }
+        .btn-left { left: 15px; }
+        .btn-right { right: 15px; }
+
+        /* ==========================================================================
+           3. SECCIÓN 2: INFORMACIÓN, COSTOS Y RESEÑAS (Boceto 2)
+           ========================================================================== */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin-top: 35px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .info-card h2 {
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--texto-suave);
+        }
+
+        .location-tag {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--azul-profundo);
+            margin-bottom: 20px;
+        }
+
+        .description-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--texto-suave);
+            margin-bottom: 25px;
+        }
+
+        .activities-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .activities-list li {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--azul-profundo);
+        }
+
+        /* TABLA DE COSTOS ESTIMADOS */
+        .table-costs {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .table-costs th {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            text-align: left;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .table-costs td {
+            padding: 12px;
+            border-bottom: 1px solid var(--borde);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .row-total {
+            background-color: var(--gris-fondo);
+            font-weight: 800 !important;
+            color: var(--verde-turquesa);
+        }
+
+        /* COMENTARIOS DE CLIENTES */
+        .comments-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment-box {
+            background-color: var(--gris-fondo);
+            border: 1px solid var(--borde);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .comment-box strong {
+            font-size: 13px;
+            color: var(--azul-profundo);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .comment-box p {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: var(--texto-suave);
+        }
+
+        @media (max-width: 768px) {
+            .details-grid { grid-template-columns: 1fr; }
+            .carousel-container { height: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ SUPERIOR -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📍 ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <div style="width: 35px; height: 35px; background-color: var(--azul-profundo); border-radius: 50%;"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO GENERAL -->
+    <main class="container">
+        
+        <a href="explorar.html" class="btn-back">⬅️ Atrás</a>
+
+        <!-- BLOQUE CABECERA (Imagen 1) -->
+        <section class="destination-header">
+            <div class="title-area">
+                <h1>Lago de Coatepeque</h1>
+                <div class="stars">★★★★★</div>
+            </div>
+            <!-- Tu idea de guardar y planificar de un solo clic -->
+            <button class="btn-action-trigger" onclick="scrollHaciaCostos()">❤️ Guardar y Organizar Presupuesto</button>
+        </section>
+
+        <!-- CARRUSEL DE IMÁGENES INTERACTIVO (Imagen 1) -->
+        <section class="carousel-container">
+            <button class="carousel-btn btn-left" onclick="moverCarrusel(-1)">‹</button>
+            <div class="carousel-track" id="track">
+                <!-- Foto 1 -->
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=600');"></div>
+                <!-- Foto 2 -->
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=600');"></div>
+                <!-- Foto 3 -->
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600');"></div>
+            </div>
+            <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
+        </section>
+
+        <!-- CUADRÍCULA DE DETALLES (Imagen 2) -->
+        <div class="details-grid" id="seccion-info">
+            
+            <!-- COLUMNA IZQUIERDA: UBICACIÓN, DESCRIPCIÓN Y QUÉ HACER -->
+            <section class="info-card">
+                <h2>Ubicación</h2>
+                <div class="location-tag">Santa Ana, El Salvador</div>
+
+                <h2>Descripción</h2>
+                <p class="description-text">
+                    Uno de los lagos más hermosos de Centroamérica, conocido por sus aguas cristalinas y actividades recreativas. En ciertas épocas del año, sus aguas cambian a un color turquesa impresionante.
+                </p>
+
+                <h2>¿Qué hacer?</h2>
+                <ul class="activities-list">
+                    <li>Paseos en lancha.</li>
+                    <li>Nadar en zonas autorizadas.</li>
+                    <li>Comer en restaurantes frente al lago.</li>
+                    <li>Fotografiar paisajes.</li>
+                </ul>
+            </section>
+
+            <!-- COLUMNA DERECHA: COSTOS ESTIMADOS Y COMENTARIOS -->
+            <section class="info-card" id="bloque-costos">
+                <h2>Costo Estimado</h2>
+                <table class="table-costs">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🚗 Transporte</td>
+                            <td>$10 - $20</td>
+                        </tr>
+                        <tr>
+                            <td>🍲 Alimentación</td>
+                            <td>$10 - $30</td>
+                        </tr>
+                        <tr>
+                            <td>⛵ Lancha</td>
+                            <td>$5 - $15</td>
+                        </tr>
+                        <tr class="row-total">
+                            <td>📊 Total aproximado:</td>
+                            <td>$25 - $65</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Comentarios de los clientes</h2>
+                <div class="comments-section">
+                    <div class="comment-box">
+                        <strong>SOFIA:</strong>
+                        <p>El agua es hermosa y muy tranquilo. ¡Súper recomendado para ir en familia!</p>
+                        <div class="stars" style="font-size: 12px;">★★★★★</div>
+                    </div>
+                    <div class="comment-box">
+                        <strong>CARLOS:</strong>
+                        <p>Excelente comida en los restaurantes de los alrededores, los precios de las lanchas son negociables.</p>
+                        <div class="stars" style="font-size: 12px;">★★★★☆</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- COMPORTAMIENTO INTERACTIVO -->
+    <script>
+        // Lógica del Carrusel
+        let indiceActual = 0;
+        const track = document.getElementById('track');
+        
+        function moverCarrusel(direccion) {
+            indiceActual += direccion;
+            if (indiceActual > 2) indiceActual = 0;
+            if (indiceActual < 0) indiceActual = 2;
+            
+            // Mueve el contenedor horizontalmente usando porcentajes
+            track.style.transform = `translateX(-${indiceActual * 33.333}%)`;
+        }
+
+        // Lógica de Scroll Automático (Tu idea de interacción fluida)
+        function scrollHaciaCostos() {
+            // Envía un aviso visual y baja la pantalla suavemente a la tabla de costos
+            alert("¡Destino guardado en tus favoritos! Te llevamos a ver los costos para tu presupuesto.");
+            document.getElementById('bloque-costos').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
