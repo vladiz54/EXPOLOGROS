@@ -1,0 +1,343 @@
+/* 1. CONSTANTES DE DISEÑO Y BASE */
+:root {
+    --azul-profundo: #073549;
+    --coral-marca: #fb923c;
+    --verde-turquesa: #00a896;
+    --gris-fondo: #f8fafc;
+    --texto-suave: #475569;
+    --borde: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--gris-fondo);
+    color: var(--azul-profundo);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/*2. BARRA SUPERIOR (MENÚ NAV) */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.menu-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-links li { 
+    margin: 0 15px; 
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.menu-links a:hover {
+    color: var(--azul-profundo);
+}
+
+.menu-links a.active {
+    color: var(--azul-profundo);
+    border-bottom: 2px solid var(--azul-profundo);
+    padding-bottom: 4px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background-color: var(--azul-profundo);
+    border-radius: 50%;
+}
+
+/* 3. ESTRUCTURA DE DOS COLUMNAS */
+.search-page-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+/* COLUMNA IZQUIERDA: Panel de Filtros */
+.sidebar-filters {
+    width: 320px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid var(--borde);
+    padding: 25px;
+    box-sizing: border-box;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+}
+
+.filter-group {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 20px;
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.filter-group h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--texto-suave);
+    margin: 0 0 12px 0;
+}
+
+/* Buscador de texto interno */
+.text-search-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.text-search-wrapper input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    color: var(--azul-profundo);
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.text-search-wrapper input:focus {
+    border-color: var(--azul-profundo);
+}
+
+/* Contenedor de Píldoras / Chips */
+.chips-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    background-color: var(--gris-fondo);
+    border: 1px solid var(--borde);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-suave);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chip:hover {
+    border-color: var(--azul-profundo);
+    color: var(--azul-profundo);
+}
+
+.chip.active {
+    background-color: var(--azul-profundo);
+    color: #ffffff;
+    border-color: var(--azul-profundo);
+}
+
+/* Checkboxes para Presupuesto */
+.check-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: var(--azul-profundo);
+}
+
+.check-label input {
+    accent-color: var(--verde-turquesa);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* 4. COLUMNA DERECHA: RESULTADOS (GRID DE TARJETAS)*/
+.results-column {
+    flex: 1;
+}
+
+.results-header {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--texto-suave);
+    font-weight: 600;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjeta de Destino */
+.card-destino {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid var(--borde);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-destino:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(7, 53, 73, 0.08);
+}
+
+.card-img-sim {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+}
+
+.card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body h2 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* Links en los títulos sin romper el diseño */
+.card-body h2 a {
+    text-decoration: none;
+    color: var(--azul-profundo);
+    transition: color 0.2s;
+}
+
+.card-body h2 a:hover {
+    color: var(--verde-turquesa);
+}
+
+.card-location {
+    font-size: 13px;
+    color: var(--texto-suave);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.card-tags-info {
+    font-size: 12px;
+    background-color: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    color: var(--azul-profundo);
+    font-weight: 600;
+    width: fit-content;
+}
+
+.card-description {
+    font-size: 13px;
+    color: var(--texto-suave);
+    line-height: 1.5;
+    margin: 0 0 18px 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--borde);
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.price-tag {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--verde-turquesa);
+}
+
+.meta-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.star { 
+    color: var(--coral-marca); 
+}
+
+.btn-heart {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    transition: transform 0.2s;
+}
+
+.btn-heart:hover {
+    transform: scale(1.2);
+}
+
+/*5. DISEÑO RESPONSIVO (PANTALLAS MÓVILES)*/
+@media (max-width: 850px) {
+    .search-page-layout { 
+        flex-direction: column; 
+    }
+    
+    .sidebar-filters { 
+        width: 100%; 
+        position: relative; 
+        top: 0; 
+    }
+}
