@@ -1,4 +1,6 @@
-/* 1. VARIABLES DE MARCA Y ESTILOS BASE */
+/* ==========================================================================
+   1. VARIABLES DE MARCA Y ESTILOS BASE
+   ========================================================================== */
 :root {
     --azul-profundo: #073549;
     --coral-marca: #fb923c;
@@ -22,7 +24,9 @@ body {
     box-sizing: border-box;
 }
 
-/* 2. NAV SUPERIOR (Menú) */
+/* ==========================================================================
+   2. NAV SUPERIOR (Menú)
+   ========================================================================== */
 header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -86,7 +90,9 @@ nav {
     text-decoration: none;
 }
 
-/* 3. BANNER PRINCIPAL (Hero Section) Y BOTONES */
+/* ==========================================================================
+   3. BANNER PRINCIPAL (Hero Section) Y BOTONES
+   ========================================================================== */
 .hero {
     background: linear-gradient(rgba(7, 53, 73, 0.5), rgba(7, 53, 73, 0.6)), 
                 linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
@@ -204,7 +210,9 @@ nav {
     font-weight: 700;
 }
 
-/* 4. CATEGORÍAS Y GRID DE DESTINOS */
+/* ==========================================================================
+   4. CATEGORÍAS Y GRID DE DESTINOS
+   ========================================================================== */
 .main-content {
     margin-top: 140px; 
     padding-top: 30px;
@@ -325,7 +333,9 @@ nav {
 .price { color: var(--verde-turquesa); }
 .rating { color: var(--coral-marca); }
 
-/* 5. SECCIÓN RECOMENDACIONES (Scroll Inteligente) */
+/* ==========================================================================
+   5. SECCIÓN RECOMENDACIONES (Scroll Inteligente)
+   ========================================================================== */
 .smart-recommendation-section {
     background-color: #ffffff;
     padding: 50px 0;
