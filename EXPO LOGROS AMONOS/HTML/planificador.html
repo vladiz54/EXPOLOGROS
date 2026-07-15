@@ -9,120 +9,126 @@
 <body>
 
 <header>
-        <div class="container">
-            <nav>
-                <div class="logo"> ÁMONOS</div>
-                <ul class="menu-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="explorar.html">Explorar destinos</a></li>
-                    <li><a href="planificador.html" class="active">Planificador</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                </ul>
-                <div class="avatar"></div>
-            </nav>
-        </div>
-    </header>
+<div class="container">
+<nav>
+<div class="logo"> ÁMONOS</div>
+    <ul class="menu-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="explorar.html">Explorar destinos</a></li>
+        <li><a href="planificador.html" class="active">Planificador</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+    </ul>
+<div class="avatar"></div>
+</nav>
+</div>
 
-    <main class="container">
-        <div class="planner-layout">
+</header>
+
+<main class="container">
+    <div class="planner-layout">
             
-            <section class="main-planner-content">
+<section class="main-planner-content">
                 
-                <div class="planner-card">
-                    <h2> Configura tu Salida</h2>
-                    <div class="input-inline-group">
-                        <div class="form-control">
-                            <label for="destino-select">Destino base</label>
-                            <select id="destino-select">
-                                <option value="boqueron">Ruta El Boquerón</option>
-                                <option value="coatepeque">Lago de Coatepeque</option>
-                                <option value="surfcity">Surf City / Puerto de La Libertad</option>
-                            </select>
-                        </div>
-                        <div class="form-control">
-                            <label for="input-presupuesto">Tu Presupuesto Máximo</label>
-                            <input type="number" id="input-presupuesto" value="50" min="1">
-                        </div>
-                    </div>
-                </div>
+    <div class="planner-card">
+    <h2> Configura tu Salida</h2>
+     <div class="input-inline-group">
+    <div class="form-control">
+<label for="destino-select">Destino base</label>
+    <select id="destino-select">
+        <option value="boqueron">Ruta El Boquerón</option>
+        <option value="coatepeque">Lago de Coatepeque</option>
+        <option value="surfcity">Surf City / Puerto de La Libertad</option>
+    </select>
+    </div>
 
-                <div class="planner-card">
-                    <h2> Cronograma de Ruta Sugerida</h2>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <span class="time-badge">08:00 AM</span>
-                            <h3>Punto de Salida hacia el Destino</h3>
-                            <p>Inicio del viaje en transporte hacia la zona asignada. Se recomienda salir temprano para aprovechar el clima fresco.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="time-badge">10:30 AM</span>
-                            <h3>Actividad Recreativa principal</h3>
-                            <p>Caminatas guiadas por los senderos autorizados, miradores y toma de fotografías de paisajes locales.</p>
-                            <span class="item-cost">Costo entrada aprox: $3.00</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="time-badge">01:00 PM</span>
-                            <h3>Parada Gastronómica Local</h3>
-                            <p>Almuerzo en comedores o restaurantes típicos de la zona. Opción sugerida: Platos típicos o mariscos según región.</p>
-                            <span class="item-cost">Costo almuerzo aprox: $8.00</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="form-control">
+        <label for="input-presupuesto">Tu Presupuesto Máximo</label>
+        <input type="number" id="input-presupuesto" value="50" min="1">
+     </div>
+</div>
+</div>
 
-                <div class="planner-card">
-                    <h2> Direcciones de la Ruta</h2>
-                    <div class="map-placeholder">
-                        <span style="font-size: 30px;"></span>
-                        <span>Simulador de Mapa (Google Maps API)</span>
-                        <span style="font-size: 11px; font-weight: normal; margin-top: 5px;">Ruta trazada óptima para evitar calles de mal estado</span>
-                    </div>
-                </div>
-
-            </section>
-
-            <aside class="sidebar-budget-panel">
-                
-                <div class="planner-card budget-header">
-                    <h2>Calculadora de Salida</h2>
-                    
-                    <div class="budget-summary-text">
-                        <span>GASTADO: <b id="txt-gastado">$0.00</b></span>
-                        <span>LÍMITE: <b id="txt-limite">$50.00</b></span>
-                    </div>
-                    
-                    <div class="budget-main-number" id="txt-restante">$50.00</div>
-                    <div style="font-size: 12px; font-weight: 700; color: var(--texto-suave); margin-bottom: 15px;" id="txt-status-label">DISPONIBLE PARA GASTAR</div>
-
-                    <div class="progress-container">
-                        <div class="progress-bar" id="barra-progreso" style="width: 0%;"></div>
-                    </div>
-
-                    <div class="calc-inputs">
-                        <div class="calc-row">
-                            <label> Transporte / Gas:</label>
-                            <input type="number" id="gast-transporte" value="10" min="0" class="calc-trigger">
-                        </div>
-                        <div class="calc-row">
-                            <label> Alimentación:</label>
-                            <input type="number" id="gast-comida" value="12" min="0" class="calc-trigger">
-                        </div>
-                        <div class="calc-row">
-                            <label> Entradas / Tickets:</label>
-                            <input type="number" id="gast-entradas" value="3" min="0" class="calc-trigger">
-                        </div>
-                        <div class="calc-row">
-                            <label> Souvenirs / Extras:</label>
-                            <input type="number" id="gast-extras" value="5" min="0" class="calc-trigger">
-                        </div>
-                    </div>
-
-                    <button class="btn-save-plan"> Guardar en mi Historial</button>
-                </div>
-
-            </aside>
-
+<div class="planner-card">
+<h2> Cronograma de Ruta Sugerida</h2>
+    <div class="timeline">
+    <div class="timeline-item">
+        <span class="time-badge">08:00 AM</span>
+        <h3>Punto de Salida hacia el Destino</h3>
+        <p>Inicio del viaje en transporte hacia la zona asignada. Se recomienda salir temprano para aprovechar el clima fresco.</p>
+    </div>
+        <div class="timeline-item">
+            <span class="time-badge">10:30 AM</span>
+            <h3>Actividad Recreativa principal</h3>
+            <p>Caminatas guiadas por los senderos autorizados, miradores y toma de fotografías de paisajes locales.</p>
+            <span class="item-cost">Costo entrada aprox: $3.00</span>
         </div>
-    </main>
+    
+    <div class="timeline-item">
+        <span class="time-badge">01:00 PM</span>
+        <h3>Parada Gastronómica Local</h3>
+        <p>Almuerzo en comedores o restaurantes típicos de la zona. Opción sugerida: Platos típicos o mariscos según región.</p>
+        <span class="item-cost">Costo almuerzo aprox: $8.00</span>
+    </div>
+     </div>
+    </div>
+
+     <div class="planner-card">
+        <h2> Direcciones de la Ruta</h2>
+            <div class="map-placeholder">
+                <span style="font-size: 30px;"></span>
+                <span>Simulador de Mapa (Google Maps API)</span>
+                <span style="font-size: 11px; font-weight: normal; margin-top: 5px;">Ruta trazada óptima para evitar calles de mal estado</span>
+            </div>
+    </div>
+
+</section>
+
+<aside class="sidebar-budget-panel">
+                
+    <div class="planner-card budget-header">
+    <h2>Calculadora de Salida</h2>
+                    
+    <div class="budget-summary-text">
+        <span>GASTADO: <b id="txt-gastado">$0.00</b></span>
+        <span>LÍMITE: <b id="txt-limite">$50.00</b></span>
+    </div>
+                    
+    <div class="budget-main-number" id="txt-restante">$50.00</div>
+    <div style="font-size: 12px; font-weight: 700; color: var(--texto-suave); margin-bottom: 15px;" id="txt-status-label">DISPONIBLE PARA GASTAR</div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="barra-progreso" style="width: 0%;"></div>
+    </div>
+
+    <div class="calc-inputs">
+        <div class="calc-row">
+            <label> Transporte / Gas:</label>
+            <input type="number" id="gast-transporte" value="10" min="0" class="calc-trigger">
+        </div>
+
+        <div class="calc-row">
+            <label> Alimentación:</label>
+            <input type="number" id="gast-comida" value="12" min="0" class="calc-trigger">
+        </div>
+    
+        <div class="calc-row">
+            <label> Entradas / Tickets:</label>
+            <input type="number" id="gast-entradas" value="3" min="0" class="calc-trigger">
+        </div>
+
+        <div class="calc-row">
+            <label> Souvenirs / Extras:</label>
+            <input type="number" id="gast-extras" value="5" min="0" class="calc-trigger">
+        </div>
+        </div>
+
+        <button class="btn-save-plan"> Guardar en mi Historial</button>
+</div>
+
+</aside>
+
+</div>
+</main>
 
     <script>
         const inputPresupuestoMax = document.getElementById('input-presupuesto');
