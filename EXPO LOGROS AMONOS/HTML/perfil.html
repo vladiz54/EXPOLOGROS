@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Mi Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"> ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="#" class="active">Perfil</a></li>
+                </ul>
+                <div class="avatar" style="background-color: var(--azul-profundo);"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+
+        <section class="profile-hero">
+            <div class="user-info-block">
+                <div class="profile-avatar-big">D</div>
+                <div class="user-meta">
+                    <h1>Diego Ayala</h1>
+                    <p>Miembro desde: Mayo 2026 • Viajero Frecuente</p>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-edit-profile"> Editar Perfil</button>
+                <a href="#" class="logout-link">Cerrar Sesión</a>
+            </div>
+        </section>
+
+        
+        <div class="profile-grid-layout">
+            
+            
+            <aside class="column-card">
+                <h2> Mis Guardados</h2>
+                <div class="item-list">
+                    <div class="profile-item-row">
+                        <div class="item-thumb"></div>
+                        <div class="item-info">
+                            <h4>Lago de Coatepeque</h4>
+                            <p>Santa Ana</p>
+                        </div>
+                        <span class="item-meta-badge badge-saved">Destacado</span>
+                    </div>
+                    <div class="profile-item-row">
+                        <div class="item-thumb"></div>
+                        <div class="item-info">
+                            <h4>Ruta de las Flores</h4>
+                            <p>Ahuachapán</p>
+                        </div>
+                        <span class="item-meta-badge badge-saved">Destacado</span>
+                    </div>
+                </div>
+            </aside>
+
+    
+            <section class="column-card">
+                <h2> Lugares Visitados</h2>
+                <div class="item-list">
+                    <div class="profile-item-row">
+                        <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
+                        <div class="item-info">
+                            <h4>Parque El Boquerón</h4>
+                            <p>Gastado total: <b>$30.00</b></p>
+                        </div>
+                        <span class="item-meta-badge badge-history">Visitado</span>
+                    </div>
+                    <div class="profile-item-row">
+                        <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
+                        <div class="item-info">
+                            <h4>Playa El Tunco</h4>
+                            <p>Gastado total: <b>$45.50</b></p>
+                        </div>
+                        <span class="item-meta-badge badge-history">Visitado</span>
+                    </div>
+                </div>
+            </section>
+
+            
+            <aside class="column-card">
+                <h2> Preferencias</h2>
+                <div class="preferences-block">
+                    <div class="pref-group">
+                        <h4>Estilo de Aventura:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag">Económico</span>
+                            <span class="pref-tag">Naturaleza</span>
+                            <span class="pref-tag">Senderismo</span>
+                        </div>
+                    </div>
+                    <div class="pref-group">
+                        <h4>Transporte habitual:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag">Vehículo propio</span>
+                        </div>
+                    </div>
+                    <div class="pref-group">
+                        <h4>Acompañantes frecuentes:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag">Amigos</span>
+                            <span class="pref-tag">Pareja</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+</body>
+</html>

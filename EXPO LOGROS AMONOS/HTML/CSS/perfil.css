@@ -1,0 +1,305 @@
+/* 1. CONSTANTES DE MARCA Y ESTILOS BASE*/
+:root {
+    --azul-profundo: #073549;
+    --coral-marca: #fb923c;
+    --verde-turquesa: #00a896;
+    --gris-fondo: #f8fafc;
+    --texto-suave: #475569;
+    --borde: #e2e8f0;
+    --rojo-suave: #ef4444;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--gris-fondo);
+    color: var(--azul-profundo);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 2. ENCABEZADO / MENÚ NAV */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.menu-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-links li { 
+    margin: 0 15px; 
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.menu-links a:hover {
+    color: var(--azul-profundo);
+}
+
+.menu-links a.active {
+    color: var(--azul-profundo);
+    border-bottom: 2px solid var(--azul-profundo);
+    padding-bottom: 4px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* 3. SECCIÓN DE TARJETA DE USUARIO (Cabecera de Perfil) */
+.profile-hero {
+    background-color: #ffffff;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+.user-info-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-avatar-big {
+    width: 80px;
+    height: 80px;
+    background-color: var(--azul-profundo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.user-meta h1 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.user-meta p {
+    margin: 0;
+    color: var(--texto-suave);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.btn-edit-profile {
+    background-color: var(--azul-profundo);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit-profile:hover {
+    background-color: var(--verde-turquesa);
+}
+
+.logout-link {
+    color: var(--rojo-suave);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+/* 4. DISEÑO DE TRES COLUMNAS (Guardados, Historial, Preferencias)*/
+.profile-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.column-card {
+    background-color: #ffffff;
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.column-card h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--texto-suave);
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid var(--gris-fondo);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ELEMENTOS DE LISTA: Guardados e Historial */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-item-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background-color: var(--gris-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+.profile-item-row:hover {
+    transform: translateX(4px);
+}
+
+.item-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--azul-profundo), var(--verde-turquesa));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h4 {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.item-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--texto-suave);
+}
+
+/* Indicadores de precios y fechas específicos */
+.item-meta-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.badge-saved { 
+    background-color: #ffe4e6; 
+    color: #e11d48; 
+}
+
+.badge-history { 
+    background-color: #d1fae5; 
+    color: #065f46; 
+}
+
+/* BLOQUE DE PREFERENCIAS / CHIPS FIJOS */
+.preferences-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pref-group h4 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+.pref-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pref-tag {
+    background-color: #f1f5f9;
+    color: var(--azul-profundo);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--borde);
+}
+
+/* 5. RESPONSIVO */
+@media (max-width: 768px) {
+    .profile-hero { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 20px; 
+    }
+    .profile-actions { 
+        align-items: flex-start; 
+        width: 100%; 
+        border-top: 1px solid var(--borde); 
+        padding-top: 15px; 
+    }
+}
