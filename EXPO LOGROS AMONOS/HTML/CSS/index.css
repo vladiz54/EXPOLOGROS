@@ -118,6 +118,48 @@ nav {
     margin-bottom: 40px;
 }
 
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.carousel-track {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    width: 33.333%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--azul-profundo);
+    z-index: 10;
+}
+
+.btn-left { left: 15px; }
+.btn-right { right: 15px; }
+
 .btn {
     display: inline-block;
     text-decoration: none;
