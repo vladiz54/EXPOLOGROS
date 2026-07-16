@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Detalles del Destino</title>
+    <!-- Vinculación limpia con la carpeta css -->
+    <link rel="stylesheet" href="css/detalles.css">
+</head>
+<body>
+
+    <!-- MENÚ SUPERIOR -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"> ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <div class="avatar"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO GENERAL -->
+    <main class="container">
+        
+        <a href="explorar.html" class="btn-back">⬅ Atrás</a>
+
+        <!-- BLOQUE CABECERA -->
+        <section class="destination-header">
+            <div class="title-area">
+                <h1>Lago de Coatepeque</h1>
+                <div class="stars">★★★★★</div>
+            </div>
+            <button class="btn-action-trigger" onclick="scrollHaciaCostos()"> Guardar y Organizar Presupuesto</button>
+        </section>
+
+        <!-- CARRUSEL DE IMÁGENES INTERACTIVO -->
+        <section class="carousel-container">
+            <button class="carousel-btn btn-left" onclick="moverCarrusel(-1)">‹</button>
+            <div class="carousel-track" id="track">
+                <!-- Foto 1 -->
+                <div class="carousel-slide" style="background-image: url(https://i.ytimg.com/vi/FnqD0hjKegE/maxresdefault.jpg);"></div>
+                <!-- Foto 2 -->
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=600');"></div>
+                <!-- Foto 3 -->
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600');"></div>
+            </div>
+            <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
+        </section>
+
+        <!-- CUADRÍCULA DE DETALLES -->
+        <div class="details-grid" id="seccion-info">
+            
+            <!-- COLUMNA IZQUIERDA: UBICACIÓN, DESCRIPCIÓN Y QUÉ HACER -->
+            <section class="info-card">
+                <h2>Ubicación</h2>
+                <div class="location-tag"> Santa Ana, El Salvador</div>
+
+                <h2>Descripción</h2>
+                <p class="description-text">
+                    Uno de los lagos más hermosos de Centroamérica, conocido por sus aguas cristalinas y actividades recreativas. En ciertas épocas del año, sus aguas cambian a un color turquesa impresionante.
+                </p>
+
+                <h2>¿Qué hacer?</h2>
+                <ul class="activities-list">
+                    <li>Paseos en lancha.</li>
+                    <li>Nadar en zonas autorizadas.</li>
+                    <li>Comer en restaurantes frente al lago.</li>
+                    <li>Fotografiar paisajes.</li>
+                </ul>
+            </section>
+
+            <!-- COLUMNA DERECHA: COSTOS ESTIMADOS Y COMENTARIOS -->
+            <section class="info-card" id="bloque-costos">
+                <h2>Costo Estimado</h2>
+                <table class="table-costs">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Transporte</td>
+                            <td>$10 - $20</td>
+                        </tr>
+                        <tr>
+                            <td> Alimentación</td>
+                            <td>$10 - $30</td>
+                        </tr>
+                        <tr>
+                            <td> Lancha</td>
+                            <td>$5 - $15</td>
+                        </tr>
+                        <tr class="row-total">
+                            <td> Total aproximado:</td>
+                            <td>$25 - $65</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Comentarios de la Comunidad</h2>
+                <div class="comments-section">
+                    <div class="comment-box">
+                        <strong>SOFIA:</strong>
+                        <p>El agua es hermosa y muy tranquilo. ¡Súper recomendado para ir en familia!</p>
+                        <div class="stars-sub">★★★★★</div>
+                    </div>
+                    <div class="comment-box">
+                        <strong>CARLOS:</strong>
+                        <p>Excelente comida en los restaurantes de los alrededores, los precios de las lanchas son negociables.</p>
+                        <div class="stars-sub">★★★★☆</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- COMPORTAMIENTO INTERACTIVO -->
+    <script>
+        // Lógica del Carrusel
+        let indiceActual = 0;
+        const track = document.getElementById('track');
+        
+        function moverCarrusel(direccion) {
+            indiceActual += direccion;
+            if (indiceActual > 2) indiceActual = 0;
+            if (indiceActual < 0) indiceActual = 2;
+            
+            track.style.transform = `translateX(-${indiceActual * 33.333}%)`;
+        }
+
+        // Lógica de Scroll Automático
+        function scrollHaciaCostos() {
+            alert("¡Destino guardado en tus favoritos! Te llevamos a ver los costos para tu presupuesto.");
+            document.getElementById('bloque-costos').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
