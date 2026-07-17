@@ -1,0 +1,312 @@
+/* ==========================================================================
+   1. VARIABLES Y ESTILOS BASE
+   ========================================================================== */
+:root {
+    --azul-profundo: #073549;
+    --turquesa-boton: #1d828e;
+    --turquesa-hover: #15626b;
+    --coral-enlace: #f97316;
+    --texto-suave: #64748b;
+    --borde-input: #d1d5db;
+    --borde-caja: #93c5fd;
+    --fondo-body: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-body);
+    color: var(--azul-profundo);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA PRINCIPAL (LAYOUT 2 COLUMNAS)
+   ========================================================================== */
+.login-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+/* Lado Izquierdo: Imagen del paisaje */
+.login-banner {
+    flex: 1;
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    border-right: 3px solid #000000;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.banner-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    padding: 30px;
+    width: 100%;
+}
+
+.banner-overlay h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.banner-overlay p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Lado Derecho: Formulario */
+.login-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO Y BRANDING
+   ========================================================================== */
+.brand-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo-icon {
+    font-size: 32px;
+    margin-bottom: 2px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--azul-profundo);
+    text-transform: uppercase;
+}
+
+.brand-tagline {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--azul-profundo);
+    margin-top: 2px;
+}
+
+.welcome-title {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--azul-profundo);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.welcome-subtitle {
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   4. FORMULARIO DE INPUTS
+   ========================================================================== */
+.login-form {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--azul-profundo);
+    margin-bottom: 8px;
+}
+
+.form-group input[type="email"] {
+    width: 100%;
+    height: 48px;
+    border: 2px solid #a7f3d0; /* Borde verdecito suave de la imagen */
+    border-radius: 12px;
+    padding: 0 16px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input[type="email"]:focus {
+    border-color: var(--turquesa-boton);
+}
+
+/* Input con el botón de ojo de contraseña */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    height: 48px;
+    border: 2px solid #a7f3d0;
+    border-radius: 12px;
+    padding: 0 45px 0 16px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.password-input-wrapper input:focus {
+    border-color: var(--turquesa-boton);
+}
+
+.btn-toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+/* Opciones: Recordarme y Olvidaste tu contraseña */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--texto-suave);
+    margin-bottom: 25px;
+    padding: 0 4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.forgot-pass {
+    color: var(--texto-suave);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.forgot-pass:hover {
+    color: var(--azul-profundo);
+}
+
+/* ==========================================================================
+   5. BOTONES Y OPCIONES SOCIALES
+   ========================================================================== */
+.btn-primary {
+    width: 100%;
+    height: 48px;
+    background-color: var(--turquesa-boton);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--turquesa-hover);
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 11px;
+    color: var(--texto-suave);
+}
+
+.btn-google {
+    width: 100%;
+    height: 48px;
+    background-color: #ffffff;
+    border: 1px solid var(--borde-input);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-google:hover {
+    background-color: #f8fafc;
+}
+
+.google-icon {
+    font-weight: 800;
+    color: var(--coral-enlace);
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   6. FOOTER DE REGISTRO
+   ========================================================================== */
+.signup-prompt {
+    margin-top: 35px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azul-profundo);
+    text-align: center;
+}
+
+.signup-link {
+    color: var(--coral-enlace);
+    text-decoration: underline;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.signup-link:hover {
+    color: #ea580c;
+}
+
+/* ==========================================================================
+   7. RESPONSIVO (PANTALLAS PEQUEÑAS Y MÓVILES)
+   ========================================================================== */
+@media (max-width: 850px) {
+    .login-banner {
+        display: none; /* En pantallas móviles oculta la imagen y deja solo el formulario */
+    }
+    
+    .login-form-container {
+        width: 100%;
+        padding: 20px;
+    }
+}
