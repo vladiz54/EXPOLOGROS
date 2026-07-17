@@ -41,7 +41,7 @@ body {
 /* Lado Izquierdo: Imagen del paisaje */
 .login-banner {
     flex: 1;
-    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop');
+    background-image: url('https://wallpaperbat.com/img/8757860-sunrise-volcan-conchagua-la-union-el.jpg');
     background-size: cover;
     background-position: center;
     border-right: 3px solid #000000;
@@ -297,9 +297,7 @@ body {
     color: #ea580c;
 }
 
-/* ==========================================================================
-   7. RESPONSIVO (PANTALLAS PEQUEÑAS Y MÓVILES)
-   ========================================================================== */
+/* 7. RESPONSIVO (PANTALLAS PEQUEÑAS Y MÓVILES)*/
 @media (max-width: 850px) {
     .login-banner {
         display: none; /* En pantallas móviles oculta la imagen y deja solo el formulario */
