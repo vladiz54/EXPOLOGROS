@@ -80,6 +80,14 @@ nav {
     height: 38px;
     background-color: var(--azul-profundo);
     border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 /*3. DISTRIBUCIÓN DEL PLANIFICADOR (Dos Columnas) */
