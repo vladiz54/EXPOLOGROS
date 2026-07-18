@@ -143,10 +143,11 @@ body {
     margin-bottom: 8px;
 }
 
-.form-group input[type="email"] {
+.form-group input[type="email"],
+.form-group input[type="text"] {
     width: 100%;
     height: 48px;
-    border: 2px solid #a7f3d0; /* Borde verdecito suave de la imagen */
+    border: 2px solid #a7f3d0; /* El borde verdecito de la imagen */
     border-radius: 12px;
     padding: 0 16px;
     font-size: 14px;
@@ -154,9 +155,11 @@ body {
     transition: border-color 0.2s;
 }
 
-.form-group input[type="email"]:focus {
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus {
     border-color: var(--turquesa-boton);
 }
+
 
 /* Input con el botón de ojo de contraseña */
 .password-input-wrapper {
