@@ -5,6 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ámonos - Mi Perfil</title>
     <link rel="stylesheet" href="css/perfil.css">
+    
+    <!-- ESTILOS PARA LA VENTANA EMERGENTE (MODAL) -->
+    <style>
+        /* Fondo oscuro translúcido */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none; /* Oculto por defecto */
+            transition: opacity 0.3s ease;
+        }
+
+        /* Clase para mostrar el modal con JavaScript */
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Caja de la ventana emergente */
+        .modal-card {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 440px;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-card h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: #073549;
+        }
+
+        .modal-card p.subtitle {
+            margin: 5px 0 20px 0;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Sección Foto */
+        .avatar-edit-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-circle-big {
+            width: 80px;
+            height: 80px;
+            background-color: #073549;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .btn-change-photo {
+            background: none;
+            border: none;
+            color: #fb923c; /* Naranja/Coral de tu marca */
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Inputs del formulario */
+        .modal-form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #073549;
+            margin-bottom: 5px;
+        }
+
+        .modal-form-group input {
+            width: 100%;
+            height: 42px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 0 12px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        /* Resaltado verdecito como en tu foto para el focus */
+        .modal-form-group input.input-highlight,
+        .modal-form-group input:focus {
+            border: 2px solid #86efac; 
+        }
+
+        /* Botones Cancelar / Guardar */
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn-modal-cancel {
+            flex: 1;
+            height: 44px;
+            background-color: #f1f5f9;
+            color: #64748b;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-modal-save {
+            flex: 1;
+            height: 44px;
+            background-color: #0d7490; /* Turquesa oscuro de la imagen */
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +176,6 @@
 
     <main class="container">
         
-
         <section class="profile-hero">
             <div class="user-info-block">
                 <div class="profile-avatar-big">D</div>
@@ -35,15 +185,13 @@
                 </div>
             </div>
             <div class="profile-actions">
-                <button class="btn-edit-profile" > Editar Perfil</button>
+                <!-- Se agregó el evento id="openModalBtn" -->
+                <button class="btn-edit-profile" id="openModalBtn"> Editar Perfil</button>
                 <a href="sesion.html" class="logout-link">Cerrar Sesión </a>
-                
             </div>
         </section>
 
-        
         <div class="profile-grid-layout">
-            
             
             <aside class="column-card">
                 <h2> Mis Guardados</h2>
@@ -67,7 +215,6 @@
                 </div>
             </aside>
 
-    
             <section class="column-card">
                 <h2> Lugares Visitados</h2>
                 <div class="item-list">
@@ -90,7 +237,6 @@
                 </div>
             </section>
 
-            
             <aside class="column-card">
                 <h2> Preferencias</h2>
                 <div class="preferences-block">
@@ -120,6 +266,74 @@
 
         </div>
     </main>
+
+    <!-- ==========================================
+         VENTANA EMERGENTE (MODAL EDITAR PERFIL)
+         ========================================== -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal-card">
+            <h2>Editar Perfil</h2>
+            <p class="subtitle">Actualiza tu información pública y preferencias de viaje</p>
+
+            <div class="avatar-edit-group">
+                <div class="avatar-circle-big">D</div>
+                <button type="button" class="btn-change-photo">Cambiar foto de perfil</button>
+            </div>
+
+            <form id="editProfileForm">
+                <div class="modal-form-group">
+                    <label for="modal-name">Nombre completo</label>
+                    <input type="text" id="modal-name" value="Diego Ayala" required>
+                </div>
+
+                <div class="modal-form-group">
+                    <label for="modal-email">Correo electrónico</label>
+                    <input type="email" id="modal-email" class="input-highlight" value="diego.ayala@ejemplo.com" required>
+                </div>
+
+                <div class="modal-form-group">
+                    <label for="modal-transport">Transporte habitual</label>
+                    <input type="text" id="modal-transport" value="Vehículo propio">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="closeModalBtn">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT JS PARA CONTROLAR LA APERTURA Y CIERRE -->
+    <script>
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('editProfileModal');
+        const form = document.getElementById('editProfileForm');
+
+        // Abrir el modal
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        // Cerrar el modal con el botón Cancelar
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Cerrar haciendo clic afuera de la caja blanca
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Prevenir el envío real del formulario y cerrar el modal
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.classList.remove('active');
+        });
+    </script>
 
 </body>
 </html>
