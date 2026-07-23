@@ -235,7 +235,7 @@ nav {
 
 /* COLUMNA DERECHA: El Módulo de Gastos Fijo */
 .sidebar-budget-panel {
-    width: 360px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     gap: 25px;

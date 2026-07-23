@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS destinos(
 	precio_comida DECIMAL(10,2),
 	precio_parqueo DECIMAL(10,2),
 	precio_hospedaje DECIMAL(10,2),
+	
 	tipo_visitante ENUM(
 	'familia',
 	'jovenes',
@@ -118,4 +119,5 @@ CREATE TABLE IF NOT EXISTS imagenes_destino(
 	FOREIGN KEY(id_destino)
 	REFERENCES destinos(id_destino)
 );
+
 
