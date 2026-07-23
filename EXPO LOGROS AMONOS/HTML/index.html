@@ -28,22 +28,32 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Descubre El Salvador sin salirte de tu presupuesto</h1>
-        <p>Encuentra destinos, actividades y experiencias adaptadas a tu bolsillo.</p>
-        <div class="hero-buttons">
-        <a href="planificador.html" class="btn btn-primary">Planificar mi viaje ➔</a>
-        <a href="explorar.html" class="btn btn-outline">Explorar destinos</a>
-        
-        <section class="carousel-container">
-            <button class="carousel-btn btn-left" onclick="moverCarrusel(-1)">‹</button>
-            <div class="carousel-track" id="track">
-                <div class="carousel-slide" style="background-image: url('https://tse2.mm.bing.net/th/id/OIP.m7lBFrmGjG4ToC2CWfKcSAHaEr?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
-                <div class="carousel-slide" style="background-image: url('https://th.bing.com/th/id/R.7aa90116130e69d8faa487274d84f963?rik=aXtnjj%2fxPD7fWQ&riu=http%3a%2f%2ffarm3.static.flickr.com%2f2386%2f2256608396_9ec02383f8_b.jpg&ehk=Lqj%2bwaDcysuBcZV%2fE%2fxU8%2fj5OP7vDRvQKWVNTRIz8P0%3d&risl=&pid=ImgRaw&r=0');"></div>  
+
+        <div class="hero-layout">
+         <div class="hero-left">
+         <h1>Descubre El Salvador sin salirte de tu presupuesto</h1>
+         <p> Encuentra destinos, actividades y experiencias adaptadas a tu bolsillo.</p>
+             <div class="hero-buttons">
+                <a href="planificador.html" class="btn btn-primary">Planificar mi viaje ➔</a>
+                <a href="explorar.html" class="btn btn-outline">Explorar destinos</a>
+                </div>
+
+             </div>
+
+            <div class="hero-right">
+                <section class="carousel-container">
+                  <button class="carousel-btn btn-left" onclick="moverCarrusel(-1)">‹</button>
+                 <div class="carousel-track" id="track">
+
+                    <div class="carousel-slide"> <img src="images/coatepeque.jpg" alt="Lago de Coatepeque"></div>
+                    <div class="carousel-slide"><img src="images/ruta-flores.jpg" alt="Ruta de las Flores"></div>
+                 </div>
+                    <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
+
+                </section>
             </div>
-            <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
-        </section>
+        </div>
     </div>
-</div>
 </section>
 
 <div class="search-bar">
@@ -150,7 +160,7 @@
                         <div class="dest-footer">
                             <span class="price">Desde $12</span>
                             <span class="rating">⭐ 4.6 (210)</span>
-                        </div>s
+                        </div>
                     </div>
                 </a>
             </div>
