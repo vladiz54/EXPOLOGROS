@@ -120,4 +120,13 @@ CREATE TABLE IF NOT EXISTS imagenes_destino(
 	REFERENCES destinos(id_destino)
 );
 
+CREATE TABLE IF NOT EXISTS preferencias(
+	id_preferencias INT PRIMARY KEY,
+	id_categoria INT NOT NULL,
+	id_usuario INT NOT NULL,
+	FOREIGN KEY(id_usuario)
+	REFERENCES usuarios(id_usuario),
+	FOREIGN KEY(id_categoria)
+	REFERENCES categorias_destino(id_categoria)
+);
 
