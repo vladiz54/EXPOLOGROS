@@ -106,7 +106,7 @@
                 </table>
 
                 <h2>Comentarios de la Comunidad</h2>
-                <div class="comments-section">
+                <div class="comments-section" id="commentsContainer">
                     <div class="comment-box">
                         <strong>SOFIA:</strong>
                         <p>El agua es hermosa y muy tranquilo. ¡Súper recomendado para ir en familia!</p>
@@ -118,6 +118,23 @@
                         <div class="stars-sub">★★★★☆</div>
                     </div>
                 </div>
+
+                <!-- NUEVO FORMULARIO PARA AGREGAR RESEÑAS -->
+                <div class="add-review-box">
+                    <h3>Deja tu reseña</h3>
+                    <form id="reviewForm">
+                        <div class="star-rating-input">
+                            <span class="star-select" data-value="1">★</span>
+                            <span class="star-select" data-value="2">★</span>
+                            <span class="star-select" data-value="3">★</span>
+                            <span class="star-select" data-value="4">★</span>
+                            <span class="star-select" data-value="5">★</span>
+                        </div>
+                        <textarea id="reviewText" placeholder="Cuéntanos tu experiencia sobre este lugar..." required></textarea>
+                        <button type="submit" class="btn-submit-review">Publicar Reseña</button>
+                    </form>
+                </div>
+
             </section>
 
         </div>
@@ -142,6 +159,54 @@
             alert("¡Destino guardado en tus favoritos! Te llevamos a ver los costos para tu presupuesto.");
             document.getElementById('bloque-costos').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // LÓGICA DE SELECCIÓN DE ESTRELLAS Y AGREGAR RESEÑA
+        let calificacionSeleccionada = 5;
+        const estrellas = document.querySelectorAll('.star-select');
+
+        // Selección dinámica de estrellas
+        estrellas.forEach((estrella, index) => {
+            estrella.addEventListener('click', () => {
+                calificacionSeleccionada = index + 1;
+                estrellas.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('selected');
+                    } else {
+                        s.classList.remove('selected');
+                    }
+                });
+            });
+        });
+
+        // Marcar 5 estrellas por defecto
+        estrellas.forEach(s => s.classList.add('selected'));
+
+        // Publicar nueva reseña
+        const reviewForm = document.getElementById('reviewForm');
+        const commentsContainer = document.getElementById('commentsContainer');
+
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const texto = document.getElementById('reviewText').value;
+            const estrellasTexto = '★'.repeat(calificacionSeleccionada) + '☆'.repeat(5 - calificacionSeleccionada);
+
+            // Crear el nuevo cuadro de comentario dinámicamente
+            const nuevoComentario = document.createElement('div');
+            nuevoComentario.className = 'comment-box';
+            nuevoComentario.innerHTML = `
+                <strong>DIEGO (TÚ):</strong>
+                <p>${texto}</p>
+                <div class="stars-sub">${estrellasTexto}</div>
+            `;
+
+            // Agregar a la lista de comentarios
+            commentsContainer.appendChild(nuevoComentario);
+
+            // Limpiar formulario
+            document.getElementById('reviewText').value = '';
+            alert('¡Gracias! Tu reseña ha sido publicada.');
+        });
     </script>
 </body>
 </html>
