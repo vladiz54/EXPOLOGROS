@@ -58,9 +58,7 @@
                     <span>o continuar con</span>
                 </div>
 
-                <button type="button" id="google-btn" class="btn-google">
-                    <span class="google-icon">G</span> Iniciar sesión con Google
-                </button>
+               
             </form>
 
             <footer class="signup-prompt">
@@ -71,32 +69,5 @@
         
 
     </main>
-
-    <script>
-    document.getElementById('google-btn').addEventListener('click', function() {
-        // 1. Configuramos el tamaño y posición de la ventana simulada de Google
-        const ancho = 500;
-        const alto = 600;
-        const izquierda = (screen.width / 2) - (ancho / 2);
-        const arriba = (screen.height / 2) - (alto / 2);
-        
-        // 2. Abrimos la ventana del asistente de cuentas de Google real
-        const ventanaGoogle = window.open(
-            'https://accounts.google.com/gsi/select?client_id=preview', 
-            'GoogleLogin', 
-            `width=${ancho},height=${alto},top=${arriba},left=${izquierda}`
-        );
-
-        // 3. Simulamos que después de 3 segundos el usuario elige su cuenta, 
-        // se cierra la ventana y lo redirige a la aplicación de Ámonos.
-        setTimeout(function() {
-            if (ventanaGoogle) {
-                ventanaGoogle.close();
-            }
-            // Redirige al inicio de tu app
-            window.location.href = 'index.html'; 
-        }, 3000);
-    });
-</script>
 </body>
 </html>

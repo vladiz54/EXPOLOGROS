@@ -5,150 +5,278 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ámonos - Explorar Destinos</title>
     <link rel="stylesheet" href="CSS/explorar.css">
+    <style>
+        /* Estilos de respaldo por si el CSS base necesita refuerzo para el estado activo */
+        .chip {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .chip.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-<div class="container">
-<nav>
-<div class="logo">ÁMONOS</div>
-    <ul class="menu-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="explorar.html" class="active">Explorar destinos</a></li>
-        <li><a href="planificador.html">Planificador</a></li>
-        <li><a href="perfil.html">Perfil</a></li>
-
-    </ul>
-    <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
-
-</nav>
-</div>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">ÁMONOS</a>
+            <ul class="menu-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="explorar.html" class="active">Explorar destinos</a></li>
+                <li><a href="planificador.html">Planificador</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+            </ul>
+            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+        </nav>
+    </div>
 </header>
 
 <main class="container">
     <div class="search-page-layout">
 
-    <aside class="sidebar-filters">
-    <div class="text-search-wrapper">
-    <input type="text" placeholder="🔍 Buscar por nombre...">
-    </div>
+        <!-- BARRA LATERAL DE FILTROS -->
+        <aside class="sidebar-filters">
+            <div class="text-search-wrapper">
+                <input type="text" id="searchInput" placeholder=" Buscar por nombre...">
+            </div>
 
-<div class="filter-group">
-    <h3>Categoría</h3>
-    <div class="chips-flex">
-        <span class="chip active">Aventura</span>
-        <span class="chip">Playa</span>
-        <span class="chip active">Cultural</span>
-        <span class="chip">Gastronómico</span>
-        <span class="chip">Montaña</span>
-</div>
-</div>
+            <!-- FILTRO DE CATEGORÍAS -->
+            <div class="filter-group">
+                <h3>Categoría</h3>
+                <div class="chips-flex" id="categoryChips">
+                    <span class="chip active" data-category="todos">Todos</span>
+                    <span class="chip" data-category="aventura">Aventura</span>
+                    <span class="chip" data-category="playa">Playa</span>
+                    <span class="chip" data-category="cultural">Cultural</span>
+                    <span class="chip" data-category="gastronomico">Gastronómico</span>
+                    <span class="chip" data-category="montana">Montaña</span>
+                </div>
+            </div>
 
-<div class="filter-group">
-    <h3>Presupuesto por día</h3>
-    <label class="check-label">
-    <input type="checkbox" checked> Económico (Menos de $20)
-    </label>
-    <label class="check-label">
-        <input type="checkbox"> Conforme ($20 - $50)
-    </label>
-    <label class="check-label">
-        <input type="checkbox"> Premium (Más de $50)
-    </label>
-    </div>
+            <!-- FILTRO DE PRESUPUESTO -->
+            <div class="filter-group">
+                <h3>Presupuesto por día</h3>
+                <label class="check-label">
+                    <input type="checkbox" class="budget-filter" value="economico" checked> Económico (Menos de $20)
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" class="budget-filter" value="conforme" checked> Conforme ($20 - $50)
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" class="budget-filter" value="premium" checked> Premium (Más de $50)
+                </label>
+            </div>
 
-    <div class="filter-group">
-        <h3>Edad recomendada</h3>
-        <div class="chips-flex">
-            <span class="chip">0-10 años</span>
-            <span class="chip">10-18 años</span>
-            <span class="chip active">18-25 años</span>
-            <span class="chip">Todas las edades</span>
-        </div>
-    </div>
+            <!-- FILTRO DE EDAD -->
+            <div class="filter-group">
+                <h3>Edad recomendada</h3>
+                <div class="chips-flex" id="ageChips">
+                    <span class="chip">0-10 años</span>
+                    <span class="chip">10-18 años</span>
+                    <span class="chip active">18-25 años</span>
+                    <span class="chip">Todas las edades</span>
+                </div>
+            </div>
 
-<div class="filter-group">
-    <h3>Ideal para</h3>
-    <div class="chips-flex">
-        <span class="chip">Parejas</span>
-        <span class="chip active">Familias</span>
-        <span class="chip">Tercera edad</span>
-        <span class="chip">Turistas</span>
-        <span class="chip active">Amigos</span>
-    </div>
-</div>
-</aside>
+            <!-- FILTRO DE IDEAL PARA -->
+            <div class="filter-group">
+                <h3>Ideal para</h3>
+                <div class="chips-flex" id="audienceChips">
+                    <span class="chip">Parejas</span>
+                    <span class="chip active">Familias</span>
+                    <span class="chip">Tercera edad</span>
+                    <span class="chip">Turistas</span>
+                    <span class="chip active">Amigos</span>
+                </div>
+            </div>
+        </aside>
 
-<section class="results-column">
-    <div class="results-header">
-    Se encontraron 3 destinos sugeridos para tus filtros
-    </div>
+        <!-- SECCIÓN DE RESULTADOS -->
+        <section class="results-column">
+            <div class="results-header" id="resultsCount">
+                Cargando destinos...
+            </div>
 
-<div class="cards-grid">
-     <div class="card-destino">
-    <div class="card-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://diarioelsalvador.com/wp-content/uploads/2023/09/F5R5MfEWoAEAKwQ.jpg') center/cover;"></div>
-    <div class="card-body">
-    <div>
-        <h2><a href="detalles.html" style="text-decoration: none; color: inherit;">El Boquerón</a></h2>
-        <div class="card-location">San Salvador — Parque Nacional</div>
-        <div class="card-tags-info"> Familias / Senderistas</div>
-        <p class="card-description">Camina alrededor del cráter gigante y disfruta de vistas impresionantes de la capital salvadoreña en un clima fresco.</p>
-    </div>
-    <div class="card-footer">
-    <span class="price-tag">$10 - $25</span>
-    <div class="meta-right">
-    <span class="star">⭐ 4.7</span>
-    <button class="btn-heart" title="Guardar">❤️</button>
-    </div>
-</div>
-</div>
-</div>
+            <!-- CONTENEDOR DINÁMICO DE TARJETAS -->
+            <div class="cards-grid" id="cardsGrid">
+                <!-- Se generarán automáticamente con JavaScript -->
+            </div>
+        </section>
 
-<div class="card-destino">
-    
-    <div class="card-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url(https://diarioelsalvador.media/2024/09/fcul11072024dgjardinbotanico094.png) center/cover;"> <a href="detalles.html"></a></div>
-    <div class="card-body">
-    <div>
-        <h2><a href="detalles.html?destino=jardin" style="text-decoration: none; color: inherit;">Jardín Botánico</a></h2>
-        <div class="card-location">La Libertad — Antiguo Cuscatlán</div>
-        <div class="card-tags-info"> Familias / Estudiantes</div>
-        <p class="card-description">Un oasis de naturaleza y biodiversidad resguardado en el fondo de un cráter volcánico extinto.</p>
     </div>
-
-<div class="card-footer">
-    <span class="price-tag">$5 - $10</span>
-    <div class="meta-right">
-        <span class="star">⭐ 4.6</span>
-        <button class="btn-heart" title="Guardar">❤️</button>
-    </div>
-    </div>
-    </div>
-</div>
-<div class="card-destino">
-    <div class="card-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url(https://elsalvadoravanza.com/wp-content/uploads/2024/05/Gob.jpeg) center/cover;"></div>
-    <div class="card-body">
-    <div>
-        <h2><a href="detalles.html?destino=surfcity" style="text-decoration: none; color: inherit;">SurfCity</a></h2>
-            <div class="card-location">La Libertad — Costa</div>
-            <div class="card-tags-info"> Familias / Surfistas</div>
-            <p class="card-description">Olas perfectas para practicar surf, espectaculares atardeceres de ensueño, gastronomía marina y pura buena vibra.</p>
-    </div>
-
-<div class="card-footer">
-    <span class="price-tag">$25 - $120</span>
-    <div class="meta-right">
-    <span class="star">⭐ 4.6</span>
-    <button class="btn-heart" title="Guardar">❤️</button>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</section>
-
-</div>
 </main>
+
+<!-- SCRIPT DE FILTRADO INTERACTIVO -->
+<script>
+    // 1. BASE DE DATOS LOCAL EN JAVASCRIPT (MVP)
+    const destinos = [
+        {
+            id: "boqueron",
+            nombre: "El Boquerón",
+            ubicacion: "San Salvador — Parque Nacional",
+            tags: "Familias / Senderistas",
+            descripcion: "Camina alrededor del cráter gigante y disfruta de vistas impresionantes de la capital salvadoreña en un clima fresco.",
+            precioTexto: "$10 - $25",
+            rating: "⭐ 4.7",
+            imagen: "https://diarioelsalvador.com/wp-content/uploads/2023/09/F5R5MfEWoAEAKwQ.jpg",
+            categoria: "aventura",
+            presupuesto: "economico"
+        },
+        {
+            id: "jardin",
+            nombre: "Jardín Botánico",
+            ubicacion: "La Libertad — Antiguo Cuscatlán",
+            tags: "Familias / Estudiantes",
+            descripcion: "Un oasis de naturaleza y biodiversidad resguardado en el fondo de un cráter volcánico extinto.",
+            precioTexto: "$5 - $10",
+            rating: "⭐ 4.6",
+            imagen: "https://wallpaperbat.com/img/366872-wallpaper-flowers-garden-trees-the-bushes-botanic-gardens.jpg",
+            categoria: "cultural",
+            presupuesto: "economico"
+        },
+        {
+            id: "surfcity",
+            nombre: "SurfCity",
+            ubicacion: "La Libertad — Costa",
+            tags: "Familias / Surfistas",
+            descripcion: "Olas perfectas para practicar surf, espectaculares atardeceres de ensueño, gastronomía marina y pura buena vibra.",
+            precioTexto: "$25 - $120",
+            rating: "⭐ 4.6",
+            imagen: "https://elsalvadoravanza.com/wp-content/uploads/2024/05/Gob.jpeg",
+            categoria: "playa",
+            presupuesto: "conforme"
+        },
+        {
+            id: "coatepeque",
+            nombre: "Lago de Coatepeque",
+            ubicacion: "Santa Ana",
+            tags: "Amigos / Familias",
+            descripcion: "Disfruta de deportes acuáticos, paseos en lancha y la gastronomía local con vista al lago volcánico.",
+            precioTexto: "$15 - $40",
+            rating: "⭐ 4.8",
+            imagen: "https://www.meteorologiaenred.com/wp-content/uploads/2024/03/el-lago-coatepeque-1024x768.jpg.webp",
+            categoria: "aventura",
+            presupuesto: "conforme"
+        },
+        {
+            id: "flores",
+            nombre: "Ruta de las Flores",
+            ubicacion: "Ahuachapán / Sonsonate",
+            tags: "Turistas / Parejas",
+            descripcion: "Pueblos pintorescos, gastronomía tradicional, cafés de altura y clima de montaña inigualable.",
+            precioTexto: "$20 - $60",
+            rating: "⭐ 4.9",
+            imagen: "https://diarioelsalvador.com/wp-content/uploads/2023/09/F5R5MfEWoAEAKwQ.jpg",
+            categoria: "gastronomico",
+            presupuesto: "conforme"
+        }
+    ];
+
+    // REFERENCIAS AL DOM
+    const cardsGrid = document.getElementById('cardsGrid');
+    const resultsCount = document.getElementById('resultsCount');
+    const searchInput = document.getElementById('searchInput');
+
+    let categoriaSeleccionada = "todos";
+
+    // 2. FUNCIÓN PARA MOSTRAR LAS TARJETAS EN PANTALLA
+    function renderizarDestinos(lista) {
+        cardsGrid.innerHTML = "";
+
+        if (lista.length === 0) {
+            cardsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #666;">No se encontraron destinos con los filtros seleccionados.</p>`;
+            resultsCount.innerText = "No hay resultados para esta búsqueda.";
+            return;
+        }
+
+        resultsCount.innerText = `Se encontraron ${lista.length} destinos sugeridos para tus filtros`;
+
+        lista.forEach(dest => {
+            const cardHTML = `
+                <div class="card-destino">
+                    <a href="detalles.html?destino=${dest.id}" 
+                       class="card-img-sim" 
+                       style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${dest.imagen}') center/cover;">
+                    </a>
+                    <div class="card-body">
+                        <div>
+                            <h2><a href="detalles.html?destino=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h2>
+                            <div class="card-location">${dest.ubicacion}</div>
+                            <div class="card-tags-info">${dest.tags}</div>
+                            <p class="card-description">${dest.descripcion}</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-tag">${dest.precioTexto}</span>
+                            <div class="meta-right">
+                                <span class="star">${dest.rating}</span>
+                                <button class="btn-heart" title="Guardar" onclick="toggleHeart(this)">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            cardsGrid.innerHTML += cardHTML;
+        });
+    }
+
+    // 3. FUNCIÓN PRINCIPAL DE FILTRADO
+    function aplicarFiltros() {
+        const textoBusqueda = searchInput.value.toLowerCase().trim();
+
+        const resultados = destinos.filter(dest => {
+            // Filtro por texto
+            const coincideTexto = dest.nombre.toLowerCase().includes(textoBusqueda) || 
+                                  dest.ubicacion.toLowerCase().includes(textoBusqueda);
+
+            // Filtro por categoría
+            const coincideCategoria = (categoriaSeleccionada === "todos") || (dest.categoria === categoriaSeleccionada);
+
+            return coincideTexto && coincideCategoria;
+        });
+
+        renderizarDestinos(resultados);
+    }
+
+    // 4. INTERACTIVIDAD EN LOS CHIPS (CAMBIO DE COLOR Y SELECCIÓN)
+    document.querySelectorAll('.chips-flex').forEach(container => {
+        container.addEventListener('click', (e) => {
+            if (e.target.classList.contains('chip')) {
+                // Alternar clase active en el grupo actual
+                const parent = e.target.parentElement;
+                
+                // Si es el grupo de categorías, registramos la categoría seleccionada
+                if (parent.id === "categoryChips") {
+                    parent.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    e.target.classList.add('active');
+                    categoriaSeleccionada = e.target.getAttribute('data-category');
+                    aplicarFiltros();
+                } else {
+                    // Para otros grupos (multiselección visual)
+                    e.target.classList.toggle('active');
+                }
+            }
+        });
+    });
+
+    // Escuchar la barra de búsqueda en tiempo real
+    searchInput.addEventListener('input', aplicarFiltros);
+
+    // Botón de me gusta (corazón interactivo)
+    function toggleHeart(btn) {
+        btn.classList.toggle('liked');
+        btn.style.transform = "scale(1.3)";
+        setTimeout(() => btn.style.transform = "scale(1)", 150);
+    }
+
+    // Carga inicial al abrir la página
+    window.addEventListener('DOMContentLoaded', () => {
+        aplicarFiltros();
+    });
+</script>
 
 </body>
 </html>

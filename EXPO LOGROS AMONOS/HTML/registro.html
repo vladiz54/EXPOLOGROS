@@ -54,10 +54,6 @@
                 <div class="divider">
                     <span>o registrarte con</span>
                 </div>
-
-                <button type="button" id="google-reg-btn" class="btn-google">
-                    <span class="google-icon">G</span> Registrarse con Google
-                </button>
             </form>
 
             <footer class="signup-prompt">
@@ -68,29 +64,6 @@
 
     </main>
 
-    <script>
-    document.getElementById('google-reg-btn').addEventListener('click', function() {
-        // 1. Configurar tamaño y posición de la ventanita
-        const ancho = 500;
-        const alto = 600;
-        const izquierda = (screen.width / 2) - (ancho / 2);
-        const arriba = (screen.height / 2) - (alto / 2);
-        
-        // 2. Abrir la ventana de Google
-        const ventanaGoogle = window.open(
-            'https://accounts.google.com/gsi/select?client_id=preview', 
-            'GoogleRegister', 
-            `width=${ancho},height=${alto},top=${arriba},left=${izquierda}`
-        );
-
-        // 3. Esperar 3 segundos, cerrar la ventana y entrar a la app de Ámonos
-        setTimeout(function() {
-            if (ventanaGoogle) {
-                ventanaGoogle.close();
-            }
-            window.location.href = 'index.html'; 
-        }, 3000);
-    });
-</script>
+    
 </body>
 </html>

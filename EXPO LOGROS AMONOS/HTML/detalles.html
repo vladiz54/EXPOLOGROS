@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ámonos - Detalles del Destino</title>
-    <!-- Vinculación limpia con la carpeta css -->
     <link rel="stylesheet" href="css/detalles.css">
 </head>
 <body>
@@ -33,21 +32,19 @@
         <!-- BLOQUE CABECERA -->
         <section class="destination-header">
             <div class="title-area">
-                <h1>Lago de Coatepeque</h1>
+                <h1 id="destino-nombre">Lago de Coatepeque</h1>
                 <div class="stars">★★★★★</div>
             </div>
-            <button class="btn-action-trigger" onclick="scrollHaciaCostos()"> Guardar y Organizar Presupuesto</button>
+            <!-- Botón principal de acción -->
+            <button class="btn-action-trigger" onclick="irAlPlanificador()"> Planificar este Viaje</button>
         </section>
 
         <!-- CARRUSEL DE IMÁGENES INTERACTIVO -->
         <section class="carousel-container">
             <button class="carousel-btn btn-left" onclick="moverCarrusel(-1)">‹</button>
             <div class="carousel-track" id="track">
-                <!-- Foto 1 -->
                 <div class="carousel-slide" style="background-image: url(https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_sKnA717uPjGlirSF_Zlun7yo1f1dLBT-5rpjN8d9lB3DwrLxUW7AEQeDOJow2AR1gLgCMItSIR5GaAt1YMcOJ4JpKM9oTdc9lfBJo7z_0fcKtXaKcB__79clzHNzoJBnw=s0-d);"></div>
-                <!-- Foto 2 -->
                 <div class="carousel-slide" style="background-image: url(https://tse4.mm.bing.net/th/id/OIP.pkaxJWjnw6MVa_YEyC3x0gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);"></div>
-                <!-- Foto 3 -->
                 <div class="carousel-slide" style="background-image: url(https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif);"></div>
             </div>
             <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
@@ -56,7 +53,7 @@
         <!-- CUADRÍCULA DE DETALLES -->
         <div class="details-grid" id="seccion-info">
             
-            <!-- COLUMNA IZQUIERDA: UBICACIÓN, DESCRIPCIÓN Y QUÉ HACER -->
+            <!-- COLUMNA IZQUIERDA -->
             <section class="info-card">
                 <h2>Ubicación</h2>
                 <div class="location-tag"> Santa Ana, El Salvador</div>
@@ -75,32 +72,37 @@
                 </ul>
             </section>
 
-            <!-- COLUMNA DERECHA: COSTOS ESTIMADOS Y COMENTARIOS -->
+            <!-- COLUMNA DERECHA -->
             <section class="info-card" id="bloque-costos">
-                <h2>Costo Estimado</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="margin: 0;">Costo Estimado</h2>
+                    <!-- Botón directo de planificar -->
+                    <button class="btn-submit-review" onclick="irAlPlanificador()">Planificar Presupuesto ➔</button>
+                </div>
+
                 <table class="table-costs">
                     <thead>
                         <tr>
                             <th>Concepto</th>
-                            <th>Precio</th>
+                            <th>Precio Promedio</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td> Transporte</td>
-                            <td>$10 - $20</td>
+                            <td> Transporte / Pasaje</td>
+                            <td>$10.00</td>
                         </tr>
                         <tr>
                             <td> Alimentación</td>
-                            <td>$10 - $30</td>
+                            <td>$12.00</td>
                         </tr>
                         <tr>
-                            <td> Lancha</td>
-                            <td>$5 - $15</td>
+                            <td> Lancha / Entradas</td>
+                            <td>$5.00</td>
                         </tr>
                         <tr class="row-total">
-                            <td> Total aproximado:</td>
-                            <td>$25 - $65</td>
+                            <td> Total estimado base:</td>
+                            <td>$27.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -119,7 +121,7 @@
                     </div>
                 </div>
 
-                <!-- NUEVO FORMULARIO PARA AGREGAR RESEÑAS -->
+                <!-- FORMULARIO PARA AGREGAR RESEÑAS -->
                 <div class="add-review-box">
                     <h3>Deja tu reseña</h3>
                     <form id="reviewForm">
@@ -140,8 +142,21 @@
         </div>
     </main>
 
-    <!-- COMPORTAMIENTO INTERACTIVO -->
+    <!-- SCRIPT DE NAVEGACIÓN Y RESEÑAS -->
     <script>
+        // FUNCIÓN PRINCIPAL: Enviar costos al planificador mediante URL
+        function irAlPlanificador() {
+            // Definimos los valores clave de este destino especifico
+            const destino = "coatepeque";
+            const transporte = 10;
+            const comida = 12;
+            const entradas = 5;
+            const extras = 3;
+
+            // Redirigimos a planificador.html pasando los valores en la URL
+            window.location.href = `planificador.html?destino=${destino}&transporte=${transporte}&comida=${comida}&entradas=${entradas}&extras=${extras}`;
+        }
+
         // Lógica del Carrusel
         let indiceActual = 0;
         const track = document.getElementById('track');
@@ -154,17 +169,10 @@
             track.style.transform = `translateX(-${indiceActual * 33.333}%)`;
         }
 
-        // Lógica de Scroll Automático
-        function scrollHaciaCostos() {
-            alert("¡Destino guardado en tus favoritos! Te llevamos a ver los costos para tu presupuesto.");
-            document.getElementById('bloque-costos').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // LÓGICA DE SELECCIÓN DE ESTRELLAS Y AGREGAR RESEÑA
+        // Lógica de Reseñas
         let calificacionSeleccionada = 5;
         const estrellas = document.querySelectorAll('.star-select');
 
-        // Selección dinámica de estrellas
         estrellas.forEach((estrella, index) => {
             estrella.addEventListener('click', () => {
                 calificacionSeleccionada = index + 1;
@@ -178,20 +186,16 @@
             });
         });
 
-        // Marcar 5 estrellas por defecto
         estrellas.forEach(s => s.classList.add('selected'));
 
-        // Publicar nueva reseña
         const reviewForm = document.getElementById('reviewForm');
         const commentsContainer = document.getElementById('commentsContainer');
 
         reviewForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const texto = document.getElementById('reviewText').value;
             const estrellasTexto = '★'.repeat(calificacionSeleccionada) + '☆'.repeat(5 - calificacionSeleccionada);
 
-            // Crear el nuevo cuadro de comentario dinámicamente
             const nuevoComentario = document.createElement('div');
             nuevoComentario.className = 'comment-box';
             nuevoComentario.innerHTML = `
@@ -200,10 +204,7 @@
                 <div class="stars-sub">${estrellasTexto}</div>
             `;
 
-            // Agregar a la lista de comentarios
             commentsContainer.appendChild(nuevoComentario);
-
-            // Limpiar formulario
             document.getElementById('reviewText').value = '';
             alert('¡Gracias! Tu reseña ha sido publicada.');
         });
