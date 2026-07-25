@@ -45,6 +45,8 @@ nav {
     font-size: 22px;
     font-weight: 900;
     letter-spacing: 1px;
+    text-decoration: none; /* 👈 Agrega esto para quitar la línea */
+    color: var(--azul-profundo); /* 👈 Mantiene tu color oficial */
 }
 
 .menu-links {
@@ -81,8 +83,15 @@ nav {
     height: 38px;
     background-color: var(--azul-profundo);
     border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
 }
-
 /* 3. ESTRUCTURA DE DOS COLUMNAS */
 .search-page-layout {
     display: flex;
@@ -171,9 +180,9 @@ nav {
 }
 
 .chip.active {
-    background-color: var(--azul-profundo);
+    background-color: var(--verde-turquesa); /* 👈 Puedes cambiarlo por var(--azul-profundo) si prefieres azul */
     color: #ffffff;
-    border-color: var(--azul-profundo);
+    border-color: var(--verde-turquesa);
 }
 
 /* Checkboxes para Presupuesto */
