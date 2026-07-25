@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS destinos(
 	precio_comida DECIMAL(10,2),
 	precio_parqueo DECIMAL(10,2),
 	precio_hospedaje DECIMAL(10,2),
-	
+	puntaje DECIMAL(10,1),
 	tipo_visitante ENUM(
 	'familia',
 	'jovenes',
