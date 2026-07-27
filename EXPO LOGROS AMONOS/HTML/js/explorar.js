@@ -1,6 +1,6 @@
 
     // Configuración y variables globales
-    const API_URL = 'read.php'; // Ruta a tu script PHP
+    const API_URL = '../../destinos/read.php'; // Ruta a tu script PHP
     let destinosBD = []; // Guardará los datos remotos en memoria
     let categoriaSeleccionada = "todos";
 

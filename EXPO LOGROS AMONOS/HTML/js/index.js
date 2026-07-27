@@ -28,3 +28,15 @@ function cambiarSlide() {
 
 // Cambia cada 8 segundos
 setInterval(cambiarSlide, 8000);
+
+function toggleHeart(event, btn) {
+    // Evita la navegación si el botón está dentro de algún enlace
+    event.stopPropagation();
+    event.preventDefault();
+    
+    // Animación pequeña al presionar
+    btn.style.transform = "scale(1.3)";
+    setTimeout(() => {
+        btn.style.transform = "scale(1)";
+    }, 150);
+}
