@@ -29,14 +29,66 @@ function cambiarSlide() {
 // Cambia cada 8 segundos
 setInterval(cambiarSlide, 8000);
 
+// Obtener lista de favoritos guardados o inicializar vacía
+function obtenerFavoritos() {
+    return JSON.parse(localStorage.getItem('destinosFavoritos')) || [];
+}
+
+// Guardar lista en localStorage
+function guardarFavoritos(favoritos) {
+    localStorage.setItem('destinosFavoritos', JSON.stringify(favoritos));
+}
+
+// Función principal para dar clic al corazón
 function toggleHeart(event, btn) {
-    // Evita la navegación si el botón está dentro de algún enlace
     event.stopPropagation();
     event.preventDefault();
-    
-    // Animación pequeña al presionar
+
+    const destinoId = btn.getAttribute('data-id');
+    const destinoDatos = {
+        id: destinoId,
+        nombre: btn.getAttribute('data-nombre'),
+        dpto: btn.getAttribute('data-dpto'),
+        precio: btn.getAttribute('data-precio'),
+        img: btn.getAttribute('data-img')
+    };
+
+    let favoritos = obtenerFavoritos();
+    const index = favoritos.findIndex(item => item.id === destinoId);
+
+    if (index === -1) {
+        // No estaba guardado -> Lo agregamos y cambiamos a rojo
+        favoritos.push(destinoDatos);
+        btn.innerText = "❤️";
+        btn.classList.add('active');
+    } else {
+        // Ya estaba guardado -> Lo quitamos y vuelve a negro/blanco
+        favoritos.splice(index, 1);
+        btn.innerText = "🤍";
+        btn.classList.remove('active');
+    }
+
+    guardarFavoritos(favoritos);
+
+    // Animación al presionar
     btn.style.transform = "scale(1.3)";
-    setTimeout(() => {
-        btn.style.transform = "scale(1)";
-    }, 150);
+    setTimeout(() => { btn.style.transform = "scale(1)"; }, 150);
 }
+
+// Al cargar la página, restaurar el estado (rojo si ya está guardado)
+document.addEventListener('DOMContentLoaded', () => {
+    const favoritos = obtenerFavoritos();
+    const botones = document.querySelectorAll('.btn-heart');
+
+    botones.forEach(btn => {
+        const id = btn.getAttribute('data-id');
+        const existe = favoritos.some(item => item.id === id);
+        if (existe) {
+            btn.innerText = "❤️";
+            btn.classList.add('active');
+        } else {
+            btn.innerText = "🤍";
+            btn.classList.remove('active');
+        }
+    });
+});
