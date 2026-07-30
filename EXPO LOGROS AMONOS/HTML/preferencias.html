@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ámonos | Preferencias</title>
+<link rel="stylesheet" href="CSS/preferencias.css">
+</head>
+
+<body>
+
+<div class="contenedor">
+<div class="logo">
+
+           ÁMONOS
+</div>
+
+<div class="titulo">
+<h1>Personalicemos tu experiencia</h1>
+<p>
+               Selecciona los lugares que más te gustan.
+               Esto nos ayudará a recomendarte destinos
+               que se adapten a tus intereses.
+</p>
+
+</div>
+<div class="grid-preferencias">
+<div class="card">
+<img src="https://d21tucfpen3j82.cloudfront.net/wp-content/uploads/2023/10/11145005/El-top-5-de-las-mejores-playas-de-El-Salvador-1.jpg" alt="Playa">
+
+<div class="overlay">
+ <span></span>
+
+  <h3>Playa</h3>
+</div>
+
+</div>
+
+<div class="card">
+
+ <img src="https://senderismo.info.sv/wp-content/uploads/215154779_32b2354cb9_b-1.jpg" alt="Montaña">
+ <div class="overlay">
+<span></span>
+<h3>Montaña</h3>
+ </div>
+
+</div>
+
+<div class="card">
+
+ <img src="https://i.pinimg.com/originals/d0/10/8e/d0108eae34bac492bd8894bddcaa9024.jpg" alt="Lago">
+<div class="overlay">
+
+<span></span>
+
+<h3>Lagos</h3>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://www.noticiaslagaceta.com/wp-content/uploads/2024/02/saburo.jpeg" alt="Parque">
+
+    <div class="overlay">
+
+     <span></span>
+
+     <h3>Parques</h3>
+
+    </div>
+</div>
+<div class="card">
+     <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390" alt="Plaza">
+    <div class="overlay">
+<span></span>
+<h3>Plazas</h3>
+     </div>
+    </div>
+</div>
+
+<div class="boton">
+<a href="index.html" class="btn-continuar">
+               Continuar →</a>
+ </div>
+</div>
+<script>
+const cards = document.querySelectorAll(".card");
+
+const boton = document.querySelector(".btn-continuar");
+
+boton.style.opacity = "0.5";
+boton.style.pointerEvents = "none";
+cards.forEach(card => {
+   card.addEventListener("click", () => {
+       card.classList.toggle("seleccionada");
+       comprobarSeleccion();
+   });
+});
+
+function comprobarSeleccion(){
+   const seleccionadas = document.querySelectorAll(".seleccionada");
+   if(seleccionadas.length > 0){
+       boton.style.opacity = "1";
+       boton.style.pointerEvents = "all";
+   }else{
+       boton.style.opacity = "0.5";
+       boton.style.pointerEvents = "none";
+   }
+}
+
+</script>
+
+</body>
+</html>
