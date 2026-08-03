@@ -75,10 +75,30 @@ nav {
     padding-bottom: 4px;
 }
 
+/* Corrección para el Avatar D en la navegación */
 .avatar {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
+    background-color: #073549; /* Tu color azul profundo */
+    color: #ffffff !important;   /* Letra blanca */
     border-radius: 50%;
+    
+    /* Centrar la letra D perfectamente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* QUITAR EL SUBRAYADO DE ENLACE */
+    text-decoration: none !important; 
+    
+    font-weight: 700;
+    font-size: 18px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.avatar:hover {
+    background-color: #0d7490; /* Cambio suave al pasar el mouse */
+    transform: scale(1.05);
 }
 
 /* 3. SECCIÓN DE TARJETA DE USUARIO (Cabecera de Perfil) */
@@ -301,5 +321,44 @@ nav {
         width: 100%; 
         border-top: 1px solid var(--borde); 
         padding-top: 15px; 
+    }
+}
+
+/* --- ANIMACIÓN Y ESTILOS DEL LOGO ÁMONOS --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    animation: slideFromLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0d7490;
+    letter-spacing: 1px;
+}
+
+.logo-container:hover .logo-img {
+    transform: translateX(4px) scale(1.05);
+    filter: drop-shadow(0px 4px 6px rgba(13, 116, 144, 0.3));
+}
+
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

@@ -20,98 +20,104 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">ÁMONOS</a>
-            <ul class="menu-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="explorar.html" class="active">Explorar destinos</a></li>
-                <li><a href="planificador.html">Planificador</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-            </ul>
-            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
-        </nav>
-    </div>
-</header>
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header>
+        <div class="container">
+            <nav>
+                <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
+                <a href="index.html" class="logo-container">
+                    <img src="img/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
 
-<main class="container">
-    <div class="search-page-layout">
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html" class="active">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            </nav>
+        </div>
+    </header>
 
-        <!-- BARRA LATERAL DE FILTROS -->
-        <aside class="sidebar-filters">
-            <div class="text-search-wrapper">
-                <input type="text" id="searchInput" placeholder=" Buscar por nombre...">
-            </div>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+        <div class="search-page-layout">
 
-            <!-- FILTRO DE CATEGORÍAS -->
-            <div class="filter-group">
-                <h3>Categoría</h3>
-                <div class="chips-flex" id="categoryChips">
-                    <span class="chip active" data-category="todos">Todos</span>
-                    <span class="chip" data-category="aventura">Aventura</span>
-                    <span class="chip" data-category="playa">Playa</span>
-                    <span class="chip" data-category="cultural">Cultural</span>
-                    <span class="chip" data-category="gastronomico">Gastronómico</span>
-                    <span class="chip" data-category="montana">Montaña</span>
+            <!-- BARRA LATERAL DE FILTROS -->
+            <aside class="sidebar-filters">
+                <div class="text-search-wrapper">
+                    <input type="text" id="searchInput" placeholder=" Buscar por nombre...">
                 </div>
-            </div>
 
-            <!-- FILTRO DE PRESUPUESTO -->
-            <div class="filter-group">
-                <h3>Presupuesto por día</h3>
-                <label class="check-label">
-                    <input type="checkbox" class="budget-filter" value="economico" checked> Económico (Menos de $20)
-                </label>
-                <label class="check-label">
-                    <input type="checkbox" class="budget-filter" value="conforme" checked> Conforme ($20 - $50)
-                </label>
-                <label class="check-label">
-                    <input type="checkbox" class="budget-filter" value="premium" checked> Premium (Más de $50)
-                </label>
-            </div>
-
-            <!-- FILTRO DE EDAD -->
-            <div class="filter-group">
-                <h3>Edad recomendada</h3>
-                <div class="chips-flex" id="ageChips">
-                    <span class="chip">0-10 años</span>
-                    <span class="chip">10-18 años</span>
-                    <span class="chip active">18-25 años</span>
-                    <span class="chip">Todas las edades</span>
+                <!-- FILTRO DE CATEGORÍAS -->
+                <div class="filter-group">
+                    <h3>Categoría</h3>
+                    <div class="chips-flex" id="categoryChips">
+                        <span class="chip active" data-category="todos">Todos</span>
+                        <span class="chip" data-category="aventura">Aventura</span>
+                        <span class="chip" data-category="playa">Playa</span>
+                        <span class="chip" data-category="cultural">Cultural</span>
+                        <span class="chip" data-category="gastronomico">Gastronómico</span>
+                        <span class="chip" data-category="montana">Montaña</span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- FILTRO DE IDEAL PARA -->
-            <div class="filter-group">
-                <h3>Ideal para</h3>
-                <div class="chips-flex" id="audienceChips">
-                    <span class="chip">Parejas</span>
-                    <span class="chip active">Familias</span>
-                    <span class="chip">Tercera edad</span>
-                    <span class="chip">Turistas</span>
-                    <span class="chip active">Amigos</span>
+                <!-- FILTRO DE PRESUPUESTO -->
+                <div class="filter-group">
+                    <h3>Presupuesto por día</h3>
+                    <label class="check-label">
+                        <input type="checkbox" class="budget-filter" value="economico" checked> Económico (Menos de $20)
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" class="budget-filter" value="conforme" checked> Conforme ($20 - $50)
+                    </label>
+                    <label class="check-label">
+                        <input type="checkbox" class="budget-filter" value="premium" checked> Premium (Más de $50)
+                    </label>
                 </div>
-            </div>
-        </aside>
 
-        <!-- SECCIÓN DE RESULTADOS -->
-        <section class="results-column">
-            <div class="results-header" id="resultsCount">
-                Cargando destinos...
-            </div>
+                <!-- FILTRO DE EDAD -->
+                <div class="filter-group">
+                    <h3>Edad recomendada</h3>
+                    <div class="chips-flex" id="ageChips">
+                        <span class="chip">0-10 años</span>
+                        <span class="chip">10-18 años</span>
+                        <span class="chip active">18-25 años</span>
+                        <span class="chip">Todas las edades</span>
+                    </div>
+                </div>
 
-            <!-- CONTENEDOR DINÁMICO DE TARJETAS -->
-            <div class="cards-grid" id="cardsGrid">
-                <!-- Se generarán automáticamente con JavaScript -->
-            </div>
-        </section>
+                <!-- FILTRO DE IDEAL PARA -->
+                <div class="filter-group">
+                    <h3>Ideal para</h3>
+                    <div class="chips-flex" id="audienceChips">
+                        <span class="chip">Parejas</span>
+                        <span class="chip active">Familias</span>
+                        <span class="chip">Tercera edad</span>
+                        <span class="chip">Turistas</span>
+                        <span class="chip active">Amigos</span>
+                    </div>
+                </div>
+            </aside>
 
-    </div>
-</main>
+            <!-- SECCIÓN DE RESULTADOS -->
+            <section class="results-column">
+                <div class="results-header" id="resultsCount">
+                    Cargando destinos...
+                </div>
 
-<script src="js/explorar.js"></script>
+                <!-- CONTENEDOR DINÁMICO DE TARJETAS -->
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Se generarán automáticamente con JavaScript -->
+                </div>
+            </section>
 
+        </div>
+    </main>
+
+    <script src="js/explorar.js"></script>
 
 </body>
 </html>

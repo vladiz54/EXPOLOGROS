@@ -41,202 +41,209 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <div class="logo"> ÁMONOS</div>
-            <ul class="menu-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="explorar.html">Explorar destinos</a></li>
-                <li><a href="planificador.html" class="active">Planificador</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-            </ul>
-            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
-        </nav>
-    </div>
-</header>
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header>
+        <div class="container">
+            <nav>
+                <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
+                <a href="index.html" class="logo-container">
+                    <img src="img/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
 
-<main class="container">
-    <div class="planner-layout">
-            
-        <section class="main-planner-content">
-            <div class="planner-card">
-                <h2> Configura tu Salida</h2>
-                <div class="input-inline-group">
-                    <div class="form-control">
-                        <label for="destino-select">Destino base</label>
-                        <select id="destino-select">
-                            <option value="boqueron">Ruta El Boquerón</option>
-                            <option value="coatepeque">Lago de Coatepeque</option>
-                            <option value="surfcity">Surf City / Puerto de La Libertad</option>
-                        </select>
-                    </div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html" class="active">Planificador</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            </nav>
+        </div>
+    </header>
 
-                    <div class="form-control">
-                        <label for="input-presupuesto">Tu Presupuesto Máximo</label>
-                        <input type="number" id="input-presupuesto" value="50" min="1">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <aside class="sidebar-budget-panel">
-            <div class="planner-card budget-header">
-                <h2>Calculadora de Salida</h2>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+        <div class="planner-layout">
                 
-                <div class="budget-summary-text">
-                    <span>GASTADO: <b id="txt-gastado">$0.00</b></span>
-                    <span>LÍMITE: <b id="txt-limite">$50.00</b></span>
-                </div>
-                
-                <div class="budget-main-number" id="txt-restante">$50.00</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--texto-suave); margin-bottom: 15px;" id="txt-status-label">DISPONIBLE PARA GASTAR</div>
+            <section class="main-planner-content">
+                <div class="planner-card">
+                    <h2>Configura tu Salida</h2>
+                    <div class="input-inline-group">
+                        <div class="form-control">
+                            <label for="destino-select">Destino base</label>
+                            <select id="destino-select">
+                                <option value="boqueron">Ruta El Boquerón</option>
+                                <option value="coatepeque">Lago de Coatepeque</option>
+                                <option value="surfcity">Surf City / Puerto de La Libertad</option>
+                            </select>
+                        </div>
 
-                <div class="progress-container">
-                    <div class="progress-bar" id="barra-progreso" style="width: 0%;"></div>
+                        <div class="form-control">
+                            <label for="input-presupuesto">Tu Presupuesto Máximo</label>
+                            <input type="number" id="input-presupuesto" value="50" min="1">
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <!-- FILAS RESTRUCTURADAS CON PRECIO FIJO X CANTIDAD -->
-                <div class="calc-inputs">
+            <aside class="sidebar-budget-panel">
+                <div class="planner-card budget-header">
+                    <h2>Calculadora de Salida</h2>
                     
-                    <!-- Transporte -->
-                    <div class="calc-row-advanced">
-                        <div class="info-item">
-                            <span> Transporte</span>
-                            <span class="unit-price">$<span id="unit-transporte">10.00</span> / vehic.</span>
-                        </div>
-                        <input type="number" value="1" min="0" class="qty-input" data-unit="10" id="qty-transporte">
-                        <span class="subtotal" id="sub-transporte">$10.00</span>
+                    <div class="budget-summary-text">
+                        <span>GASTADO: <b id="txt-gastado">$0.00</b></span>
+                        <span>LÍMITE: <b id="txt-limite">$50.00</b></span>
+                    </div>
+                    
+                    <div class="budget-main-number" id="txt-restante">$50.00</div>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--texto-suave); margin-bottom: 15px;" id="txt-status-label">DISPONIBLE PARA GASTAR</div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar" id="barra-progreso" style="width: 0%;"></div>
                     </div>
 
-                    <!-- Comida -->
-                    <div class="calc-row-advanced">
-                        <div class="info-item">
-                            <span> Alimentación</span>
-                            <span class="unit-price">$<span id="unit-comida">12.00</span> / pers.</span>
+                    <!-- FILAS RESTRUCTURADAS CON PRECIO FIJO X CANTIDAD -->
+                    <div class="calc-inputs">
+                        
+                        <!-- Transporte -->
+                        <div class="calc-row-advanced">
+                            <div class="info-item">
+                                <span>Transporte</span>
+                                <span class="unit-price">$<span id="unit-transporte">10.00</span> / vehic.</span>
+                            </div>
+                            <input type="number" value="1" min="0" class="qty-input" data-unit="10" id="qty-transporte">
+                            <span class="subtotal" id="sub-transporte">$10.00</span>
                         </div>
-                        <input type="number" value="1" min="0" class="qty-input" data-unit="12" id="qty-comida">
-                        <span class="subtotal" id="sub-comida">$12.00</span>
+
+                        <!-- Comida -->
+                        <div class="calc-row-advanced">
+                            <div class="info-item">
+                                <span>Alimentación</span>
+                                <span class="unit-price">$<span id="unit-comida">12.00</span> / pers.</span>
+                            </div>
+                            <input type="number" value="1" min="0" class="qty-input" data-unit="12" id="qty-comida">
+                            <span class="subtotal" id="sub-comida">$12.00</span>
+                        </div>
+
+                        <!-- Entradas -->
+                        <div class="calc-row-advanced">
+                            <div class="info-item">
+                                <span>Entradas / Ticket</span>
+                                <span class="unit-price">$<span id="unit-entradas">3.00</span> / pers.</span>
+                            </div>
+                            <input type="number" value="1" min="0" class="qty-input" data-unit="3" id="qty-entradas">
+                            <span class="subtotal" id="sub-entradas">$3.00</span>
+                        </div>
+
+                        <!-- Extras / Parqueo -->
+                        <div class="calc-row-advanced">
+                            <div class="info-item">
+                                <span>Parqueo / Extras</span>
+                                <span class="unit-price">$<span id="unit-extras">5.00</span> / fijo</span>
+                            </div>
+                            <input type="number" value="1" min="0" class="qty-input" data-unit="5" id="qty-extras">
+                            <span class="subtotal" id="sub-extras">$5.00</span>
+                        </div>
+
                     </div>
 
-                    <!-- Entradas -->
-                    <div class="calc-row-advanced">
-                        <div class="info-item">
-                            <span> Entradas / Ticket</span>
-                            <span class="unit-price">$<span id="unit-entradas">3.00</span> / pers.</span>
-                        </div>
-                        <input type="number" value="1" min="0" class="qty-input" data-unit="3" id="qty-entradas">
-                        <span class="subtotal" id="sub-entradas">$3.00</span>
-                    </div>
-
-                    <!-- Extras / Parqueo -->
-                    <div class="calc-row-advanced">
-                        <div class="info-item">
-                            <span> Parqueo / Extras</span>
-                            <span class="unit-price">$<span id="unit-extras">5.00</span> / fijo</span>
-                        </div>
-                        <input type="number" value="1" min="0" class="qty-input" data-unit="5" id="qty-extras">
-                        <span class="subtotal" id="sub-extras">$5.00</span>
-                    </div>
-
+                    <button class="btn-save-plan">Guardar en mi Historial</button>
                 </div>
+            </aside>
 
-                <button class="btn-save-plan"> Guardar en mi Historial</button>
-            </div>
-        </aside>
+        </div>
+    </main>
 
-    </div>
-</main>
+    <script>
+        const inputPresupuestoMax = document.getElementById('input-presupuesto');
+        const selectDestino = document.getElementById('destino-select');
+        const qtyInputs = document.querySelectorAll('.qty-input');
+        
+        const txtGastado = document.getElementById('txt-gastado');
+        const txtLimite = document.getElementById('txt-limite');
+        const txtRestante = document.getElementById('txt-restante');
+        const txtStatusLabel = document.getElementById('txt-status-label');
+        const barraProgreso = document.getElementById('barra-progreso');
 
-<script>
-    const inputPresupuestoMax = document.getElementById('input-presupuesto');
-    const selectDestino = document.getElementById('destino-select');
-    const qtyInputs = document.querySelectorAll('.qty-input');
-    
-    const txtGastado = document.getElementById('txt-gastado');
-    const txtLimite = document.getElementById('txt-limite');
-    const txtRestante = document.getElementById('txt-restante');
-    const txtStatusLabel = document.getElementById('txt-status-label');
-    const barraProgreso = document.getElementById('barra-progreso');
+        // 1. LEER PARÁMETROS ENVIADOS DESDE DETALLES.HTML
+        function cargarDatosDesdeURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const destino = urlParams.get('destino');
+            const comida = urlParams.get('comida');
+            const entradas = urlParams.get('entradas');
+            const transporte = urlParams.get('transporte');
 
-    // 1. LEER PARÁMETROS ENVIADOS DESDE DETALLES.HTML
-    function cargarDatosDesdeURL() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const destino = urlParams.get('destino');
-        const comida = urlParams.get('comida');
-        const entradas = urlParams.get('entradas');
-        const transporte = urlParams.get('transporte');
-
-        // Seleccionar el destino si viene en la URL
-        if (destino) {
-            selectDestino.value = destino;
-        }
-
-        // Si vienen valores de gastos en la URL, actualizar los precios unitarios fijos
-        if (comida) actualizarPrecioFijo('comida', parseFloat(comida));
-        if (entradas) actualizarPrecioFijo('entradas', parseFloat(entradas));
-        if (transporte) actualizarPrecioFijo('transporte', parseFloat(transporte));
-    }
-
-    function actualizarPrecioFijo(id, precio) {
-        const unitLabel = document.getElementById(`unit-${id}`);
-        const inputQty = document.getElementById(`qty-${id}`);
-        if (unitLabel && inputQty) {
-            unitLabel.innerText = precio.toFixed(2);
-            inputQty.setAttribute('data-unit', precio);
-        }
-    }
-
-    // 2. LÓGICA DE CÁLCULO MULTIPLICANDO (PRECIO FIJO * CANTIDAD INGRESDADA)
-    function calcularPresupuesto() {
-        const limite = parseFloat(inputPresupuestoMax.value) || 0;
-        let totalGastado = 0;
-
-        qtyInputs.forEach(input => {
-            const cantidad = parseFloat(input.value) || 0;
-            const precioUnitario = parseFloat(input.getAttribute('data-unit')) || 0;
-            const subtotal = cantidad * precioUnitario;
-
-            // Actualizar la etiqueta del subtotal a la derecha
-            const subtotalSpan = input.nextElementSibling;
-            if (subtotalSpan && subtotalSpan.classList.contains('subtotal')) {
-                subtotalSpan.innerText = `$${subtotal.toFixed(2)}`;
+            // Seleccionar el destino si viene en la URL
+            if (destino) {
+                selectDestino.value = destino;
             }
 
-            totalGastado += subtotal;
+            // Si vienen valores de gastos en la URL, actualizar los precios unitarios fijos
+            if (comida) actualizarPrecioFijo('comida', parseFloat(comida));
+            if (entradas) actualizarPrecioFijo('entradas', parseFloat(entradas));
+            if (transporte) actualizarPrecioFijo('transporte', parseFloat(transporte));
+        }
+
+        function actualizarPrecioFijo(id, precio) {
+            const unitLabel = document.getElementById(`unit-${id}`);
+            const inputQty = document.getElementById(`qty-${id}`);
+            if (unitLabel && inputQty) {
+                unitLabel.innerText = precio.toFixed(2);
+                inputQty.setAttribute('data-unit', precio);
+            }
+        }
+
+        // 2. LÓGICA DE CÁLCULO MULTIPLICANDO (PRECIO FIJO * CANTIDAD INGRESADA)
+        function calcularPresupuesto() {
+            const limite = parseFloat(inputPresupuestoMax.value) || 0;
+            let totalGastado = 0;
+
+            qtyInputs.forEach(input => {
+                const cantidad = parseFloat(input.value) || 0;
+                const precioUnitario = parseFloat(input.getAttribute('data-unit')) || 0;
+                const subtotal = cantidad * precioUnitario;
+
+                // Actualizar la etiqueta del subtotal a la derecha
+                const subtotalSpan = input.nextElementSibling;
+                if (subtotalSpan && subtotalSpan.classList.contains('subtotal')) {
+                    subtotalSpan.innerText = `$${subtotal.toFixed(2)}`;
+                }
+
+                totalGastado += subtotal;
+            });
+
+            const restante = limite - totalGastado;
+            const porcentajeConstruido = limite > 0 ? (totalGastado / limite) * 100 : 0;
+
+            txtLimite.innerText = `$${limite.toFixed(2)}`;
+            txtGastado.innerText = `$${totalGastado.toFixed(2)}`;
+            txtRestante.innerText = `$${Math.abs(restante).toFixed(2)}`;
+
+            if (restante >= 0) {
+                txtRestante.style.color = 'var(--verde-turquesa, #0d7490)';
+                txtStatusLabel.innerText = "DISPONIBLE PARA GASTAR";
+                txtStatusLabel.style.color = 'var(--texto-suave, #64748b)';
+                barraProgreso.style.backgroundColor = 'var(--verde-turquesa, #0d7490)';
+                barraProgreso.style.width = `${Math.min(porcentajeConstruido, 100)}%`;
+            } else {
+                txtRestante.style.color = 'var(--rojo-alerta, #ef4444)';
+                txtStatusLabel.innerText = "¡TE HAS EXCEDIDO DEL PRESUPUESTO!";
+                txtStatusLabel.style.color = 'var(--rojo-alerta, #ef4444)';
+                barraProgreso.style.backgroundColor = 'var(--rojo-alerta, #ef4444)';
+                barraProgreso.style.width = '100%';
+            }
+        }
+
+        // Escuchar eventos de entrada
+        inputPresupuestoMax.addEventListener('input', calcularPresupuesto);
+        qtyInputs.forEach(input => {
+            input.addEventListener('input', calcularPresupuesto);
         });
 
-        const restante = limite - totalGastado;
-        const porcentajeConstruido = limite > 0 ? (totalGastado / limite) * 100 : 0;
-
-        txtLimite.innerText = `$${limite.toFixed(2)}`;
-        txtGastado.innerText = `$${totalGastado.toFixed(2)}`;
-        txtRestante.innerText = `$${Math.abs(restante).toFixed(2)}`;
-
-        if (restante >= 0) {
-            txtRestante.style.color = 'var(--verde-turquesa, #0d7490)';
-            txtStatusLabel.innerText = "DISPONIBLE PARA GASTAR";
-            txtStatusLabel.style.color = 'var(--texto-suave, #64748b)';
-            barraProgreso.style.backgroundColor = 'var(--verde-turquesa, #0d7490)';
-            barraProgreso.style.width = `${Math.min(porcentajeConstruido, 100)}%`;
-        } else {
-            txtRestante.style.color = 'var(--rojo-alerta, #ef4444)';
-            txtStatusLabel.innerText = "¡TE HAS EXCEDIDO DEL PRESUPUESTO!";
-            txtStatusLabel.style.color = 'var(--rojo-alerta, #ef4444)';
-            barraProgreso.style.backgroundColor = 'var(--rojo-alerta, #ef4444)';
-            barraProgreso.style.width = '100%';
-        }
-    }
-
-    // Escuchar eventos de entrada
-    inputPresupuestoMax.addEventListener('input', calcularPresupuesto);
-    qtyInputs.forEach(input => {
-        input.addEventListener('input', calcularPresupuesto);
-    });
-
-    // Inicializar al cargar la página
-    cargarDatosDesdeURL();
-    calcularPresupuesto();
-</script>
+        // Inicializar al cargar la página
+        cargarDatosDesdeURL();
+        calcularPresupuesto();
+    </script>
 </body>
 </html>

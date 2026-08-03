@@ -167,21 +167,28 @@
 </head>
 <body>
 
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo"> ÁMONOS</div>
+                <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
+                <a href="index.html" class="logo-container">
+                    <img src="img/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
+
                 <ul class="menu-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="explorar.html">Explorar destinos</a></li>
                     <li><a href="planificador.html">Planificador</a></li>
-                    <li><a href="#" class="active">Perfil</a></li>
+                    <li><a href="perfil.html" class="active">Perfil</a></li>
                 </ul>
-                <div class="avatar" style="background-color: var(--azul-profundo);"></div>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
             </nav>
         </div>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL DEL PERFIL -->
     <main class="container">
         
         <section class="profile-hero">
@@ -193,8 +200,8 @@
                 </div>
             </div>
             <div class="profile-actions">
-                <button class="btn-edit-profile" id="openModalBtn"> Editar Perfil</button>
-                <a href="sesion.html" class="logout-link">Cerrar Sesión </a>
+                <button class="btn-edit-profile" id="openModalBtn">Editar Perfil</button>
+                <a href="sesion.html" class="logout-link">Cerrar Sesión</a>
             </div>
         </section>
 
@@ -202,14 +209,15 @@
             
             <!-- COLUMNA: MIS GUARDADOS DINÁMICOS -->
             <aside class="column-card">
-                <h2> Mis Guardados ❤️</h2>
+                <h2>Mis Guardados ❤️</h2>
                 <div class="item-list" id="savedItemsContainer">
                     <!-- Aquí se renderizarán automáticamente los destinos guardados con el corazón -->
                 </div>
             </aside>
 
+            <!-- COLUMNA: LUGARES VISITADOS -->
             <section class="column-card">
-                <h2> Lugares Visitados</h2>
+                <h2>Lugares Visitados</h2>
                 <div class="item-list">
                     <div class="profile-item-row">
                         <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
@@ -230,8 +238,9 @@
                 </div>
             </section>
 
+            <!-- COLUMNA: PREFERENCIAS DE VIAJE -->
             <aside class="column-card">
-                <h2> Preferencias</h2>
+                <h2>Preferencias</h2>
                 <div class="preferences-block">
                     <div class="pref-group">
                         <h4>Estilo de Aventura:</h4>
@@ -335,7 +344,7 @@
             cargarFavoritosPerfil(); // Recargar lista
         }
 
-        // 3. LOGICA DEL MODAL DE EDICIÓN
+        // 3. LÓGICA DEL MODAL DE EDICIÓN
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = document.getElementById('closeModalBtn');
         const modal = document.getElementById('editProfileModal');
