@@ -52,7 +52,7 @@ async function iniciarSesion() {
         if (data.success) {
             mostrarAlerta(data.message, "success");
             setTimeout(() => {
-                window.location.href = "pagina1.html";
+                window.location.href = "index.html";
             }, 1200);
         } else {
             mostrarAlerta(data.message, "danger");

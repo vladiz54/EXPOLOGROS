@@ -29,7 +29,11 @@
             <h2 class="welcome-title">CREAR UNA CUENTA</h2>
             <p class="welcome-subtitle">Regístrate para empezar a planificar tu próxima aventura</p>
 
-            <form action="sesion.html" method="GET" class="login-form">
+            <!-- Contenedor para mensajes de la API -->
+            <div id="alertMessage" class="alert d-none" role="alert"></div>
+
+            <!-- Se remueven action/method y se añade id="registerForm" -->
+            <form id="registerForm" class="login-form">
 
                 <div class="form-group">
                     <label for="name">Nombre completo</label>
@@ -64,6 +68,7 @@
 
     </main>
 
-    
+    <!-- Vincular el script JS correspondiente -->
+    <script src="js/registro.js"></script>
 </body>
 </html>
