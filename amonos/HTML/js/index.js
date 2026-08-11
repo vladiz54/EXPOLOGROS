@@ -1,3 +1,65 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    cargarDestinos();
+});
+
+async function cargarDestinos() {
+    const contenedor = document.querySelector(".grid-destinos");
+    
+    if (!contenedor) {
+        console.error("No se encontró el elemento con la clase .grid-destinos");
+        return;
+    }
+
+    try {
+        // Petición al PHP
+        const response = await fetch("../destinos/read.php");
+        const resultado = await response.json();
+
+        if (resultado.success && resultado.data.length > 0) {
+            // Limpiamos las tarjetas estáticas
+            contenedor.innerHTML = "";
+
+            // Insertamos cada destino que venga de la base de datos
+            resultado.data.forEach(destino => {
+                const imagen = destino.imagen_url ? destino.imagen_url : 'https://via.placeholder.com/400x250?text=Sin+Imagen';
+                const precio = destino.precio_entrada ? `$${parseFloat(destino.precio_entrada).toFixed(2)}` : 'Gratis';
+                const puntaje = destino.puntaje ? parseFloat(destino.puntaje).toFixed(1) : 'N/A';
+
+                const tarjeta = `
+                    <div class="destino-card">
+                        <a href="detalles.html?id=${destino.id_destino}" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${imagen}') center/cover;"></a>
+                        <div class="dest-body">
+                            <div>
+                                <h4><a href="detalles.html?id=${destino.id_destino}" style="text-decoration: none; color: inherit;">${destino.nombre}</a></h4>
+                                <p class="dpto">${destino.departamento}</p>
+                            </div>
+                            <div class="dest-footer">
+                                <span class="price">${precio}</span>
+                                <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="rating">⭐ ${puntaje}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                contenedor.innerHTML += tarjeta;
+            });
+        } else {
+            contenedor.innerHTML = "<p>No hay destinos registrados en la base de datos.</p>";
+        }
+
+    } catch (error) {
+        console.error("Error al cargar los destinos:", error);
+        contenedor.innerHTML = "<p>Error al conectar con el servidor.</p>";
+    }
+}
+
+
+
+
+
 const slides = document.querySelectorAll(".slide");
 let index = 0;
 
