@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ámonos - Iniciar Sesión</title>
-    <link rel="stylesheet" href="CSS/sesion.css">
-</head>
-<body>
-    
-    <main class="login-wrapper">
-
-        
-        <section class="login-banner">
-            <div class="banner-overlay">
-                <h2>Un país. Mil experiencias.</h2>
-                <p>Descubre los mejores destinos turísticos de El Salvador</p>
-            </div>
-        </section>
-
-        
-        <section class="login-form-container">
+<section class="login-form-container">
             <header class="brand-header">
                 <div class="logo-icon"></div>
                 <h1 class="brand-name">Ámonos</h1>
@@ -29,8 +8,11 @@
             <h2 class="welcome-title">¡BIENVENIDO DE NUEVO!</h2>
             <p class="welcome-subtitle">Ingresa a tu cuenta para planificar tu próxima aventura</p>
 
-            
-            <form action="preferencias.html" method="GET" class="login-form">
+            <!-- Contenedor para mensajes dinámicos -->
+            <div id="alertMessage" class="alert d-none" role="alert"></div>
+
+            <!-- ID añadido y atributos action/method removidos -->
+            <form id="loginForm" class="login-form">
 
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -58,7 +40,6 @@
                     <span>o continuar con</span>
                 </div>
 
-               
             </form>
 
             <footer class="signup-prompt">
@@ -66,8 +47,10 @@
             </footer>
 
         </section>
-        
 
     </main>
+
+    <!-- Vincular el archivo JS -->
+    <script src=""></script>
 </body>
 </html>
