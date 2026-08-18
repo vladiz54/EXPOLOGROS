@@ -62,37 +62,12 @@
         </div>
     </section>
 
-    <!-- BARRA DE BÚSQUEDA -->
-    <div class="search-bar">
-        <div class="search-input-group">
-            <label>¿Qué lugar quieres explorar?</label>
-            <input type="text" placeholder="Ej: Playas, volcanes, pueblos...">
-        </div>
-
-        <div class="search-input-group">
-            <label>Todos los departamentos</label>
-            <select>
-                <option value="Todos">Todos los departamentos</option>
-                <option value="La Libertad">La Libertad</option>
-                <option value="Santa Ana">Santa Ana</option>
-                <option value="Cuscatlán">Cuscatlán</option>
-                <option value="Ahuachapán">Ahuachapán</option>
-            </select>
-        </div>
-
-        <div class="search-input-group">
-            <label>¿Cuándo viajas?</label>
-            <input type="text" placeholder="Seleccionar fecha" onfocus="(this.type='date')">
-        </div>
-        <button class="btn btn-search">Buscar</button>
-    </div>
-
     <!-- CONTENIDO PRINCIPAL -->
     <main class="container main-content">
 
-        <!-- CATEGORÍAS -->
-        <section class="categories-container">
-            <ul class="categories-list">
+        <!-- CATEGORÍAS Y FILTRO DE DEPARTAMENTOS -->
+        <section class="categories-container" style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
+            <ul class="categories-list" style="display: flex; gap: 10px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
                 <li><button class="cat-card"> Playa</button></li>
                 <li><button class="cat-card"> Naturaleza</button></li>
                 <li><button class="cat-card"> Aventura</button></li>
@@ -101,6 +76,28 @@
                 <li><button class="cat-card"> Pueblos Vivos</button></li>
                 <li><button class="cat-card"> Familiar</button></li>
             </ul>
+
+            <!-- SELECTOR DE DEPARTAMENTO Y BOTÓN DE FILTRADO -->
+            <div class="filter-dept-group" style="display: flex; align-items: center; gap: 8px;">
+                <select id="select-departamento" style="padding: 10px 14px; border-radius: 20px; border: 1px solid #ccc; font-size: 14px; outline: none; background-color: #fff; cursor: pointer;">
+                    <option value="Todos">Todos los departamentos</option>
+                    <option value="Ahuachapán">Ahuachapán</option>
+                    <option value="Cabañas">Cabañas</option>
+                    <option value="Chalatenango">Chalatenango</option>
+                    <option value="Cuscatlán">Cuscatlán</option>
+                    <option value="La Libertad">La Libertad</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="La Unión">La Unión</option>
+                    <option value="Morazán">Morazán</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="San Vicente">San Vicente</option>
+                    <option value="Santa Ana">Santa Ana</option>
+                    <option value="Sonsonate">Sonsonate</option>
+                    <option value="Usulután">Usulután</option>
+                </select>
+                <button class="btn btn-search" id="btn-filtrar" style="padding: 10px 18px; border-radius: 20px; border: none; background-color: #0d6efd; color: white; font-weight: bold; cursor: pointer;">Filtrar</button>
+            </div>
         </section>
 
         <!-- GRID DE DESTINOS RECOMENDADOS -->
