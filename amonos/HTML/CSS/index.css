@@ -236,44 +236,6 @@ nav {
     background-color: var(--verde-turquesa);
 }
 
-/* Barra de búsqueda flotante */
-.search-bar {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 15px 25px;
-    display: flex;
-    gap: 15px;
-    box-shadow: 0 8px 25px rgba(146, 24, 24, 0.1);
-    max-width: 900px;
-    margin: 0 auto -120px auto;
-    position: relative;
-    z-index: 10;
-    align-items: center;
-}
-
-.search-input-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.search-input-group label {
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--texto-suave);
-    text-transform: uppercase;
-}
-
-.search-input-group input, .search-input-group select {
-    border: none;
-    outline: none;
-    font-size: 14px;
-    color: var(--azul-profundo);
-    font-weight: 600;
-    background: transparent;
-}
-
 .btn-search {
     background-color: var(--azul-profundo);
     color: white;
@@ -286,7 +248,7 @@ nav {
    4. CATEGORÍAS Y GRID DE DESTINOS
    ========================================================================== */
 .main-content {
-    margin-top: 140px; 
+    margin-top: 40px; 
     padding-top: 30px;
 }
 
@@ -320,6 +282,45 @@ nav {
 .cat-card:hover {
     background-color: var(--azul-profundo);
     color: white;
+}
+
+/* Estilos añadidos para el nuevo filtro de departamentos */
+.filter-dept-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#select-departamento {
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    background-color: #ffffff;
+    color: var(--azul-profundo);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+#select-departamento:focus {
+    border-color: var(--azul-profundo);
+}
+
+#btn-filtrar {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--azul-profundo);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-filtrar:hover {
+    background-color: var(--verde-turquesa);
 }
 
 .grid-header {
