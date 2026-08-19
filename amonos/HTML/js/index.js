@@ -1,26 +1,67 @@
+// Variables globales de estado para los filtros
+let categoriaSeleccionada = "Todos";
+let departamentoSeleccionado = "Todos";
 
 document.addEventListener("DOMContentLoaded", () => {
+    inicializarFiltros();
     cargarDestinos();
 });
+
+function inicializarFiltros() {
+    // 1. Manejo de clics en los botones de categoría
+    const botonesCategoria = document.querySelectorAll(".categories-list .cat-card");
+    
+    // Marcar el primer botón ("Todos") como activo por defecto
+    if (botonesCategoria.length > 0) {
+        botonesCategoria[0].classList.add("active");
+    }
+
+    botonesCategoria.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            // Remover clase active de todos los botones
+            botonesCategoria.forEach(b => b.classList.remove("active"));
+            
+            // Agregar clase active al seleccionado
+            boton.classList.add("active");
+            
+            // Obtener el nombre de la categoría limpia de espacios extras
+            categoriaSeleccionada = boton.textContent.trim();
+            
+            // Consultar con el nuevo filtro
+            cargarDestinos();
+        });
+    });
+
+    // 2. Manejo del botón de filtrar departamento
+    const btnFiltrar = document.getElementById("btn-filtrar");
+    const selectDept = document.getElementById("select-departamento");
+
+    if (btnFiltrar && selectDept) {
+        btnFiltrar.addEventListener("click", () => {
+            departamentoSeleccionado = selectDept.value;
+            cargarDestinos();
+        });
+    }
+}
 
 async function cargarDestinos() {
     const contenedor = document.querySelector(".grid-destinos");
     
-    if (!contenedor) {
-        console.error("No se encontró el elemento con la clase .grid-destinos");
-        return;
-    }
+    if (!contenedor) return;
+
+    // Indicador visual de carga
+    contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Cargando destinos...</p>";
 
     try {
-        // Petición al PHP
-        const response = await fetch("../destinos/read.php");
+        // Construcción de la URL con parámetros GET encodeados
+        const url = `../destinos/read.php?categoria=${encodeURIComponent(categoriaSeleccionada)}&departamento=${encodeURIComponent(departamentoSeleccionado)}`;
+        
+        const response = await fetch(url);
         const resultado = await response.json();
 
         if (resultado.success && resultado.data.length > 0) {
-            // Limpiamos las tarjetas estáticas
             contenedor.innerHTML = "";
 
-            // Insertamos cada destino que venga de la base de datos
             resultado.data.forEach(destino => {
                 const imagen = destino.imagen_url ? destino.imagen_url : 'https://via.placeholder.com/400x250?text=Sin+Imagen';
                 const precio = destino.precio_entrada ? `$${parseFloat(destino.precio_entrada).toFixed(2)}` : 'Gratis';
@@ -38,6 +79,7 @@ async function cargarDestinos() {
                                 <span class="price">${precio}</span>
                                 <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
                                     <span class="rating">⭐ ${puntaje}</span>
+                                    <button class="btn-heart" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
                                 </div>
                             </div>
                         </div>
@@ -47,12 +89,12 @@ async function cargarDestinos() {
                 contenedor.innerHTML += tarjeta;
             });
         } else {
-            contenedor.innerHTML = "<p>No hay destinos registrados en la base de datos.</p>";
+            contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>No se encontraron destinos para esta combinación de filtros.</p>";
         }
 
     } catch (error) {
         console.error("Error al cargar los destinos:", error);
-        contenedor.innerHTML = "<p>Error al conectar con el servidor.</p>";
+        contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Error al conectar con el servidor.</p>";
     }
 }
 
