@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS destinos(
 	precio_comida DECIMAL(10,2),
 	precio_parqueo DECIMAL(10,2),
 	precio_hospedaje DECIMAL(10,2),
-	puntaje DECIMAL(10,1),
+	
 	tipo_visitante ENUM(
 	'familia',
 	'jovenes',
@@ -129,4 +129,6 @@ CREATE TABLE IF NOT EXISTS preferencias(
 	FOREIGN KEY(id_categoria)
 	REFERENCES categorias_destino(id_categoria)
 );
-
+ 
+INSERT INTO `categorias_destino` (`id_categoria`, `nombre_categoria`, `icono`) VALUES (1, 'Playa', NULL);
+INSERT INTO `categorias_destino` (`id_categoria`, `nombre_categoria`, `icono`) VALUES (2, 'Naturaleza', NULL);
