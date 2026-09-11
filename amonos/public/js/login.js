@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
-    const alertBox = document.getElementById("alertMessage");
     const btnTogglePassword = document.querySelector(".btn-toggle-password");
     const passwordInput = document.getElementById("password");
 

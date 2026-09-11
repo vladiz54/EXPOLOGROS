@@ -38,9 +38,9 @@ try {
     $database = new Database();
     $db = $database->getConnection();
 
-    $query = "SELECT id_usuario, nombre, correo, password_hash, estado 
-              FROM usuarios 
-              WHERE correo = :correo 
+    $query = "SELECT id_usuario, nombre, correo, password_hash, estado
+              FROM usuarios
+              WHERE correo = :correo
               LIMIT 1";
 
     $stmt = $db->prepare($query);
@@ -75,3 +75,4 @@ try {
 }
 
 echo json_encode($response);
+?>

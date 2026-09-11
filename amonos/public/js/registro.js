@@ -57,7 +57,6 @@ async function registrarUsuario() {
 
         if (data.success) {
             mostrarAlerta(data.message, "success");
-            
             document.getElementById("registerForm").reset();
             setTimeout(() => {
                 window.location.href = "sesion.html";

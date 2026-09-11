@@ -43,7 +43,6 @@ try {
     $database = new Database();
     $db = $database->getConnection();
 
-    // Validar si el correo ya existe
     $checkQuery = "SELECT id_usuario FROM usuarios WHERE correo = :correo LIMIT 1";
     $checkStmt = $db->prepare($checkQuery);
     $checkStmt->bindParam(":correo", $correo, PDO::PARAM_STR);
@@ -55,11 +54,9 @@ try {
         exit;
     }
 
-    // Hashear la contraseña de forma segura
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    // Insertar nuevo usuario
-    $insertQuery = "INSERT INTO usuarios (nombre, correo, password_hash, estado) 
+    $insertQuery = "INSERT INTO usuarios (nombre, correo, password_hash, estado)
                     VALUES (:nombre, :correo, :password_hash, 'activo')";
 
     $stmt = $db->prepare($insertQuery);
@@ -79,3 +76,4 @@ try {
 }
 
 echo json_encode($response);
+?>

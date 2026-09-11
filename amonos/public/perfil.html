@@ -305,73 +305,8 @@
     </div>
 
     <!-- SCRIPT JS PARA FAVORITOS Y VENTANA MODAL -->
-    <script>
-        // 1. CARGAR Y MOSTRAR DESTINOS GUARDADOS DE LOCALSTORAGE
-        function cargarFavoritosPerfil() {
-            const container = document.getElementById('savedItemsContainer');
-            const favoritos = JSON.parse(localStorage.getItem('destinosFavoritos')) || [];
+    <script src="js/perfil.js"></script>
 
-            if (favoritos.length === 0) {
-                container.innerHTML = `
-                    <p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">
-                        Aún no has guardado ningún destino. Haz clic en el ❤️ en Inicio o Explorar para guardarlos aquí.
-                    </p>
-                `;
-                return;
-            }
-
-            container.innerHTML = "";
-            favoritos.forEach(dest => {
-                const itemHTML = `
-                    <div class="profile-item-row" id="fav-item-${dest.id}">
-                        <div class="item-thumb" style="background: url('${dest.img || dest.imagen}') center/cover;"></div>
-                        <div class="item-info">
-                            <h4><a href="detalles.html?destino=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h4>
-                            <p>${dest.dpto || dest.ubicacion || 'El Salvador'}</p>
-                        </div>
-                        <button class="btn-delete-item" onclick="eliminarFavorito('${dest.id}')" title="Eliminar de guardados">🗑️</button>
-                    </div>
-                `;
-                container.innerHTML += itemHTML;
-            });
-        }
-
-        // 2. ELIMINAR UN DESTINO GUARDADO
-        function eliminarFavorito(id) {
-            let favoritos = JSON.parse(localStorage.getItem('destinosFavoritos')) || [];
-            favoritos = favoritos.filter(item => item.id !== id);
-            localStorage.setItem('destinosFavoritos', JSON.stringify(favoritos));
-            cargarFavoritosPerfil(); // Recargar lista
-        }
-
-        // 3. LÓGICA DEL MODAL DE EDICIÓN
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const modal = document.getElementById('editProfileModal');
-        const form = document.getElementById('editProfileForm');
-
-        openBtn.addEventListener('click', () => modal.classList.add('active'));
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('active');
-        });
-
-        // Guardar cambios del nombre / transporte en vivo
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nuevoNombre = document.getElementById('modal-name').value;
-            const nuevoTransporte = document.getElementById('modal-transport').value;
-
-            if (nuevoNombre) document.getElementById('userNameDisplay').innerText = nuevoNombre;
-            if (nuevoTransporte) document.getElementById('userTransportDisplay').innerText = nuevoTransporte;
-
-            modal.classList.remove('active');
-        });
-
-        // Cargar favoritos al abrir la página
-        window.addEventListener('DOMContentLoaded', cargarFavoritosPerfil);
-    </script>
 
 </body>
 </html>
