@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Mi Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    
+    <!-- ESTILOS PARA LA VENTANA EMERGENTE (MODAL) Y GUARDADOS -->
+    <style>
+        /* Fondo oscuro translúcido */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 440px;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-card h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: #073549;
+        }
+
+        .modal-card p.subtitle {
+            margin: 5px 0 20px 0;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Sección Foto */
+        .avatar-edit-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-circle-big {
+            width: 80px;
+            height: 80px;
+            background-color: #073549;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .btn-change-photo {
+            background: none;
+            border: none;
+            color: #fb923c;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .modal-form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #073549;
+            margin-bottom: 5px;
+        }
+
+        .modal-form-group input {
+            width: 100%;
+            height: 42px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 0 12px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .modal-form-group input.input-highlight,
+        .modal-form-group input:focus {
+            border: 2px solid #86efac; 
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn-modal-cancel {
+            flex: 1;
+            height: 44px;
+            background-color: #f1f5f9;
+            color: #64748b;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-modal-save {
+            flex: 1;
+            height: 44px;
+            background-color: #0d7490;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Estilo para botón eliminar favorito */
+        .btn-delete-item {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+        .btn-delete-item:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header>
+        <div class="container">
+            <nav>
+                <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
+                <a href="index.html" class="logo-container">
+                    <img src="img/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
+
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html" class="active">Perfil</a></li>
+                </ul>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL DEL PERFIL -->
+    <main class="container">
+        
+        <section class="profile-hero">
+            <div class="user-info-block">
+                <div class="profile-avatar-big">D</div>
+                <div class="user-meta">
+                    <h1 id="userNameDisplay">Diego Ayala</h1>
+                    <p>Miembro desde: Mayo 2026 • Viajero Frecuente</p>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-edit-profile" id="openModalBtn">Editar Perfil</button>
+                <a href="sesion.html" class="logout-link">Cerrar Sesión</a>
+            </div>
+        </section>
+
+        <div class="profile-grid-layout">
+            
+            <!-- COLUMNA: MIS GUARDADOS DINÁMICOS -->
+            <aside class="column-card">
+                <h2>Mis Guardados ❤️</h2>
+                <div class="item-list" id="savedItemsContainer">
+                    <!-- Aquí se renderizarán automáticamente los destinos guardados con el corazón -->
+                </div>
+            </aside>
+
+            <!-- COLUMNA: LUGARES VISITADOS -->
+            <section class="column-card">
+                <h2>Lugares Visitados</h2>
+                <div class="item-list">
+                    <div class="profile-item-row">
+                        <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
+                        <div class="item-info">
+                            <h4>Parque El Boquerón</h4>
+                            <p>Gastado total: <b>$30.00</b></p>
+                        </div>
+                        <span class="item-meta-badge badge-history">Visitado</span>
+                    </div>
+                    <div class="profile-item-row">
+                        <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
+                        <div class="item-info">
+                            <h4>Playa El Tunco</h4>
+                            <p>Gastado total: <b>$45.50</b></p>
+                        </div>
+                        <span class="item-meta-badge badge-history">Visitado</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLUMNA: PREFERENCIAS DE VIAJE -->
+            <aside class="column-card">
+                <h2>Preferencias</h2>
+                <div class="preferences-block">
+                    <div class="pref-group">
+                        <h4>Estilo de Aventura:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag">Económico</span>
+                            <span class="pref-tag">Naturaleza</span>
+                            <span class="pref-tag">Senderismo</span>
+                        </div>
+                    </div>
+                    <div class="pref-group">
+                        <h4>Transporte habitual:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag" id="userTransportDisplay">Vehículo propio</span>
+                        </div>
+                    </div>
+                    <div class="pref-group">
+                        <h4>Acompañantes frecuentes:</h4>
+                        <div class="pref-chips">
+                            <span class="pref-tag">Amigos</span>
+                            <span class="pref-tag">Pareja</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- VENTANA EMERGENTE (MODAL EDITAR PERFIL) -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal-card">
+            <h2>Editar Perfil</h2>
+            <p class="subtitle">Actualiza tu información pública y preferencias de viaje</p>
+
+            <div class="avatar-edit-group">
+                <div class="avatar-circle-big">D</div>
+                <button type="button" class="btn-change-photo">Cambiar foto de perfil</button>
+            </div>
+
+            <form id="editProfileForm">
+                <div class="modal-form-group">
+                    <label for="modal-name">Nombre completo</label>
+                    <input type="text" id="modal-name" value="Diego Ayala" required>
+                </div>
+
+                <div class="modal-form-group">
+                    <label for="modal-email">Correo electrónico</label>
+                    <input type="email" id="modal-email" class="input-highlight" value="diego.ayala@ejemplo.com" required>
+                </div>
+
+                <div class="modal-form-group">
+                    <label for="modal-transport">Transporte habitual</label>
+                    <input type="text" id="modal-transport" value="Vehículo propio">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="closeModalBtn">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT JS PARA FAVORITOS Y VENTANA MODAL -->
+    <script>
+        // 1. CARGAR Y MOSTRAR DESTINOS GUARDADOS DE LOCALSTORAGE
+        function cargarFavoritosPerfil() {
+            const container = document.getElementById('savedItemsContainer');
+            const favoritos = JSON.parse(localStorage.getItem('destinosFavoritos')) || [];
+
+            if (favoritos.length === 0) {
+                container.innerHTML = `
+                    <p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">
+                        Aún no has guardado ningún destino. Haz clic en el ❤️ en Inicio o Explorar para guardarlos aquí.
+                    </p>
+                `;
+                return;
+            }
+
+            container.innerHTML = "";
+            favoritos.forEach(dest => {
+                const itemHTML = `
+                    <div class="profile-item-row" id="fav-item-${dest.id}">
+                        <div class="item-thumb" style="background: url('${dest.img || dest.imagen}') center/cover;"></div>
+                        <div class="item-info">
+                            <h4><a href="detalles.html?destino=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h4>
+                            <p>${dest.dpto || dest.ubicacion || 'El Salvador'}</p>
+                        </div>
+                        <button class="btn-delete-item" onclick="eliminarFavorito('${dest.id}')" title="Eliminar de guardados">🗑️</button>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+        }
+
+        // 2. ELIMINAR UN DESTINO GUARDADO
+        function eliminarFavorito(id) {
+            let favoritos = JSON.parse(localStorage.getItem('destinosFavoritos')) || [];
+            favoritos = favoritos.filter(item => item.id !== id);
+            localStorage.setItem('destinosFavoritos', JSON.stringify(favoritos));
+            cargarFavoritosPerfil(); // Recargar lista
+        }
+
+        // 3. LÓGICA DEL MODAL DE EDICIÓN
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('editProfileModal');
+        const form = document.getElementById('editProfileForm');
+
+        openBtn.addEventListener('click', () => modal.classList.add('active'));
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        // Guardar cambios del nombre / transporte en vivo
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nuevoNombre = document.getElementById('modal-name').value;
+            const nuevoTransporte = document.getElementById('modal-transport').value;
+
+            if (nuevoNombre) document.getElementById('userNameDisplay').innerText = nuevoNombre;
+            if (nuevoTransporte) document.getElementById('userTransportDisplay').innerText = nuevoTransporte;
+
+            modal.classList.remove('active');
+        });
+
+        // Cargar favoritos al abrir la página
+        window.addEventListener('DOMContentLoaded', cargarFavoritosPerfil);
+    </script>
+
+</body>
+</html>

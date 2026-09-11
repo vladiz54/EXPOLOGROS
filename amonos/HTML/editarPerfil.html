@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Editar Perfil</title>
+    <!-- Enlazamos tanto el CSS del perfil como el de formularios para reusar estilos -->
+    <link rel="stylesheet" href="CSS/perfil.css">
+    <link rel="stylesheet" href="CSS/sesion.css">
+    <style>
+        /* Ajustes específicos para que convivan ambos estilos limpiamente */
+        .edit-profile-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .avatar-edit-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .avatar-preview {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: var(--azul-profundo);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            position: relative;
+        }
+        .btn-change-avatar {
+            font-size: 13px;
+            color: var(--coral-marca);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .form-actions-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn-cancel {
+            width: 100%;
+            height: 48px;
+            background-color: #f1f5f9;
+            color: var(--texto-suave);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            line-height: 48px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn-cancel:hover {
+            background-color: #e2e8f0;
+            color: var(--azul-profundo);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA GLOBAL DE ÁMONOS -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📍 ÁMONOS</div>
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="perfil.html" class="active">Perfil</a></li>
+                </ul>
+                <div class="avatar" style="background-color: var(--azul-profundo);"></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DEL FORMULARIO -->
+    <main class="container">
+        <div class="edit-profile-container">
+            
+            <header style="text-align: center; margin-bottom: 25px;">
+                <h2 style="font-weight: 800; color: var(--azul-profundo);">Editar Perfil</h2>
+                <p style="font-size: 14px; color: var(--texto-suave);">Actualiza tu información pública y preferencias de viaje</p>
+            </header>
+
+            <!-- SECCIÓN FOTO DE PERFIL -->
+            <div class="avatar-edit-section">
+                <div class="profile-avatar-big">D</div>
+                <button type="button" class="btn-change-avatar">Cambiar foto de perfil</button>
+            </div>
+
+            <!-- FORMULARIO DE ACTUALIZACIÓN -->
+            <!-- Al darle "Guardar" simula el éxito regresando al perfil -->
+            <form action="perfil.html" method="GET" class="login-form" style="max-width: 100%;">
+                
+                <div class="form-group">
+                    <label for="edit-name">Nombre completo</label>
+                    <input type="text" id="edit-name" name="name" value="Diego Ayala" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-email">Correo electrónico</label>
+                    <input type="email" id="edit-email" name="email" value="diego.ayala@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-transport">Transporte habitual</label>
+                    <input type="text" id="edit-transport" name="transport" value="Vehículo propio">
+                </div>
+
+                <!-- BOTONES DE ACCIÓN -->
+                <div class="form-actions-row">
+                    <a href="perfil.html" class="btn-cancel">Cancelar</a>
+                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+</body>
+</html>
