@@ -14,7 +14,7 @@ try {
     $query = "SELECT d.id_destino AS id,
                      d.nombre,
                      d.departamento AS ubicacion,
-                     d.precio_entrada AS precio,
+                     (d.precio_entrada + d.precio_comida + d.precio_parqueo) AS precio,
                      d.puntaje AS rating,
                      c.nombre_categoria AS categoria,
                      (SELECT imagen_url FROM imagenes_destino img WHERE img.id_destino = d.id_destino LIMIT 1) AS imagen,
