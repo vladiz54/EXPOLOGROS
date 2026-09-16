@@ -1,0 +1,189 @@
+:root {
+    --primary-color: #1e3a8a; /* Azul Marino */
+    --secondary-color: #10b981; /* Verde */
+    --accent-color: #f97316; /* Naranja */
+    --alert-color: #ef4444; /* Rojo */
+    --bg-main: linear-gradient(135deg, #f0f4ff 0%, #eefcf5 100%); /* Fondo Gradiente Suave */
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 25px -5px rgba(30, 58, 138, 0.1);
+    --radius: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-main);
+    background-attachment: fixed;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* HEADER MODERNIZADO */
+header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    animation: slideFromLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.menu-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-links li {
+    margin: 0 15px;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.menu-links a:hover {
+    color: var(--primary-color);
+    background: rgba(30, 58, 138, 0.05);
+}
+
+.menu-links a.active {
+    color: var(--white);
+    background: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    background-color: var(--accent-color);
+}
+
+@keyframes slideFromLeft {
+    0% { opacity: 0; transform: translateX(-35px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ESTILOS GLOBALES DE TARJETAS */
+.card-modern {
+    background: var(--bg-card);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* BOTONES VIBRANTES */
+.btn-vibrant {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #ea580c 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
