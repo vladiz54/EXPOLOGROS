@@ -113,22 +113,20 @@ function renderizarDestinos(lista) {
 
     lista.forEach(dest => {
         const cardHTML = `
-            <div class="card-destino">
+            <div class="destino-card">
                 <a href="detalles.html?id=${dest.id}"
-                   class="card-img-sim"
+                   class="dest-img-sim"
                    style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${dest.imagen}') center/cover;">
                 </a>
-                <div class="card-body">
-                    <div class="card-main-info">
-                        <h2><a href="detalles.html?id=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h2>
-                        <div class="card-location"><i class="fa-solid fa-location-dot"></i> ${dest.ubicacion}</div>
-                        <div class="card-tags-info"><span class="category-badge">${dest.categoria}</span></div>
-                        <p class="card-description">${dest.descripcion}</p>
+                <div class="dest-body">
+                    <div>
+                        <h4><a href="detalles.html?id=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h4>
+                        <p class="dpto">${dest.ubicacion}</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="price-tag">$${parseFloat(dest.precio).toFixed(2)}</span>
+                    <div class="dest-footer">
+                        <span class="price">$${parseFloat(dest.precio).toFixed(2)}</span>
                         <div class="meta-right">
-                            <span class="star">⭐ ${dest.rating}</span>
+                            <span class="rating">⭐ ${dest.rating}</span>
                             <button class="btn-heart" title="Guardar" onclick="toggleHeart(this, ${dest.id})">❤️</button>
                         </div>
                     </div>

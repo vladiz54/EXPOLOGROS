@@ -20,13 +20,13 @@ body {
 .category-tag {
     background: var(--accent-color);
     color: white;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 10px rgba(243, 162, 97, 0.3);
 }
 
 .btn-planificar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 4px 15px rgba(56, 113, 128, 0.3);
 }
 
 .btn-favorite.liked {
@@ -66,9 +66,9 @@ body {
 }
 
 .btn-plan-budget {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 4px 15px rgba(56, 113, 128, 0.3);
 }
 
 .btn-submit-review {

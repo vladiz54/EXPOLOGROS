@@ -11,22 +11,20 @@
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo-container">
-                    <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
-                    <span class="logo-text">ÁMONOS</span>
-                </a>
-                <ul class="menu-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="explorar.html" class="active">Explorar destinos</a></li>
-                    <li><a href="planificador.html">Planificador</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
-                </ul>
-                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
-            </nav>
-        </div>
+    <header class="encabezado">
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
+                <span class="logo-text">ÁMONOS</span>
+            </a>
+            <ul class="menu-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="explorar.html" class="active">Explorar destinos</a></li>
+                <li><a href="planificador.html">Planificador</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+            </ul>
+            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+        </nav>
     </header>
 
     <main class="explore-wrapper">
@@ -57,10 +55,12 @@
                         <label class="filter-label">Categoría</label>
                         <div class="chips-container" id="categoryChips">
                             <span class="chip active" data-category="todos">Todos</span>
+                            <span class="chip" data-category="naturaleza">Naturaleza</span>
                             <span class="chip" data-category="aventura">Aventura</span>
+                            <span class="chip" data-category="cultura">Cultura</span>
+                            <span class="chip" data-category="gastronomia">Gastronomía</span>
+                            <span class="chip" data-category="pueblos vivos">Pueblos Vivos</span>
                             <span class="chip" data-category="playa">Playa</span>
-                            <span class="chip" data-category="cultural">Cultural</span>
-                            <span class="chip" data-category="gastronomico">Gastronómico</span>
                             <span class="chip" data-category="montana">Montaña</span>
                         </div>
                     </div>
@@ -87,6 +87,34 @@
                     </div>
 
                     <button id="resetFilters" class="btn-reset">Limpiar Filtros</button>
+                </div>
+
+                <!-- SECCIÓN DE EXTRAS PARA LLENAR EL ESPACIO (EL RINCÓN DEL VIAJERO) -->
+                <div class="sidebar-extras">
+                    <div class="extra-card tip-card">
+                        <div class="extra-header">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <h4>Tip del Día</h4>
+                        </div>
+                        <p>Visita los pueblos vivos temprano en la mañana para capturar la mejor luz y evitar las multitudes.</p>
+                    </div>
+
+                    <div class="extra-card secret-card">
+                        <div class="extra-header">
+                            <i class="fa-solid fa-gem"></i>
+                            <h4>Gema Oculta</h4>
+                        </div>
+                        <p>No olvides explorar las rutas menos transitadas en la zona de montaña; ahí están las mejores vistas.</p>
+                    </div>
+
+                    <div class="extra-card cta-card">
+                        <div class="extra-header">
+                            <i class="fa-solid fa-calculator"></i>
+                            <h4>¿Presupuesto Ajustado?</h4>
+                        </div>
+                        <p>Usa nuestro planificador inteligente para optimizar cada centavo de tu viaje.</p>
+                        <a href="planificador.html" class="btn-extra-cta">Planificar Ahora ➔</a>
+                    </div>
                 </div>
             </aside>
 

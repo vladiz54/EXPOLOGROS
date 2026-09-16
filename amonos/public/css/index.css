@@ -91,9 +91,9 @@ body {
 }
 
 .hero-buttons .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
     color: white !important;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+    box-shadow: 0 4px 15px rgba(56, 113, 128, 0.4);
     border: none;
 }
 
@@ -130,14 +130,14 @@ body {
 .view-all-link {
     text-decoration: none;
     color: white;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
     padding: 10px 22px;
     border-radius: var(--radius);
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 4px 12px rgba(56, 113, 128, 0.2);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -145,8 +145,8 @@ body {
 
 .view-all-link:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-    background: linear-gradient(135deg, #0a5d73 0%, #1e3a8a 100%);
+    box-shadow: 0 6px 20px rgba(56, 113, 128, 0.3);
+    background: linear-gradient(135deg, #2a5a64 0%, #1e3a44 100%);
     color: white;
 }
 
@@ -574,12 +574,12 @@ body {
 
 /* Budget Banner */
 .budget-banner {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
     border-radius: var(--radius);
     padding: 40px;
     max-width: 1100px;
     margin: 0 auto;
-    box-shadow: 0 15px 30px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 15px 30px rgba(56, 113, 128, 0.3);
     color: white;
     transition: transform 0.3s ease;
 }
