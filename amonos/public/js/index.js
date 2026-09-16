@@ -2,12 +2,6 @@ let categoriaSeleccionada = "Todos";
 let departamentoSeleccionado = "Todos";
 
 document.addEventListener("DOMContentLoaded", () => {
-    inicializarFiltros();
-    cargarDestinos();
-    inicializarSlider();
-});
-
-function inicializarFiltros() {
     const botonesCategoria = document.querySelectorAll(".categories-list .cat-card");
     if (botonesCategoria.length > 0) {
         botonesCategoria[0].classList.add("active");
@@ -30,7 +24,7 @@ function inicializarFiltros() {
             cargarDestinos();
         });
     }
-}
+});
 
 async function cargarDestinos() {
     const contenedor = document.querySelector(".grid-destinos");
