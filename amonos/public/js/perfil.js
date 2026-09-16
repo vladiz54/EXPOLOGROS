@@ -21,20 +21,49 @@ document.addEventListener('DOMContentLoaded', () => {
             await guardarPerfil();
         });
     }
+
+    // Manejo de Cerrar Sesión
+    const logoutLink = document.querySelector('.logout-link');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                try {
+                    const response = await fetch('../auth/logout.php');
+                    const result = await response.json();
+                    if (result.success) {
+                        window.location.href = 'sesion.html';
+                    } else {
+                        alert('Error al cerrar sesión: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error en logout:', error);
+                    alert('Ocurrió un error al intentar cerrar la sesión.');
+                }
+            }
+        });
+    }
 });
 
 async function cargarDatosPerfil() {
     try {
         const response = await fetch('../auth/read_profile.php');
+        if (response.status === 401) {
+            window.location.href = 'sesion.html';
+            return;
+        }
         const result = await response.json();
         if (result.success) {
             const user = result.data;
             document.getElementById('userNameDisplay').innerText = user.nombre;
             document.getElementById('modal-name').value = user.nombre;
             document.getElementById('modal-email').value = user.correo;
+        } else {
+            window.location.href = 'sesion.html';
         }
     } catch (error) {
         console.error('Error cargando perfil:', error);
+        window.location.href = 'sesion.html';
     }
 }
 
