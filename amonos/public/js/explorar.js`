@@ -1,39 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById('searchInput');
-    const heroSearchInput = document.getElementById('heroSearchInput');
     const categoryChips = document.querySelectorAll('.chip[data-category]');
-    const heroChips = document.querySelectorAll('.hero-chip');
     const budgetFilters = document.querySelectorAll('.budget-filter');
     const resetBtn = document.getElementById('resetFilters');
 
     cargarDestinos();
-    initDynamicText();
 
-    // Buscador lateral
     if (searchInput) {
         searchInput.addEventListener('input', aplicarFiltros);
     }
 
-    // Buscador Hero
-    if (heroSearchInput) {
-        heroSearchInput.addEventListener('input', (e) => {
-            if (searchInput) searchInput.value = e.target.value;
-            aplicarFiltros();
-        });
-    }
-
-    // Chips laterales
     categoryChips.forEach(chip => {
         chip.addEventListener('click', (e) => {
-            setActiveChip(e.target.getAttribute('data-category'));
-            aplicarFiltros();
-        });
-    });
-
-    // Chips Hero
-    heroChips.forEach(chip => {
-        chip.addEventListener('click', (e) => {
-            setActiveChip(e.target.getAttribute('data-category'));
+            categoryChips.forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
             aplicarFiltros();
         });
     });
@@ -45,25 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             if (searchInput) searchInput.value = "";
-            if (heroSearchInput) heroSearchInput.value = "";
-            setActiveChip('todos');
+            categoryChips.forEach(c => c.classList.remove('active'));
+            document.querySelector('.chip[data-category="todos"]').classList.add('active');
             budgetFilters.forEach(f => f.checked = true);
             aplicarFiltros();
         });
     }
 });
-
-function setActiveChip(category) {
-    // Actualizar chips laterales
-    document.querySelectorAll('.chip[data-category]').forEach(c => {
-        c.classList.toggle('active', c.getAttribute('data-category') === category);
-    });
-
-    // Actualizar chips del hero
-    document.querySelectorAll('.hero-chip').forEach(c => {
-        c.classList.toggle('active', c.getAttribute('data-category') === category);
-    });
-}
 
 let destinosBD = [];
 
@@ -129,11 +97,89 @@ function aplicarFiltros() {
 }
 
 function getRelevantImage(dest) {
-    // SISTEMA DE IMÁGENES LOCALES
-    // Esto elimina la dependencia de servidores externos que pueden estar bloqueados.
+    const name = dest.nombre.toLowerCase();
+    const cat = dest.categoria.toLowerCase();
     const id = parseInt(dest.id) || 0;
-    const imageIndex = (id % 5) + 1;
-    return `imagenes/destinos/img${imageIndex}.jpg`;
+
+    // Diccionario extendido con destinos específicos de El Salvador y categorías
+    const imageMap = {
+        'playa': [
+            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1506929199175-6093c7306852?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1544551763-46a016688c6a?auto=format&fit=crop&w=800&q=80'
+        ],
+        'tunco': ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'],
+        'zonte': ['https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80'],
+
+        'volcan': [
+            'https://images.unsplash.com/photo-1559128010-7c684737f6a9?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1523913726333-33303692ca3d?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1444464666168-49d63378f5f2?auto=format&fit=crop&w=800&q=80'
+        ],
+        'montana': [
+            'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1472214103451-9374ca1b428a?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1454496514100-61d4a752e38a?auto=format&fit=crop&w=800&q=80'
+        ],
+        'imposible': ['https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80'],
+
+        'lago': [
+            'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1439066615861-d1af74d74007?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1476514525535-07fb334ce21f?auto=format&fit=crop&w=800&q=80'
+        ],
+        'coatepeque': ['https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80'],
+
+        'pueblo': [
+            'https://images.unsplash.com/photo-1580658265965-7674e3350067?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1552832230-c017d707468f?auto=format&fit=crop&w=800&q=80'
+        ],
+        'suchitoto': ['https://images.unsplash.com/photo-1580658265965-7674e3350067?auto=format&fit=crop&w=800&q=80'],
+        'cultura': [
+            'https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80'
+        ],
+
+        'naturaleza': [
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80'
+        ],
+        'gastronomia': [
+            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80'
+        ],
+        'aventura': [
+            'https://images.unsplash.com/photo-1533240332313-0db49b47946a?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1501555088652-f873b23870d6?auto=format&fit=crop&w=800&q=80'
+        ]
+    };
+
+    let selectedImages = null;
+
+    for (let key in imageMap) {
+        if (name.includes(key)) {
+            selectedImages = imageMap[key];
+            break;
+        }
+    }
+
+    if (!selectedImages) {
+        for (let key in imageMap) {
+            if (cat.includes(key)) {
+                selectedImages = imageMap[key];
+                break;
+            }
+        }
+    }
+
+    if (selectedImages) {
+        return selectedImages[id % selectedImages.length];
+    }
+
+    return 'https://images.unsplash.com/photo-1590059532644-748119e67b00?auto=format&fit=crop&w=800&q=80';
 }
 
 function renderizarDestinos(lista) {
@@ -152,25 +198,14 @@ function renderizarDestinos(lista) {
     if (resultsCount) resultsCount.innerText = `Se encontraron ${lista.length} destinos`;
 
     lista.forEach(dest => {
-        let imgUrl = "";
-        if (dest.imagen && dest.imagen.startsWith('http')) {
-            imgUrl = dest.imagen;
-        }
-        else if (dest.imagen && dest.imagen.trim() !== "") {
-            imgUrl = dest.imagen;
-        }
-        else {
-            imgUrl = getRelevantImage(dest);
-        }
+        const hasValidRemoteImage = dest.imagen && (dest.imagen.startsWith('http'));
+        const imgUrl = hasValidRemoteImage ? dest.imagen : getRelevantImage(dest);
 
         const cardHTML = `
             <div class="destino-card">
-                <a href="detalles.html?id=${dest.id}" class="dest-img-sim">
-                    <img src="${imgUrl}"
-                         alt="${dest.nombre}"
-                         class="dest-img"
-                         onerror="this.src='imagenes/destinos/img1.jpg';">
-                    <div class="dest-overlay"></div>
+                <a href="detalles.html?id=${dest.id}"
+                   class="dest-img-sim"
+                   style="display: block; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('${imgUrl}') center/cover;">
                 </a>
                 <div class="dest-body">
                     <div>
@@ -218,41 +253,4 @@ function mostrarError(mensaje) {
     const cardsGrid = document.getElementById('cardsGrid');
     if (resultsCount) resultsCount.innerText = mensaje;
     if (cardsGrid) cardsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #d9534f;">${mensaje}</p>`;
-}
-
-function initDynamicText() {
-    const textElement = document.getElementById('dynamic-text');
-    if (!textElement) return;
-
-    const words = ['destino', 'Paraíso', 'Escape', 'Descubrimiento', 'Viaje'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typeSpeed = 150;
-
-    function type() {
-        const currentWord = words[wordIndex];
-        const currentText = isDeleting
-            ? currentWord.substring(0, charIndex - 1)
-            : currentWord.substring(0, charIndex);
-
-        textElement.innerText = currentText;
-
-        if (!isDeleting && charIndex < currentWord.length) {
-            charIndex++;
-            setTimeout(type, typeSpeed);
-        } else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            setTimeout(type, typeSpeed / 2);
-        } else {
-            // Pausa antes de cambiar de palabra o empezar a borrar
-            isDeleting = !isDeleting;
-            if (!isDeleting) {
-                wordIndex = (wordIndex + 1) % words.length;
-            }
-            setTimeout(type, isDeleting ? 1000 : 500);
-        }
-    }
-
-    type();
 }
