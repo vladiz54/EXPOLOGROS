@@ -1,108 +1,3 @@
-:root {
-    --primary-color: #1e3a8a; /* Azul Marino Profesional */
-    --secondary-color: #10b981; /* Verde Vibrante */
-    --accent-color: #f97316; /* Naranja Energético */
-    --alert-color: #ef4444; /* Rojo Alerta */
-    --bg-light: #f8fafc;
-    --text-dark: #0f172a;
-    --text-muted: #64748b;
-    --white: #ffffff;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
-    --radius: 16px;
-}
-
-body {
-    background-color: var(--bg-light);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: var(--text-dark);
-    margin: 0;
-}
-
-/* HEADER (Standardized) */
-header {
-    background-color: var(--white);
-    box-shadow: var(--shadow-sm);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    animation: slideFromLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.logo-img {
-    height: 40px;
-    width: auto;
-}
-
-.logo-text {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-}
-
-.menu-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-links li {
-    margin: 0 15px;
-}
-
-.menu-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 15px;
-    transition: color 0.3s;
-}
-
-.menu-links a:hover, .menu-links a.active {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 4px;
-}
-
-.avatar {
-    width: 38px;
-    height: 38px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-@keyframes slideFromLeft {
-    0% { opacity: 0; transform: translateX(-35px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-
 /* PLANNER MAIN LAYOUT */
 .planner-container {
     max-width: 1200px;
@@ -123,6 +18,7 @@ nav {
     box-shadow: var(--shadow-md);
     border: 1px solid #e2e8f0;
     margin-bottom: 30px;
+    color: var(--text-dark);
 }
 
 .card-header {
@@ -137,6 +33,7 @@ nav {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 /* Form Elements */
@@ -178,6 +75,8 @@ nav {
     border-radius: 12px;
     font-size: 1rem;
     transition: all 0.3s;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-dark);
 }
 
 #destino-select {
@@ -187,7 +86,7 @@ nav {
 #input-presupuesto:focus, #destino-select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(13, 116, 144, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
 }
 
 /* Inspiration Section */
@@ -199,6 +98,7 @@ nav {
     display: flex;
     gap: 30px;
     align-items: center;
+    color: var(--text-dark);
 }
 
 .inspiration-content {
@@ -266,6 +166,7 @@ nav {
     box-shadow: var(--shadow-md);
     border: 1px solid #e2e8f0;
     border-top: 5px solid var(--primary-color);
+    color: var(--text-dark);
 }
 
 .panel-header {
@@ -279,6 +180,7 @@ nav {
     font-size: 1.3rem;
     font-weight: 700;
     margin: 0;
+    color: var(--text-dark);
 }
 
 .budget-metrics {
@@ -374,6 +276,7 @@ nav {
 .item-name {
     font-weight: 600;
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .item-unit {
@@ -394,6 +297,8 @@ nav {
     border-radius: 8px;
     text-align: center;
     font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-dark);
 }
 
 .subtotal {

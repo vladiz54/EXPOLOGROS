@@ -14,7 +14,7 @@
         <nav>
             <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
             <a href="index.html" class="logo-container">
-                <img src="img/descarga.png" alt="Ámonos Logo" class="logo-img">
+                <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
                 <span class="logo-text">ÁMONOS</span>
             </a>
 
@@ -189,35 +189,46 @@
     <!-- SECCIÓN RECOMENDACIONES INTELIGENTES -->
     <section class="smart-recommendation-section">
         <div class="container">
-            <h2>Descubre qué lugares son para ti</h2>
-            <p class="sub-section-text">Recomendaciones inteligentes según tu estilo y preferencias de aventura.</p>
+            <div class="recommendation-header">
+                <h2>Descubre qué lugares son para ti</h2>
+                <p class="sub-section-text">Recomendaciones inteligentes basadas en tu estilo de viaje y preferencias de aventura.</p>
+            </div>
 
             <div class="flex-recommendations">
+                <!-- Tarjeta de Preferencia -->
                 <div class="preference-box">
+                    <div class="pref-icon">✨</div>
                     <span class="box-tag">Tu categoría ideal</span>
                     <h3>Cultura y Gastronomía</h3>
                     <p class="box-description">Para ti, los mejores viajes son los que exploran historias milenarias y sabores locales. Te encantarán los museos, la arquitectura histórica y probar platillos tradicionales.</p>
-                    <a href="explorar.html?filtro=Cultura" class="btn btn-primary">Explorar Categoría</a>
+                    <a href="explorar.html?filtro=Cultura" class="btn-pref">Explorar Categoría ➔</a>
                 </div>
 
+                <!-- Tarjeta de Destino Destacado -->
                 <div class="featured-dest-box">
-                    <div class="featured-icon" style="background: url('../img/Screenshot 2026-09-16 093137.png') center/cover;"></div>
+                    <div class="featured-img-container">
+                        <img src="imagenes/Screenshot 2026-09-16 093137.png" alt="Suchitoto" class="featured-img">
+                    </div>
                     <div class="featured-body">
                         <span class="box-tag-alt">Destino Sugerido</span>
                         <h3>Suchitoto</h3>
-                        <div class="featured-location">Cuscatlán — Histórico</div>
+                        <div class="featured-location">
+                            <i class="fa-solid fa-location-dot"></i> Cuscatlán — Histórico
+                        </div>
                         <p class="featured-description">Un hermoso pueblo colonial que resguarda la esencia cultural, con calles empedradas y vistas perfectas al Lago de Suchitlán.</p>
-                        <a href="detalles.html?destino=suchitoto" class="btn btn-primary">Ver Detalles</a>
+                        <a href="detalles.html?destino=suchitoto" class="btn-featured">Ver Detalles ➔</a>
                     </div>
                 </div>
             </div>
 
             <div class="budget-banner">
-                <div class="budget-text">
-                    <h3>¿No sabes cuánto gastar?</h3>
-                    <p>Ingresa tu presupuesto y encuentra planes ideales para tu próxima aventura.</p>
+                <div class="budget-content">
+                    <div class="budget-text">
+                        <h3>¿No sabes cuánto gastar?</h3>
+                        <p>Ingresa tu presupuesto y encuentra planes ideales para tu próxima aventura.</p>
+                    </div>
+                    <a href="planificador.html" class="btn-budget">Comenzar Ahora ➔</a>
                 </div>
-                <a href="planificador.html" class="btn btn-primary">Comenzar Ahora ➔</a>
             </div>
         </div>
     </section>

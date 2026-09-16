@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
             cargarDestinos();
         });
     }
+
+    // INICIALIZAR EL CARRUSEL DE VIDEOS
+    inicializarSlider();
 });
 
 async function cargarDestinos() {

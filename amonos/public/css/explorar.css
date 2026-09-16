@@ -6,7 +6,7 @@ body {
 
 /* HERO SECTION */
 .explore-hero {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url('https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=format&fit=crop&w=1600&q=80') center/cover;
     height: 300px;
     display: flex;
@@ -59,37 +59,127 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 25px;
+    font-weight: 800;
+}
+
+.filter-section {
+    margin-bottom: 25px;
 }
 
 .filter-label {
+    display: block;
     font-weight: 600;
     color: var(--text-dark);
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
 }
 
 .search-box input {
-    border: 1px solid #cbd5e1;
+    width: 100%;
+    padding: 12px 12px 12px 38px;
+    border: 2px solid #e2e8f0;
     border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
 }
 
 .search-box input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+    outline: none;
+}
+
+.chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .chip {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid #e2e8f0;
+    background: var(--white);
+    border: 2px solid #e2e8f0;
     border-radius: 20px;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.2s;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.chip:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .chip.active {
     background: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
-    box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+    transform: scale(1.05);
+}
+
+/* Budget Options */
+.budget-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.budget-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: background 0.2s;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+}
+
+.budget-item:hover {
+    background: rgba(30, 58, 138, 0.05);
+}
+
+.budget-item input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.btn-reset {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: var(--white);
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-reset:hover {
+    background: var(--alert-color);
+    color: white;
+    border-color: var(--alert-color);
 }
 
 /* RESULTS AREA */
@@ -99,6 +189,26 @@ body {
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.sort-options select {
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    outline: none;
 }
 
 .cards-grid {
@@ -107,30 +217,122 @@ body {
     gap: 25px;
 }
 
-.destino-card {
+.card-destino {
     background: var(--bg-card);
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     border: 1px solid rgba(255, 255, 255, 0.6);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.destino-card:hover {
+.card-destino:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .card-img-sim {
     height: 200px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transition: transform 0.5s ease;
+}
+
+.card-destino:hover .card-img-sim {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-main-info h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.card-location {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-badge {
+    display: inline-block;
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--primary-color);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
 }
 
 .price-tag {
     color: var(--secondary-color);
     font-weight: 800;
+    font-size: 18px;
+}
+
+.meta-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.star {
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.btn-heart {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s ease;
 }
 
 .btn-heart.liked {
     color: var(--alert-color);
+    filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.5));
+}
+
+.no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 50px 0;
+    color: var(--text-muted);
+}
+
+.no-results i {
+    font-size: 50px;
+    display: block;
+    margin-bottom: 15px;
+    color: #cbd5e1;
 }

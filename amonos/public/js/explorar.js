@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById('searchInput');
     const categoryChips = document.querySelectorAll('.chip[data-category]');
+    const budgetFilters = document.querySelectorAll('.budget-filter');
+    const resetBtn = document.getElementById('resetFilters');
 
     cargarDestinos();
 
@@ -15,10 +17,23 @@ document.addEventListener("DOMContentLoaded", () => {
             aplicarFiltros();
         });
     });
+
+    budgetFilters.forEach(filter => {
+        filter.addEventListener('change', aplicarFiltros);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (searchInput) searchInput.value = "";
+            categoryChips.forEach(c => c.classList.remove('active'));
+            document.querySelector('.chip[data-category="todos"]').classList.add('active');
+            budgetFilters.forEach(f => f.checked = true);
+            aplicarFiltros();
+        });
+    }
 });
 
 let destinosBD = [];
-let categoriaSeleccionada = "todos";
 
 async function cargarDestinos() {
     const resultsCount = document.getElementById('resultsCount');
@@ -52,11 +67,30 @@ function aplicarFiltros() {
     const activeChip = document.querySelector('.chip[data-category].active');
     const cat = activeChip ? activeChip.getAttribute('data-category').toLowerCase() : "todos";
 
+    const selectedBudgets = Array.from(document.querySelectorAll('.budget-filter:checked')).map(f => f.value);
+
     const filtrados = destinosBD.filter(dest => {
-        const coincideTexto = dest.nombre.toLowerCase().includes(texto) ||
-                              dest.ubicacion.toLowerCase().includes(texto);
-        const coincideCat = (cat === "todos") || (dest.categoria.toLowerCase() === cat);
-        return coincideTexto && coincideCat;
+        const nombre = dest.nombre.toLowerCase();
+        const ubicacion = dest.ubicacion.toLowerCase();
+        const coincidenTexto = nombre.includes(texto) || ubicacion.includes(texto);
+
+        const coincidenCat = (cat === "todos") || (dest.categoria.toLowerCase() === cat);
+
+        const precio = parseFloat(dest.precio);
+        let coincidePresupuesto = true;
+        if (selectedBudgets.length < 3) {
+            const esEconomico = precio < 20;
+            const esConforme = precio >= 20 && precio <= 50;
+            const esPremium = precio > 50;
+
+            coincidePresupuesto = (
+                (selectedBudgets.includes('economico') && esEconomico) ||
+                (selectedBudgets.includes('conforme') && esConforme) ||
+                (selectedBudgets.includes('premium') && esPremium)
+            );
+        }
+
+        return coincidenTexto && coincidenCat && coincidePresupuesto;
     });
 
     renderizarDestinos(filtrados);
@@ -70,7 +104,7 @@ function renderizarDestinos(lista) {
     cardsGrid.innerHTML = "";
 
     if (lista.length === 0) {
-        cardsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 20px;">No se encontraron destinos.</p>`;
+        cardsGrid.innerHTML = `<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No se encontraron destinos que coincidan con tus filtros.</p></div>`;
         if (resultsCount) resultsCount.innerText = "0 resultados encontrados";
         return;
     }
@@ -85,17 +119,17 @@ function renderizarDestinos(lista) {
                    style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${dest.imagen}') center/cover;">
                 </a>
                 <div class="card-body">
-                    <div>
+                    <div class="card-main-info">
                         <h2><a href="detalles.html?id=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h2>
-                        <div class="card-location">${dest.ubicacion}</div>
-                        <div class="card-tags-info">${dest.categoria}</div>
+                        <div class="card-location"><i class="fa-solid fa-location-dot"></i> ${dest.ubicacion}</div>
+                        <div class="card-tags-info"><span class="category-badge">${dest.categoria}</span></div>
                         <p class="card-description">${dest.descripcion}</p>
                     </div>
                     <div class="card-footer">
-                        <span class="price-tag">$${dest.precio}</span>
+                        <span class="price-tag">$${parseFloat(dest.precio).toFixed(2)}</span>
                         <div class="meta-right">
                             <span class="star">⭐ ${dest.rating}</span>
-                            <button class="btn-heart" title="Guardar" onclick="toggleHeart(this)">❤️</button>
+                            <button class="btn-heart" title="Guardar" onclick="toggleHeart(this, ${dest.id})">❤️</button>
                         </div>
                     </div>
                 </div>
@@ -105,10 +139,7 @@ function renderizarDestinos(lista) {
     });
 }
 
-async function toggleHeart(btn) {
-    const card = btn.closest('.card-destino');
-    const idDestino = card.querySelector('a').getAttribute('href').split('=')[1];
-
+async function toggleHeart(btn, idDestino) {
     btn.classList.toggle('liked');
     btn.style.transform = "scale(1.3)";
     setTimeout(() => btn.style.transform = "scale(1)", 150);
