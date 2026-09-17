@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@700&display=swap');
 
 :root {
-    --primary-color: #387180; /* Celeste Profundo - Elegante y Profesional */
-    --secondary-color: #3a9aa4; /* Celeste Medio - Moderno y Fresco */
-    --accent-color: #f3a261; /* Naranja - Cálido y Llamativo */
-    --alert-color: #ef4444; /* Rojo - Para alertas/errores */
-    --bg-main: linear-gradient(135deg, #cbdcf0 0%, #a3b8cc 100%); /* Steel-Azure: Un tono sofisticado, rico y con presencia */
-    --bg-card: rgba(255, 255, 255, 0.92);
-    --text-dark: #1a202c; /* Un tono más oscuro para máximo contraste sobre el fondo rico */
-    --text-muted: #4a5568;
+    --primary-color: #0369a1; /* Celeste Vibrante - Profesional y con Fuerza */
+    --secondary-color: #0ea5e9; /* Celeste Brillante - Moderno y Energético */
+    --accent-color: #f97316; /* Naranja Vivo - Contraste Máximo y Llamativo */
+    --alert-color: #ef4444; /* Rojo Alerta - Claro y Directo */
+    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%); /* Cielo Claro: Fondo limpio que hace resaltar los colores */
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-dark: #0f172a; /* Slate 900 - Contraste profundo para lectura óptima */
+    --text-muted: #475569; /* Slate 600 - Equilibrio visual */
     --white: #ffffff;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 15px 35px -5px rgba(56, 113, 128, 0.3);
+    --shadow-md: 0 15px 35px -5px rgba(3, 105, 161, 0.3);
     --radius: 20px;
-    --subtle-accent: #82a6c9; /* Celeste Suave para detalles */
+    --subtle-accent: #bae6fd; /* Celeste Suave para detalles */
 }
 
 body {

@@ -30,8 +30,23 @@
     <main class="explore-wrapper">
         <section class="explore-hero">
             <div class="hero-content">
-                <h1>Encuentra tu próximo <span class="highlight">destino</span></h1>
+                <h1>Encuentra tu próximo <span id="dynamic-text" class="highlight">destino</span></h1>
                 <p>Descubre los rincones más mágicos de El Salvador</p>
+
+                <div class="hero-search-container">
+                    <div class="hero-search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="heroSearchInput" placeholder="¿A dónde quieres ir?">
+                    </div>
+                </div>
+
+                <div class="hero-chips-container">
+                    <span class="hero-chip" data-category="naturaleza">🌿 Naturaleza</span>
+                    <span class="hero-chip" data-category="playa">🏖️ Playa</span>
+                    <span class="hero-chip" data-category="aventura">⛰️ Aventura</span>
+                    <span class="hero-chip" data-category="cultura">🏛️ Cultura</span>
+                    <span class="hero-chip" data-category="gastronomia">🍲 Gastronomía</span>
+                </div>
             </div>
         </section>
 
