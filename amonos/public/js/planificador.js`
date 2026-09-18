@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 actualizarPrecioFijo('transporte', costs.parqueo);
                 actualizarPrecioFijo('comida', costs.comida);
                 actualizarPrecioFijo('entradas', costs.entrada);
+                actualizarPrecioFijo('extras', 5.00);
 
                 calcularPresupuesto();
             }
