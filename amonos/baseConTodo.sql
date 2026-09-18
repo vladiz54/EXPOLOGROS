@@ -1,25 +1,8 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versión del servidor:         8.0.30 - MySQL Community Server - GPL
--- SO del servidor:              Win64
--- HeidiSQL Versión:             12.1.0.6537
--- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
--- Volcando estructura de base de datos para amonos
-CREATE DATABASE IF NOT EXISTS `amonos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `amonos` 
 USE `amonos`;
 
--- Volcando estructura para tabla amonos.actividades
+
 CREATE TABLE IF NOT EXISTS `actividades` (
   `id_actividad` int NOT NULL AUTO_INCREMENT,
   `id_destino` int NOT NULL,
@@ -29,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   CONSTRAINT `actividades_ibfk_1` FOREIGN KEY (`id_destino`) REFERENCES `destinos` (`id_destino`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.actividades: ~211 rows (aproximadamente)
+
 INSERT INTO `actividades` (`id_actividad`, `id_destino`, `nombre`) VALUES
 	(1, 1, 'Recorrer senderos ecológicos.'),
 	(2, 1, 'Observar aves y otros animales silvestres.'),
@@ -243,14 +226,14 @@ INSERT INTO `actividades` (`id_actividad`, `id_destino`, `nombre`) VALUES
 	(220, 59, 'Lanchas'),
 	(221, 59, 'Restaurantes con vista');
 
--- Volcando estructura para tabla amonos.categorias_destino
+
 CREATE TABLE IF NOT EXISTS `categorias_destino` (
   `id_categoria` int NOT NULL AUTO_INCREMENT,
   `nombre_categoria` varchar(100) NOT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.categorias_destino: ~5 rows (aproximadamente)
+
 INSERT INTO `categorias_destino` (`id_categoria`, `nombre_categoria`) VALUES
 	(1, 'Aventura'),
 	(2, 'Cultural'),
@@ -258,7 +241,7 @@ INSERT INTO `categorias_destino` (`id_categoria`, `nombre_categoria`) VALUES
 	(4, 'gastronomico'),
 	(5, 'montana');
 
--- Volcando estructura para tabla amonos.destinos
+
 CREATE TABLE IF NOT EXISTS `destinos` (
   `id_destino` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(150) NOT NULL,
@@ -275,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `destinos` (
   CONSTRAINT `destinos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias_destino` (`id_categoria`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.destinos: ~55 rows (aproximadamente)
+
 INSERT INTO `destinos` (`id_destino`, `nombre`, `departamento`, `descripcion`, `precio_entrada`, `precio_comida`, `precio_parqueo`, `precio_hospedaje`, `id_categoria`, `puntaje`) VALUES
 	(1, 'Parque Nacional El Imposible', 'Tacuba, Ahuachapán, El Salvador', 'Es el parque nacional más grande de El Salvador y una de las principales reservas naturales del país. Alberga una gran diversidad de flora y fauna, ríos, cascadas y senderos rodeados de bosque tropical.', 3.00, 6.00, 8.00, 0.00, 1, 4.5),
 	(2, 'Concepción de Ataco', 'Ahuachapán, El Salvador', 'Pueblo ubicado en la Ruta de las Flores, reconocido por sus coloridos murales, clima fresco, artesanías y excelente café. Es uno de los destinos turísticos más visitados del país.', 2.40, 9.60, 6.00, 0.00, 4, 4.5),
@@ -333,7 +316,7 @@ INSERT INTO `destinos` (`id_destino`, `nombre`, `departamento`, `descripcion`, `
 	(56, 'Volcán de San Salvador', 'La Libertad', 'El pulmón de la capital, con senderos que llevan a la cima del volcán.', 3.00, 10.00, 3.00, 0.00, 5, 4.7),
 	(59, 'Laguna de Coatepeque', 'Santa Ana', 'Aguas turquesas y paisajes volcánicos que la hacen un destino imperdible.', 5.00, 15.00, 5.00, 0.00, 5, 4.9);
 
--- Volcando estructura para tabla amonos.favoritos
+
 CREATE TABLE IF NOT EXISTS `favoritos` (
   `id_favorito` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -346,9 +329,7 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
   CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`id_destino`) REFERENCES `destinos` (`id_destino`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.favoritos: ~0 rows (aproximadamente)
 
--- Volcando estructura para tabla amonos.imagenes_destino
 CREATE TABLE IF NOT EXISTS `imagenes_destino` (
   `id_imagen` int NOT NULL AUTO_INCREMENT,
   `id_destino` int NOT NULL,
@@ -358,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_destino` (
   CONSTRAINT `imagenes_destino_ibfk_1` FOREIGN KEY (`id_destino`) REFERENCES `destinos` (`id_destino`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.imagenes_destino: ~66 rows (aproximadamente)
+
 INSERT INTO `imagenes_destino` (`id_imagen`, `id_destino`, `imagen_url`) VALUES
 	(1, 1, 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80'),
 	(2, 1, 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80'),
@@ -427,7 +408,7 @@ INSERT INTO `imagenes_destino` (`id_imagen`, `id_destino`, `imagen_url`) VALUES
 	(69, 56, 'https://images.unsplash.com/photo-1542332213-31f87348055f?auto=format&fit=crop&w=800&q=80'),
 	(72, 59, 'https://images.unsplash.com/photo-1507525428034-b723a96a487a?auto=format&fit=crop&w=800&q=80');
 
--- Volcando estructura para tabla amonos.resenas
+
 CREATE TABLE IF NOT EXISTS `resenas` (
   `id_resena` int NOT NULL AUTO_INCREMENT,
   `id_destino` int NOT NULL,
@@ -442,9 +423,7 @@ CREATE TABLE IF NOT EXISTS `resenas` (
   CONSTRAINT `resenas_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.resenas: ~0 rows (aproximadamente)
 
--- Volcando estructura para tabla amonos.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
@@ -455,10 +434,3 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `correo` (`correo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla amonos.usuarios: ~0 rows (aproximadamente)
-
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
