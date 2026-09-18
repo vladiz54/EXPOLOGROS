@@ -221,6 +221,7 @@ body {
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
+
 .grid-destinos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
