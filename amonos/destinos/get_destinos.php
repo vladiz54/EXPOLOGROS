@@ -5,7 +5,6 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-// Incluimos tu configuración de conexión
 require_once "../config/conexion.php";
 
 $id_destino = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -17,11 +16,9 @@ if ($id_destino <= 0) {
 }
 
 try {
-    // Instanciar base de datos y obtener conexión PDO
     $database = new Database();
     $db = $database->getConnection();
 
-    // 1. Obtener datos principales del destino
     $queryDestino = "SELECT * FROM destinos WHERE id_destino = :id_destino";
     $stmt = $db->prepare($queryDestino);
     $stmt->bindParam(":id_destino", $id_destino, PDO::PARAM_INT);
@@ -35,24 +32,21 @@ try {
 
     $destino = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // 2. Obtener imágenes
     $queryImg = "SELECT imagen_url FROM imagenes_destino WHERE id_destino = :id_destino";
     $stmtImg = $db->prepare($queryImg);
     $stmtImg->bindParam(":id_destino", $id_destino, PDO::PARAM_INT);
     $stmtImg->execute();
     $imagenes = $stmtImg->fetchAll(PDO::FETCH_COLUMN);
 
-    // 3. Obtener actividades
     $queryAct = "SELECT nombre FROM actividades WHERE id_destino = :id_destino";
     $stmtAct = $db->prepare($queryAct);
     $stmtAct->bindParam(":id_destino", $id_destino, PDO::PARAM_INT);
     $stmtAct->execute();
     $actividades = $stmtAct->fetchAll(PDO::FETCH_COLUMN);
 
-    // 4. Obtener reseñas con nombre de usuario
-    $queryResenas = "SELECT r.puntuacion, r.comentario, u.nombre AS usuario 
-                     FROM resenas r 
-                     JOIN usuarios u ON r.id_usuario = u.id_usuario 
+    $queryResenas = "SELECT r.puntuacion, r.comentario, u.nombre AS usuario
+                     FROM resenas r
+                     JOIN usuarios u ON r.id_usuario = u.id_usuario
                      WHERE r.id_destino = :id_destino
                      ORDER BY r.fecha DESC";
     $stmtResenas = $db->prepare($queryResenas);
@@ -60,14 +54,13 @@ try {
     $stmtResenas->execute();
     $resenas = $stmtResenas->fetchAll(PDO::FETCH_ASSOC);
 
-    // Respuesta estructurada JSON
     echo json_encode([
         "id" => (int)$destino['id_destino'],
         "nombre" => $destino['nombre'],
         "departamento" => $destino['departamento'],
         "descripcion" => $destino['descripcion'],
         "costos" => [
-            "transporte" => 5.00, // Valor base estimado de transporte
+            "transporte" => 5.00,
             "comida" => (float)($destino['precio_comida'] ?? 0),
             "entradas" => (float)($destino['precio_entrada'] ?? 0),
             "parqueo" => (float)($destino['precio_parqueo'] ?? 0),

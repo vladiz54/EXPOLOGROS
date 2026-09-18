@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@700&display=swap');
 
 :root {
-    --primary-color: #0369a1; /* Celeste Vibrante - Profesional y con Fuerza */
-    --secondary-color: #0ea5e9; /* Celeste Brillante - Moderno y Energético */
-    --accent-color: #f97316; /* Naranja Vivo - Contraste Máximo y Llamativo */
-    --alert-color: #ef4444; /* Rojo Alerta - Claro y Directo */
-    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%); /* Cielo Claro: Fondo limpio que hace resaltar los colores */
+    --primary-color: #0369a1;
+    --secondary-color: #0ea5e9;
+    --accent-color: #f97316;
+    --alert-color: #ef4444;
+    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
     --bg-card: rgba(255, 255, 255, 0.95);
-    --text-dark: #0f172a; /* Slate 900 - Contraste profundo para lectura óptima */
-    --text-muted: #475569; /* Slate 600 - Equilibrio visual */
+    --text-dark: #0f172a;
+    --text-muted: #475569;
     --white: #ffffff;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
     --shadow-md: 0 15px 35px -5px rgba(3, 105, 161, 0.3);
     --radius: 20px;
-    --subtle-accent: #bae6fd; /* Celeste Suave para detalles */
+    --subtle-accent: #bae6fd;
 }
 
 body {
@@ -31,7 +31,6 @@ h1, h2, h3, h4, h5, h6, .logo-text, .font-bold {
     font-weight: 700;
 }
 
-/* HEADER MODERNIZADO */
 header {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -133,7 +132,6 @@ nav {
     100% { opacity: 1; transform: translateX(0); }
 }
 
-/* ESTILOS GLOBALES DE TARJETAS */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -154,7 +152,6 @@ nav {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* BOTONES VIBRANTES */
 .btn-vibrant {
     padding: 12px 24px;
     border-radius: 12px;

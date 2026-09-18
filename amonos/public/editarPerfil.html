@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ámonos - Editar Perfil</title>
-    <!-- Enlazamos tanto el CSS del perfil como el de formularios para reusar estilos -->
     <link rel="stylesheet" href="CSS/perfil.css">
     <link rel="stylesheet" href="CSS/sesion.css">
     <style>
-        /* Ajustes específicos para que convivan ambos estilos limpiamente */
         .edit-profile-container {
             max-width: 600px;
             margin: 40px auto;
@@ -74,7 +72,6 @@
 </head>
 <body>
 
-    <!-- CABECERA GLOBAL DE ÁMONOS -->
     <header>
         <div class="container">
             <nav>
@@ -90,25 +87,21 @@
         </div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL DEL FORMULARIO -->
     <main class="container">
         <div class="edit-profile-container">
-            
+
             <header style="text-align: center; margin-bottom: 25px;">
                 <h2 style="font-weight: 800; color: var(--azul-profundo);">Editar Perfil</h2>
                 <p style="font-size: 14px; color: var(--texto-suave);">Actualiza tu información pública y preferencias de viaje</p>
             </header>
 
-            <!-- SECCIÓN FOTO DE PERFIL -->
             <div class="avatar-edit-section">
                 <div class="profile-avatar-big">D</div>
                 <button type="button" class="btn-change-avatar">Cambiar foto de perfil</button>
             </div>
 
-            <!-- FORMULARIO DE ACTUALIZACIÓN -->
-            <!-- Al darle "Guardar" simula el éxito regresando al perfil -->
             <form action="perfil.html" method="GET" class="login-form" style="max-width: 100%;">
-                
+
                 <div class="form-group">
                     <label for="edit-name">Nombre completo</label>
                     <input type="text" id="edit-name" name="name" value="Diego Ayala" required>
@@ -124,7 +117,6 @@
                     <input type="text" id="edit-transport" name="transport" value="Vehículo propio">
                 </div>
 
-                <!-- BOTONES DE ACCIÓN -->
                 <div class="form-actions-row">
                     <a href="perfil.html" class="btn-cancel">Cancelar</a>
                     <button type="submit" class="btn-primary">Guardar Cambios</button>

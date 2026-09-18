@@ -9,10 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtStatusLabel = document.getElementById('txt-status-label');
     const barraProgreso = document.getElementById('barra-progreso');
 
-    // 1. Initial setup
     inicializarPlanificador();
 
-    // 2. Event Listeners
     inputPresupuestoMax.addEventListener('input', calcularPresupuesto);
     selectDestino.addEventListener('change', handleDestinoChange);
     qtyInputs.forEach(input => {
@@ -55,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (result.success) {
                 const costs = result.data.costos;
 
-                // Update fixed unit prices in the UI
                 actualizarPrecioFijo('transporte', costs.parqueo);
                 actualizarPrecioFijo('comida', costs.comida);
                 actualizarPrecioFijo('entradas', costs.entrada);
