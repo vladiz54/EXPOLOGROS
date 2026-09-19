@@ -9,29 +9,34 @@
 </head>
 <body>
 
+    <!-- ENCABEZADO UNIFICADO -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo"> ÁMONOS</div>
+                <a href="index.html" class="logo-container">
+                    <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
+
                 <ul class="menu-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="explorar.html">Explorar destinos</a></li>
                     <li><a href="planificador.html">Planificador</a></li>
                     <li><a href="perfil.html">Perfil</a></li>
                 </ul>
-                <div class="avatar"></div>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main class="container">
 
         <section class="destination-header">
             <div class="title-area">
                 <h1 id="destino-nombre">Lago de Coatepeque</h1>
                 <div class="stars">★★★★★</div>
             </div>
-            <button class="btn-action-trigger" onclick="irAlPlanificador()"> Planificar este Viaje</button>
+            <button class="btn-primary" onclick="irAlPlanificador()"> Planificar este Viaje</button>
         </section>
 
         <section class="carousel-container">
@@ -42,6 +47,117 @@
                 <div class="carousel-slide" style="background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH3T7grCL48wC1poE8SYJBw9_Maq7nZmIKBVFbfPGdx7USnbN2AgBnJcfAEp0ycAOMpVOBHMx9Ywqj73COym55QhGlKUiM7HgK6X8cplcCJGV3jWHU7PHgeXjDA-Unxlwk_NpcYKHTdeQ/s1600/maxresdefault.jpg);"></div>
             </div>
             <button class="carousel-btn btn-right" onclick="moverCarrusel(1)">›</button>
+        </section>
+
+        <div class="details-grid" id="seccion-info">
+
+            <section class="info-card card-modern">
+                <h2>Ubicación</h2>
+                <div class="location-tag"> Santa Ana, El Salvador</div>
+
+                <h2>Descripción</h2>
+                <p class="description-text">
+                    Uno de los lagos más hermosos de Centroamérica, conocido por sus aguas cristalinas y actividades recreativas. En ciertas épocas del año, sus aguas cambian a un color turquesa impresionante.
+                </p>
+
+                <h2>¿Qué hacer?</h2>
+                <ul class="activities-list">
+                    <li>Paseos en lancha.</li>
+                    <li>Nadar en zonas autorizadas.</li>
+                    <li>Comer en restaurantes frente al lago.</li>
+                    <li>Fotografiar paisajes.</li>
+                </ul>
+
+                <div class="gallery-section">
+                    <h2>Fotos de los Viajeros 📸</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
+                        ¿Ya visitaste este lugar? Comparte tus fotos con la comunidad.
+                    </p>
+
+                    <div class="upload-box">
+                        <label for="userPhotoInput" class="upload-btn-label">➕ Subir mi fotografía</label>
+                        <input type="file" id="userPhotoInput" accept="image/*" multiple onchange="agregarFotosComunidad(event)">
+                    </div>
+
+                    <div class="user-gallery-grid" id="userGalleryGrid">
+                        <img src="https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg" class="user-gallery-item" alt="Vista del lago">
+                        <img src="https://i0.wp.com/www.chiquithetraveller.com/wp-content/uploads/2018/05/lago-coatepeque-el-salvador-muelle.jpg?w=1280&ssl=1" class="user-gallery-item" alt="Muelle Coatepeque">
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-card card-modern" id="bloque-costos">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="margin: 0;">Costo Estimado</h2>
+                    <button class="btn-primary" onclick="irAlPlanificador()">Planificar Presupuesto ➔</button>
+                </div>
+
+                <table class="table-costs">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Precio Promedio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Transporte / Pasaje</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                            <td> Alimentación</td>
+                            <td>$12.00</td>
+                        </tr>
+                        <tr>
+                            <td> Lancha / Entradas</td>
+                            <td>$5.00</td>
+                        </tr>
+                        <tr class="row-total">
+                            <td> Total estimado base:</td>
+                            <td>$27.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Comentarios de la Comunidad</h2>
+                <div class="comments-section" id="commentsContainer">
+                    <div class="comment-box">
+                        <strong>SOFIA:</strong>
+                        <p>El agua es hermosa y muy tranquilo. ¡Súper recomendado para ir en familia!</p>
+                        <div class="stars-sub">★★★★★</div>
+                    </div>
+                    <div class="comment-box">
+                        <strong>CARLOS:</strong>
+                        <p>Excelente comida en los restaurantes de los alrededores, los precios de las lanchas son negociables.</p>
+                        <div class="stars-sub">★★★★☆</div>
+                    </div>
+                </div>
+
+                <div class="add-review-box">
+                    <h3>Deja tu reseña</h3>
+                    <form id="reviewForm">
+                        <div class="star-rating-input">
+                            <span class="star-select" data-value="1">★</span>
+                            <span class="star-select" data-value="2">★</span>
+                            <span class="star-select" data-value="3">★</span>
+                            <span class="star-select" data-value="4">★</span>
+                            <span class="star-select" data-value="5">★</span>
+                        </div>
+                        <textarea id="reviewText" placeholder="Cuéntanos tu experiencia sobre este lugar..." required></textarea>
+                        <button type="submit" class="btn-primary">Publicar Reseña</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="js/detalles.js"></script>
+    <script src="js/auth-guard.js"></script>
+
+</body>
+</html>
+(1)">›</button>
         </section>
 
         <div class="details-grid" id="seccion-info">
