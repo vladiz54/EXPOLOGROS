@@ -31,26 +31,35 @@ h1, h2, h3, h4, h5, h6, .logo-text, .font-bold {
     font-weight: 700;
 }
 
-/* HEADER MODERNIZADO */
+/* HEADER MODERNIZADO - NIVEL PREMIUM */
 header {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 3px solid var(--primary-color);
+    border-bottom: 1px solid rgba(3, 105, 161, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 5px 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 20px;
-    max-width: 1800px;
+    padding: 12px 30px; /* Reducido para que no se vea tan grande */
+    max-width: 1300px; /* Reducido para centrar más la navegación */
     margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
 .logo-container {
@@ -58,20 +67,38 @@ nav {
     align-items: center;
     gap: 10px;
     text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
     animation: slideFromLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+.logo-container:hover {
+    background: rgba(3, 105, 161, 0.05);
+    transform: translateX(3px);
+}
+
 .logo-img {
-    height: 45px;
+    height: 38px; /* Reducido para elegancia */
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+    transform: scale(1.05);
 }
 
 .logo-text {
-    font-size: 24px;
+    font-size: 22px; /* Reducido ligeramente */
     font-weight: 900;
     color: var(--primary-color);
     letter-spacing: 1px;
     text-transform: uppercase;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
 }
 
 .menu-links {
@@ -79,37 +106,44 @@ nav {
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 5px;
 }
 
 .menu-links li {
-    margin: 0 15px;
+    margin: 0;
 }
 
 .menu-links a {
     text-decoration: none;
     color: var(--text-muted);
     font-weight: 600;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    padding: 8px 12px;
+    font-size: 14px; /* Reducido */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 8px 16px;
     border-radius: 10px;
+    position: relative;
 }
 
 .menu-links a:hover {
     color: var(--primary-color);
-    background: rgba(30, 58, 138, 0.05);
+    background: rgba(3, 105, 161, 0.08);
 }
 
 .menu-links a.active {
     color: var(--white);
     background: var(--primary-color);
-    box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
+}
+
+/* Eliminamos la rayita y creamos el efecto orgánico de fondo */
+.menu-links a::after {
+    display: none;
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
+    width: 38px; /* Reducido */
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: 2px solid var(--white);
     border-radius: 50%;
     cursor: pointer;
@@ -117,15 +151,17 @@ nav {
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 14px;
 }
 
 .avatar:hover {
-    transform: scale(1.1);
-    background-color: var(--accent-color);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 15px rgba(3, 105, 161, 0.3);
+    background: var(--accent-color);
 }
 
 @keyframes slideFromLeft {

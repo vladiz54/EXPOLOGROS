@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ámonos - Sobre Nosotros</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/sobre-nosotros.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo-container">
+                    <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
+                    <span class="logo-text">ÁMONOS</span>
+                </a>
+
+                <ul class="menu-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="explorar.html">Explorar destinos</a></li>
+                    <li><a href="planificador.html">Planificador</a></li>
+                    <li><a href="sobre-nosotros.html" class="active">Sobre Nosotros</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                </ul>
+                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="about-hero">
+            <div class="about-content">
+                <h1>Nuestra Pasión es <span class="highlight">El Salvador</span></h1>
+                <p>Nacimos con una misión clara: demostrar que para vivir experiencias inolvidables en la tierra de los volcanes no necesitas una fortuna, sino la guía correcta.</p>
+            </div>
+        </section>
+
+        <section class="about-mission">
+            <div class="mission-grid">
+                <div class="mission-text">
+                    <h2>¿Quiénes somos?</h2>
+                    <p>Ámonos es más que una guía de viajes; es un proyecto creado por viajeros, para viajeros. Sabemos que planificar un viaje puede ser estresante, especialmente cuando intentas ajustar cada centavo.</p>
+                    <p>Nos dedicamos a curar los mejores destinos, desde las playas más secretas de La Libertad hasta los pueblos más pintorescos de la Ruta de las Flores, siempre enfocándonos en la relación calidad-precio.</p>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1590089415225-45d79645776d?auto=format&fit=crop&w=600&q=80" alt="Paisaje El Salvador" class="img-fluid">
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="section-title">
+                <h2>Nuestros Pilares</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="values-grid">
+                <div class="value-card card-modern">
+                    <div class="value-icon"><i class="fa-solid fa-wallet"></i></div>
+                    <h3>Accesibilidad</h3>
+                    <p>Creemos que viajar es un derecho, no un lujo. Optimizamos cada costo para que cualquiera pueda explorar.</p>
+                </div>
+                <div class="value-card card-modern">
+                    <div class="value-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3>Autenticidad</h3>
+                    <p>No te llevamos solo a los lugares turísticos, sino a las experiencias reales que hacen vibrar al país.</p>
+                </div>
+                <div class="value-card card-modern">
+                    <div class="value-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Amor Local</h3>
+                    <p>Promovemos el apoyo a los emprendedores y comercios locales de cada departamento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="imagenes/descarga.png" alt="Ámonos Logo">
+                    <span>ÁMONOS</span>
+                </a>
+                <p>Descubre la magia de El Salvador sin romper tu alcancía. Tu aventura comienza aquí.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="explorar.html">Destinos</a></li>
+                        <li><a href="planificador.html">Planificador</a></li>
+                        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Soporte</td>
+                    <ul>
+                        <li><a href="#">Términos de Uso</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ámonos - Hecho con ❤️ para El Salvador</p>
+        </div>
+    </footer>
+
+    <script src="js/auth-guard.js"></script>
+    <script src="js/header-effects.js"></script>
+</body>
+</html>
