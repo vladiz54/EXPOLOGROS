@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // INICIALIZAR EL CARRUSEL DE VIDEOS
+
     inicializarSlider();
 });
 

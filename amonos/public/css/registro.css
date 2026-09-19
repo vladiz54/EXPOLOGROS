@@ -25,9 +25,6 @@ body {
     justify-content: center;
 }
 
-/* ==========================================================================
-   2. ESTRUCTURA PRINCIPAL (LAYOUT 2 COLUMNAS)
-   ========================================================================== */
 .login-wrapper {
     display: flex;
     width: 100vw;
@@ -35,7 +32,6 @@ body {
     background-color: #ffffff;
 }
 
-/* Lado Izquierdo: Imagen del paisaje */
 .login-banner {
     flex: 1;
     background-image: url('https://wallpaperbat.com/img/8757860-sunrise-volcan-conchagua-la-union-el.jpg');
@@ -65,7 +61,6 @@ body {
     font-weight: 400;
 }
 
-/* Lado Derecho: Formulario */
 .login-form-container {
     flex: 1;
     display: flex;
@@ -76,9 +71,6 @@ body {
     overflow-y: auto;
 }
 
-/* ==========================================================================
-   3. ENCABEZADO Y BRANDING
-   ========================================================================== */
 .brand-header {
     text-align: center;
     margin-bottom: 25px;
@@ -120,9 +112,6 @@ body {
     text-align: center;
 }
 
-/* ==========================================================================
-   4. FORMULARIO DE INPUTS
-   ========================================================================== */
 .login-form {
     width: 100%;
     max-width: 380px;
@@ -147,7 +136,7 @@ body {
 .form-group input[type="text"] {
     width: 100%;
     height: 48px;
-    border: 2px solid #a7f3d0; /* El borde verdecito de la imagen */
+    border: 2px solid #a7f3d0;
     border-radius: 12px;
     padding: 0 16px;
     font-size: 14px;
@@ -160,8 +149,6 @@ body {
     border-color: var(--turquesa-boton);
 }
 
-
-/* Input con el botón de ojo de contraseña */
 .password-input-wrapper {
     position: relative;
     display: flex;
@@ -193,7 +180,6 @@ body {
     opacity: 0.6;
 }
 
-/* Opciones: Recordarme y Olvidaste tu contraseña */
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -221,9 +207,6 @@ body {
     color: var(--azul-profundo);
 }
 
-/* ==========================================================================
-   5. BOTONES Y OPCIONES SOCIALES
-   ========================================================================== */
 .btn-primary {
     width: 100%;
     height: 48px;
@@ -275,9 +258,6 @@ body {
     font-size: 16px;
 }
 
-/* ==========================================================================
-   6. FOOTER DE REGISTRO
-   ========================================================================== */
 .signup-prompt {
     margin-top: 35px;
     font-size: 14px;
@@ -297,12 +277,11 @@ body {
     color: #ea580c;
 }
 
-/* 7. RESPONSIVO (PANTALLAS PEQUEÑAS Y MÓVILES)*/
 @media (max-width: 850px) {
     .login-banner {
-        display: none; /* En pantallas móviles oculta la imagen y deja solo el formulario */
+        display: none;
     }
-    
+
     .login-form-container {
         width: 100%;
         padding: 20px;

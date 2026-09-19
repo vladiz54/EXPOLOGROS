@@ -1,10 +1,7 @@
 ﻿USE amonos;
 
--- Limpiar imágenes actuales para evitar duplicados
 DELETE FROM imagenes_destino;
 
--- Mapeo de imágenes basadas en el tipo de destino
--- 1. Naturaleza / Volcanes / Parques
 INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES 
 (1, 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80'),
 (1, 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80'),
@@ -24,7 +21,6 @@ INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES
 (40, 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80'),
 (41, 'https://images.unsplash.com/photo-1433086566608-e935355272ed?auto=format&fit=crop&w=800&q=80');
 
--- 2. Pueblos / Cultura / Arquitectura
 INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES 
 (2, 'https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=format&fit=crop&w=800&q=80'),
 (2, 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=80'),
@@ -42,7 +38,6 @@ INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES
 (43, 'https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=format&fit=crop&w=800&q=80'),
 (44, 'https://images.unsplash.com/photo-1518709268805-4c998f626650?auto=//fit=crop&w=800&q=80');
 
--- 3. Playas / Lagos / Agua
 INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES 
 (5, 'https://images.unsplash.com/photo-1507525428034-b723a96a487a?auto=format&fit=crop&w=800&q=80'),
 (5, 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80'),
@@ -60,7 +55,7 @@ INSERT INTO imagenes_destino (id_destino, imagen_url) VALUES
 (42, 'https://images.unsplash.com/photo-1507525428034-b723a96a487a?auto=format&fit=crop&w=800&q=80'),
 (43, 'https://images.unsplash.com/photo-1507525428034-b723a96a487a?auto=format&fit=crop&w=800&q=80');
 
--- Llenar el resto con imágenes genéricas para que ningún destino quede vacío
+
 INSERT INTO imagenes_destino (id_destino, imagen_url)
 SELECT id_destino, 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80'
 FROM destinos 

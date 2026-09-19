@@ -1,15 +1,12 @@
-/* Variables heredadas de global.css */
-
 body {
-    padding-top: 100px; /* Espacio para el header fixed */
+    padding-top: 100px;
 }
 
-/* 1. SECCIÓN DE CABECERA DE PERFIL (HERO) */
 .profile-hero {
     background: var(--bg-card);
     backdrop-filter: blur(15px);
     border-radius: var(--radius);
-    padding: 50px; /* Aumentado para dar más aire */
+    padding: 50px;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
@@ -20,7 +17,6 @@ body {
     overflow: hidden;
 }
 
-/* Detalle decorativo de fondo para elegancia */
 .profile-hero::before {
     content: '';
     position: absolute;
@@ -35,12 +31,12 @@ body {
 .user-info-block {
     display: flex;
     align-items: center;
-    gap: 35px; /* Aumentado para separar el avatar del texto */
+    gap: 35px;
     z-index: 1;
 }
 
 .profile-avatar-big {
-    width: 120px; /* Un poco más grande */
+    width: 120px;
     height: 120px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 50%;
@@ -80,11 +76,10 @@ body {
 .profile-actions {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espaciado horizontal elegante */
+    gap: 15px;
     z-index: 1;
 }
 
-/* Rediseño total de botones */
 .btn-primary {
     padding: 12px 25px;
     border-radius: 14px;
@@ -126,8 +121,6 @@ body {
     box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
-
-/* 2. DISEÑO DE COLUMNAS (GRID) */
 .profile-grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -153,7 +146,6 @@ body {
     font-weight: 800;
 }
 
-/* ELEMENTOS DE LISTA: Guardados e Historial */
 .item-list {
     display: flex;
     flex-direction: column;
@@ -229,7 +221,6 @@ body {
     color: var(--secondary-color);
 }
 
-/* BLOQUE DE PREFERENCIAS / CHIPS */
 .preferences-block {
     display: flex;
     flex-direction: column;
@@ -267,7 +258,6 @@ body {
     border-color: var(--primary-color);
 }
 
-/* 3. VENTANA EMERGENTE (MODAL) */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -430,7 +420,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* RESPONSIVO */
 @media (max-width: 768px) {
     .profile-hero {
         flex-direction: column;

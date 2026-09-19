@@ -1,5 +1,3 @@
-/* Variables heredadas de global.css */
-
 body {
     background: var(--bg-main);
 }
@@ -8,7 +6,6 @@ body {
     padding-bottom: 60px;
 }
 
-/* HERO SECTION */
 .explore-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
                 url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover;
@@ -126,7 +123,6 @@ body {
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* MAIN LAYOUT */
 .main-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -137,7 +133,6 @@ body {
     padding: 0 20px;
 }
 
-/* SIDEBAR FILTERS */
 .sidebar-filters {
     position: sticky;
     top: 110px;
@@ -244,7 +239,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Budget Options */
 .budget-options {
     display: flex;
     flex-direction: column;
@@ -299,12 +293,13 @@ body {
     box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-/* SIDEBAR EXTRAS (EL RINCÓN DEL VIAJERO) */
 .sidebar-extras {
     display: flex;
     flex-direction: column;
     gap: 25px;
     margin-top: 40px;
+    position: sticky;
+    top: 110px;
 }
 
 .extra-card {
@@ -349,21 +344,18 @@ body {
     margin: 0 0 15px 0;
 }
 
-/* Tip Card - Verde */
 .tip-card {
     border-left: 5px solid var(--secondary-color);
 }
 .tip-card .extra-header { color: var(--secondary-color); }
 .tip-card .extra-header i { color: var(--secondary-color); }
 
-/* Secret Card - Naranja */
 .secret-card {
     border-left: 5px solid var(--accent-color);
 }
 .secret-card .extra-header { color: var(--accent-color); }
 .secret-card .extra-header i { color: var(--accent-color); }
 
-/* CTA Card - Azul */
 .cta-card {
     border-left: 5px solid var(--primary-color);
     background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
@@ -390,7 +382,6 @@ body {
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-/* RESULTS AREA */
 .results-info {
     background: var(--white);
     padding: 20px 30px;
@@ -434,7 +425,6 @@ body {
     gap: 30px;
 }
 
-/* EXACT DESTINO-CARD FROM INDEX */
 .destino-card {
     background-color: var(--white);
     border-radius: var(--radius);
@@ -599,7 +589,6 @@ body {
     }
 }
 
-/* ANIMACIÓN DE TEXTO TIPO CODIGO (TYPEWRITER) */
 #dynamic-text {
     display: inline-block;
     position: relative;
@@ -617,4 +606,3 @@ body {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
-

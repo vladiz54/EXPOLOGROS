@@ -9,12 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarDestinos();
     initDynamicText();
 
-    // Buscador lateral
     if (searchInput) {
         searchInput.addEventListener('input', aplicarFiltros);
     }
 
-    // Buscador Hero
     if (heroSearchInput) {
         heroSearchInput.addEventListener('input', (e) => {
             if (searchInput) searchInput.value = e.target.value;
@@ -22,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Chips laterales
     categoryChips.forEach(chip => {
         chip.addEventListener('click', (e) => {
             setActiveChip(e.target.getAttribute('data-category'));
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Chips Hero
     heroChips.forEach(chip => {
         chip.addEventListener('click', (e) => {
             setActiveChip(e.target.getAttribute('data-category'));
@@ -54,12 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function setActiveChip(category) {
-    // Actualizar chips laterales
     document.querySelectorAll('.chip[data-category]').forEach(c => {
         c.classList.toggle('active', c.getAttribute('data-category') === category);
     });
 
-    // Actualizar chips del hero
     document.querySelectorAll('.hero-chip').forEach(c => {
         c.classList.toggle('active', c.getAttribute('data-category') === category);
     });
@@ -129,8 +123,6 @@ function aplicarFiltros() {
 }
 
 function getRelevantImage(dest) {
-    // SISTEMA DE IMÁGENES LOCALES
-    // Esto elimina la dependencia de servidores externos que pueden estar bloqueados.
     const id = parseInt(dest.id) || 0;
     const imageIndex = (id % 5) + 1;
     return `imagenes/destinos/img${imageIndex}.jpg`;
@@ -245,7 +237,6 @@ function initDynamicText() {
             charIndex--;
             setTimeout(type, typeSpeed / 2);
         } else {
-            // Pausa antes de cambiar de palabra o empezar a borrar
             isDeleting = !isDeleting;
             if (!isDeleting) {
                 wordIndex = (wordIndex + 1) % words.length;

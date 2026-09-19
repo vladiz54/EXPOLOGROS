@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@700&display=swap');
 
 :root {
+<<<<<<< HEAD
     --primary-color: #1e3a8a; /* Deep Navy - Elegancia, confianza y profundidad */
     --secondary-color: #3b82f6; /* Royal Blue - Modernidad y energía */
     --accent-color: #fbbf24; /* Golden Amber - Lujo, calidez y contraste premium */
@@ -14,11 +15,11 @@
     --shadow-md: 0 20px 40px -12px rgba(30, 58, 138, 0.2);
     --radius: 24px; /* Bordes ligeramente más suaves para un look más moderno */
     --subtle-accent: #e0e7ff; /* Indigo suave para detalles */
-}
+
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 80px 0 0 0;
     font-family: 'Nunito', sans-serif;
     background: var(--bg-main);
     background-attachment: fixed;
@@ -31,7 +32,6 @@ h1, h2, h3, h4, h5, h6, .logo-text, .font-bold {
     font-weight: 700;
 }
 
-/* HEADER MODERNIZADO */
 header {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(15px);
@@ -133,7 +133,6 @@ nav {
     100% { opacity: 1; transform: translateX(0); }
 }
 
-/* ESTILOS GLOBALES DE TARJETAS */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -154,7 +153,6 @@ nav {
     box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.2);
 }
 
-/* BOTONES VIBRANTES */
 .btn-vibrant {
     padding: 12px 24px;
     border-radius: 12px;

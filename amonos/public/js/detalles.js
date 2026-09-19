@@ -30,12 +30,10 @@ async function cargarDetalles(id) {
 }
 
 function renderizarDatos(data) {
-    // Header
     document.getElementById('destino-nombre').innerText = data.nombre;
     document.getElementById('destino-ubicacion').innerText = data.departamento;
     document.getElementById('destino-descripcion').innerText = data.descripcion;
 
-    // Image
     const mainImg = document.getElementById('mainImage');
     if (data.imagenes && data.imagenes.length > 0) {
         mainImg.style.backgroundImage = `url('${data.imagenes[0]}')`;
@@ -43,8 +41,6 @@ function renderizarDatos(data) {
         mainImg.style.backgroundImage = `url('https://via.placeholder.com/1200x600?text=Sin+Imagen')`;
     }
 
-    // Category & Rating (Placeholder since read_one doesn't return category directly, but we can assume or fetch from read.php)
-    // In a real scenario, read_one should return the category. For now, let's set a default or leave it.
     document.getElementById('destino-categoria').innerText = "Destino Turístico";
 
     const avgRating = data.resenas.length > 0
@@ -52,7 +48,6 @@ function renderizarDatos(data) {
         : "0.0";
     document.getElementById('destino-rating').innerText = `⭐ ${avgRating}`;
 
-    // Activities
     const activitiesList = document.getElementById('activitiesList');
     if (activitiesList) {
         activitiesList.innerHTML = "";
@@ -65,7 +60,6 @@ function renderizarDatos(data) {
         }
     }
 
-    // Costs
     const costBody = document.getElementById('costTableBody');
     const costs = data.costos;
     const costLabels = {
@@ -88,7 +82,6 @@ function renderizarDatos(data) {
     }
     document.getElementById('totalCost').innerText = `$${total.toFixed(2)}`;
 
-    // Reviews
     const commentsContainer = document.getElementById('commentsContainer');
     if (commentsContainer) {
         commentsContainer.innerHTML = "";

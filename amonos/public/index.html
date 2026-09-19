@@ -9,10 +9,8 @@
 </head>
 <body>
 
-    <!-- ENCABEZADO Y NAVEGACIÓN -->
     <header class="encabezado">
         <nav>
-            <!-- LOGO CON ANIMACIÓN DE LADITO TIPO CANVA -->
             <a href="index.html" class="logo-container">
                 <img src="imagenes/descarga.png" alt="Ámonos Logo" class="logo-img">
                 <span class="logo-text">ÁMONOS</span>
@@ -28,9 +26,7 @@
         </nav>
     </header>
 
-    <!-- SECCIÓN HERO -->
     <section class="hero">
-        <!-- Carrusel de fondo -->
         <div class="carrusel">
             <div class="slide active">
                 <video autoplay muted loop playsinline>
@@ -51,7 +47,6 @@
             </div>
         </div>
 
-        <!-- CONTENIDO HERO -->
         <div class="hero-content">
             <h1 class="mover">Descubre El Salvador sin salirte de tu presupuesto</h1>
             <p>Encuentra destinos, actividades y experiencias adaptadas a tu bolsillo.</p>
@@ -63,10 +58,8 @@
         </div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="container main-content">
 
-        <!-- CATEGORÍAS Y FILTRO DE DEPARTAMENTOS -->
         <section class="categories-container" style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
             <ul class="categories-list" style="display: flex; gap: 10px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
                 <li><button class="cat-card"> Todos</button></li>
@@ -78,7 +71,6 @@
                 <li><button class="cat-card"> Playa</button></li>
             </ul>
 
-            <!-- SELECTOR DE DEPARTAMENTO Y BOTÓN DE FILTRADO -->
             <div class="filter-dept-group" style="display: flex; align-items: center; gap: 8px;">
                 <select id="select-departamento" style="padding: 10px 14px; border-radius: 20px; border: 1px solid #ccc; font-size: 14px; outline: none; background-color: #fff; cursor: pointer;">
                     <option value="Todos">Todos los departamentos</option>
@@ -101,7 +93,6 @@
             </div>
         </section>
 
-        <!-- GRID DE DESTINOS RECOMENDADOS -->
         <section>
             <div class="grid-header">
                 <h2>Destinos recomendados</h2>
@@ -110,7 +101,6 @@
 
             <div class="grid-destinos">
 
-                <!-- TARJETA 1: Lago de Coatepeque -->
                 <div class="destino-card">
                     <a href="detalles.html?destino=coatepeque" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg') center/cover;"></a>
                     <div class="dest-body">
@@ -128,7 +118,6 @@
                     </div>
                 </div>
 
-                <!-- TARJETA 2: Ruta de las Flores -->
                 <div class="destino-card">
                     <a href="detalles.html?destino=flores" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://tse4.mm.bing.net/th/id/OIP.9i6py3r_le_EsQDkOEKzwgHaFn?r=0&rs=1&pid=ImgDetMain&o=7&rm=3') center/cover;"></a>
                     <div class="dest-body">
@@ -146,7 +135,6 @@
                     </div>
                 </div>
 
-                <!-- TARJETA 3: Cerro Verde -->
                 <div class="destino-card">
                     <a href="detalles.html?destino=cerroverde" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://elsalvador.travel/system/wp-content/uploads/2020/01/CerroVerde1.jpg') center/cover;"></a>
                     <div class="dest-body">
@@ -164,7 +152,6 @@
                     </div>
                 </div>
 
-                <!-- TARJETA 4: Playa El Tunco -->
                 <div class="destino-card">
                     <a href="detalles.html?destino=eltunco" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://th.bing.com/th/id/R.b247efb4b22d8b17052467b266b71ac4?rik=xFaxWkCaoOBP%2fQ&pid=ImgRaw&r=0') center/cover;"></a>
                     <div class="dest-body">
@@ -186,7 +173,6 @@
         </section>
     </main>
 
-    <!-- SECCIÓN RECOMENDACIONES INTELIGENTES -->
     <section class="smart-recommendation-section">
         <div class="container">
             <div class="recommendation-header">
@@ -195,7 +181,6 @@
             </div>
 
             <div class="flex-recommendations">
-                <!-- Tarjeta de Preferencia -->
                 <div class="preference-box">
                     <div class="pref-icon">✨</div>
                     <span class="box-tag">Tu categoría ideal</span>
@@ -204,7 +189,6 @@
                     <a href="explorar.html?filtro=Cultura" class="btn-pref">Explorar Categoría ➔</a>
                 </div>
 
-                <!-- Tarjeta de Destino Destacado -->
                 <div class="featured-dest-box">
                     <div class="featured-img-container">
                         <img src="imagenes/Screenshot 2026-09-16 093137.png" alt="Suchitoto" class="featured-img">
