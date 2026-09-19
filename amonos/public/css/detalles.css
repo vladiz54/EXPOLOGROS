@@ -1,77 +1,426 @@
+/* ==========================================================================
+   DETALLES DEL DESTINO - REDISEÑO ULTRA-PREMIUM
+   Estilo: Minimalista, Orgánico, Aireado y Atractivo
+   ========================================================================== */
+
 body {
     background: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-family: 'Nunito', sans-serif;
 }
 
-.details-hero {
-    position: relative;
-    height: 60vh;
-    min-height: 400px;
-    overflow: hidden;
-    margin-top: 60px;
+/* --- HEADER DE DESTINO --- */
+.destination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    animation: fadeInDown 0.8s ease-out;
 }
 
-.hero-overlay {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
-}
-
-.category-tag {
-    background: var(--accent-color);
-    color: white;
-    box-shadow: 0 4px 10px rgba(243, 162, 97, 0.3);
-}
-
-.btn-planificar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(56, 113, 128, 0.3);
-}
-
-.btn-favorite.liked {
-    background: var(--alert-color);
-    border-color: var(--alert-color);
-}
-
-.detail-card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-}
-
-.detail-card h3 {
-    color: var(--primary-color);
-}
-
-.activities-list li::before {
-    color: var(--secondary-color);
-}
-
-.cost-card, .reviews-card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(5px);
-}
-
-.total-row {
-    color: var(--primary-color);
+.title-area h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
     font-weight: 800;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.btn-plan-budget {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2a5a64 100%);
+.title-area .stars {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 10px;
+    display: block;
+}
+
+/* --- CARRUSEL CINEMATOGRÁFICO --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    margin-bottom: 60px;
+    animation: zoomIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     color: white;
-    box-shadow: 0 4px 15px rgba(56, 113, 128, 0.3);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 24px;
+    transition: all 0.3s ease;
 }
 
-.btn-submit-review {
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn-left { left: 30px; }
+.btn-right { right: 30px; }
+
+/* --- GRID DE INFORMACIÓN --- */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 50px;
+    align-items: start;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Estilo General de Tarjetas (Glassmorphism Refinado) */
+.info-card, .card-modern {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 35px;
+    padding: 45px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.07);
+}
+
+.info-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+
+.info-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 5px;
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+.location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--subtle-accent);
+    color: var(--primary-color);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.1);
+}
+
+.description-text {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 45px;
+    text-align: justify;
+}
+
+/* LISTA de ACTIVIDADES - Modernizada */
+.activities-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.activities-list li {
+    background: white;
+    padding: 18px 25px;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    border-left: 6px solid var(--secondary-color);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+.activities-list li:hover {
+    transform: translateX(12px);
+    background: var(--subtle-accent);
+    border-left-color: var(--primary-color);
+}
+
+/* GALERÍA de COMUNIDAD */
+.gallery-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.upload-box {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.upload-btn-label {
     background: var(--primary-color);
     color: white;
-    transition: all 0.3s;
+    padding: 14px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(3, 105, 161, 0.3);
 }
 
-.btn-submit-review:hover {
+.upload-btn-label:hover {
     background: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.user-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.user-gallery-item {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.user-gallery-item:hover {
+    transform: scale(1.1) rotate(2deg);
+    z-index: 5;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* TABLA de COSTOS Y RESEÑAS */
+.table-costs {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    margin-bottom: 35px;
+}
+
+.table-costs th {
+    text-align: left;
+    padding: 12px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.table-costs td {
+    background: white;
+    padding: 18px 12px;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table-costs td:first-child {
+    border-left: 1px solid #f1f5f9;
+    border-radius: 15px 0 0 15px;
+}
+
+.table-costs td:last-child {
+    border-right: 1px solid #f1f5f9;
+    border-radius: 0 15px 15px 0;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: right;
+}
+
+.row-total td {
+    background: var(--primary-color);
+    color: white !important;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* COMENTARIOS */
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.comment-box {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.comment-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.comment-box strong {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.comment-box p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.stars-sub {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+/* FORMULARIO de RESEÑA */
+.add-review-box {
+    background: rgba(3, 105, 161, 0.06);
+    padding: 35px;
+    border-radius: 30px;
+    border: 2px dashed var(--primary-color);
+}
+
+.star-rating-input {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.star-select {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+.star-select.active {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+#reviewText {
+    width: 100%;
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+}
+
+/* ANIMACIONES */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white !important;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(3, 105, 161, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(3, 105, 161, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .destination-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+    .title-area h1 {
+        font-size: 2.5rem;
+    }
+    .carousel-container {
+        height: 350px;
+    }
 }

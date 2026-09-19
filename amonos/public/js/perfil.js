@@ -15,6 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Manejo de subida de imagen de perfil
+    const avatarInput = document.getElementById('modal-avatar-input');
+    const avatarPreview = document.getElementById('modal-avatar-preview');
+
+    if (avatarInput && avatarPreview) {
+        avatarInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.style.backgroundImage = `url('${e.target.result}')`;
+                    avatarPreview.style.backgroundSize = 'cover';
+                    avatarPreview.style.backgroundPosition = 'center';
+                    avatarPreview.textContent = ''; // Quitar la letra inicial
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -58,6 +78,24 @@ async function cargarDatosPerfil() {
             document.getElementById('userNameDisplay').innerText = user.nombre;
             document.getElementById('modal-name').value = user.nombre;
             document.getElementById('modal-email').value = user.correo;
+
+            // Si el usuario ya tiene una foto guardada (simulado), cargarla
+            if (user.foto_perfil) {
+                const avatarBig = document.querySelector('.profile-avatar-big');
+                const avatarModal = document.getElementById('modal-avatar-preview');
+                if (avatarBig) {
+                    avatarBig.style.backgroundImage = `url('${user.foto_perfil}')`;
+                    avatarBig.style.backgroundSize = 'cover';
+                    avatarBig.style.backgroundPosition = 'center';
+                    avatarBig.textContent = '';
+                }
+                if (avatarModal) {
+                    avatarModal.style.backgroundImage = `url('${user.foto_perfil}')`;
+                    avatarModal.style.backgroundSize = 'cover';
+                    avatarModal.style.backgroundPosition = 'center';
+                    avatarModal.textContent = '';
+                }
+            }
         } else {
             window.location.href = 'sesion.html';
         }

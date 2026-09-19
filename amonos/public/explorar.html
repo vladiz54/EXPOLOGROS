@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ámonos - Explorar Paraísos</title>
+    <title>Ámonos - Explore Paradises</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/explorar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,35 +18,35 @@
                 <span class="logo-text">ÁMONOS</span>
             </a>
             <ul class="menu-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="explorar.html" class="active">Explorar destinos</a></li>
-                <li><a href="planificador.html">Planificador</a></li>
-                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorar.html" class="active">Explore destinations</a></li>
+                <li><a href="planificador.html">Planner</a></li>
+                <li><a href="sobre-nosotros.html">About Us</a></li>
+                <li><a href="perfil.html">Profile</a></li>
             </ul>
-            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            <a href="perfil.html" class="avatar" title="My Profile">D</a>
         </nav>
     </header>
 
     <main class="explore-wrapper">
         <section class="explore-hero">
             <div class="hero-content">
-                <h1>Encuentra tu próximo <span id="dynamic-text" class="highlight">destino</span></h1>
-                <p>Descubre los rincones más mágicos de El Salvador</p>
+                <h1>Find your next <span id="dynamic-text" class="highlight">destination</span></h1>
+                <p>Discover the most magical corners of El Salvador</p>
 
                 <div class="hero-search-container">
                     <div class="hero-search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="heroSearchInput" placeholder="¿A dónde quieres ir?">
+                        <input type="text" id="heroSearchInput" placeholder="Where do you want to go?">
                     </div>
                 </div>
 
                 <div class="hero-chips-container">
-                    <span class="hero-chip" data-category="naturaleza">🌿 Naturaleza</span>
-                    <span class="hero-chip" data-category="playa">🏖️ Playa</span>
-                    <span class="hero-chip" data-category="aventura">⛰️ Aventura</span>
-                    <span class="hero-chip" data-category="cultura">🏛️ Cultura</span>
-                    <span class="hero-chip" data-category="gastronomia">🍲 Gastronomía</span>
+                    <span class="hero-chip" data-category="naturaleza">🌿 Nature</span>
+                    <span class="hero-chip" data-category="playa">🏖️ Beach</span>
+                    <span class="hero-chip" data-category="aventura">⛰️ Adventure</span>
+                    <span class="hero-chip" data-category="cultura">🏛️ Culture</span>
+                    <span class="hero-chip" data-category="gastronomia">🍲 Gastronomy</span>
                 </div>
             </div>
         </section>
@@ -56,43 +56,43 @@
                 <div class="filter-card">
                     <div class="filter-header">
                         <i class="fa-solid fa-sliders"></i>
-                        <h3>Filtros Rápidos</h3>
+                        <h3>Quick Filters</h3>
                     </div>
 
                     <div class="filter-section">
-                        <label class="filter-label">Buscar destino</label>
+                        <label class="filter-label">Search destination</label>
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" id="searchInput" placeholder="Ej: Volcán, Playa...">
+                            <input type="text" id="searchInput" placeholder="E.g.: Volcano, Beach...">
                         </div>
                     </div>
 
                     <div class="filter-section">
-                        <label class="filter-label">Categoría</label>
+                        <label class="filter-label">Category</label>
                         <div class="chips-container" id="categoryChips">
-                            <span class="chip active" data-category="todos">Todos</span>
-                            <span class="chip" data-category="naturaleza">Naturaleza</span>
-                            <span class="chip" data-category="aventura">Aventura</span>
-                            <span class="chip" data-category="cultura">Cultura</span>
-                            <span class="chip" data-category="gastronomia">Gastronomía</span>
-                            <span class="chip" data-category="pueblos vivos">Pueblos Vivos</span>
-                            <span class="chip" data-category="playa">Playa</span>
-                            <span class="chip" data-category="montana">Montaña</span>
+                            <span class="chip active" data-category="todos">All</span>
+                            <span class="chip" data-category="naturaleza">Nature</span>
+                            <span class="chip" data-category="aventura">Adventure</span>
+                            <span class="chip" data-category="cultura">Culture</span>
+                            <span class="chip" data-category="gastronomia">Gastronomy</span>
+                            <span class="chip" data-category="pueblos vivos">Living Towns</span>
+                            <span class="chip" data-category="playa">Beach</span>
+                            <span class="chip" data-category="montana">Mountain</span>
                         </div>
                     </div>
 
                     <div class="filter-section">
-                        <label class="filter-label">Presupuesto Diario</label>
+                        <label class="filter-label">Daily Budget</label>
                         <div class="budget-options">
                             <label class="budget-item">
                                 <input type="checkbox" class="budget-filter" value="economico" checked>
                                 <span class="checkmark"></span>
-                                <span class="label-text">Económico (< $20)</span>
+                                <span class="label-text">Budget (< $20)</span>
                             </label>
                             <label class="budget-item">
                                 <input type="checkbox" class="budget-filter" value="conforme" checked>
                                 <span class="checkmark"></span>
-                                <span class="label-text">Conforme ($20 - $50)</span>
+                                <span class="label-text">Standard ($20 - $50)</span>
                             </label>
                             <label class="budget-item">
                                 <input type="checkbox" class="budget-filter" value="premium" checked>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
 
-                    <button id="resetFilters" class="btn-reset">Limpiar Filtros</button>
+                    <button id="resetFilters" class="btn-reset">Clear Filters</button>
                 </div>
 
                 <div class="sidebar-extras">
@@ -111,38 +111,38 @@
                             <i class="fa-solid fa-lightbulb"></i>
                             <h4>Tip</h4>
                         </div>
-                        <p>Visita los pueblos vivos temprano en la mañana para capturar la mejor luz y evitar las multitudes.</p>
+                        <p>Visit the living towns early in the morning to capture the best light and avoid the crowds.</p>
                     </div>
 
                     <div class="extra-card secret-card">
                         <div class="extra-header">
                             <i class="fa-solid fa-gem"></i>
-                            <h4>Gema Oculta</h4>
+                            <h4>Hidden Gem</h4>
                         </div>
-                        <p>No olvides explorar las rutas menos transitadas en la zona de montaña; ahí están las mejores vistas.</p>
+                        <p>Don't forget to explore the less traveled routes in the mountain area; that's where the best views are.</p>
                     </div>
 
                     <div class="extra-card cta-card">
                         <div class="extra-header">
                             <i class="fa-solid fa-calculator"></i>
-                            <h4>¿Presupuesto Ajustado?</h4>
+                            <h4>Tight Budget?</h4>
                         </div>
-                        <p>Usa nuestro planificador inteligente para optimizar cada centavo de tu viaje.</p>
-                        <a href="planificador.html" class="btn-extra-cta">Planificar Ahora ➔</a>
+                        <p>Use our smart planner to optimize every penny of your trip.</p>
+                        <a href="planificador.html" class="btn-extra-cta">Plan Now ➔</a>
                     </div>
                 </div>
             </aside>
 
             <section class="results-area">
                 <div class="results-info">
-                    <span id="resultsCount">Cargando destinos...</span>
+                    <span id="resultsCount">Loading destinations...</span>
                     <div class="sort-options">
-                        <span>Ordenar por:</span>
+                        <span>Sort by:</span>
                         <select id="sortSelect">
-                            <option value="desc">Más Recientes</option>
-                            <option value="rating">Mejor Calificados</option>
-                            <option value="price_asc">Precio: Menor a Mayor</option>
-                            <option value="price_desc">Precio: Mayor a Menor</option>
+                            <option value="desc">Most Recent</option>
+                            <option value="rating">Best Rated</option>
+                            <option value="price_asc">Price: Low to High</option>
+                            <option value="price_desc">Price: High to Low</option>
                         </select>
                     </div>
                 </div>

@@ -111,8 +111,9 @@
             <p class="subtitle">Actualiza tu información pública y preferencias de viaje</p>
 
             <div class="avatar-edit-group">
-                <div class="avatar-circle-modal">D</div>
-                <button type="button" class="btn-change-photo">Cambiar foto de perfil</button>
+                <div class="avatar-circle-modal" id="modal-avatar-preview">D</div>
+                <label for="modal-avatar-input" class="btn-change-photo">Cambiar foto de perfil</label>
+                <input type="file" id="modal-avatar-input" accept="image/*" style="display: none;">
             </div>
 
             <form id="editProfileForm">

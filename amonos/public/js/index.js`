@@ -2,29 +2,6 @@ let categoriaSeleccionada = "Todos";
 let departamentoSeleccionado = "Todos";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const botonesCategoria = document.querySelectorAll(".categories-list .cat-card");
-    if (botonesCategoria.length > 0) {
-        botonesCategoria[0].classList.add("active");
-    }
-
-    botonesCategoria.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            botonesCategoria.forEach(b => b.classList.remove("active"));
-            boton.classList.add("active");
-            categoriaSeleccionada = boton.textContent.trim();
-            cargarDestinos();
-        });
-    });
-
-    const btnFiltrar = document.getElementById("btn-filtrar");
-    const selectDept = document.getElementById("select-departamento");
-    if (btnFiltrar && selectDept) {
-        btnFiltrar.addEventListener("click", () => {
-            departamentoSeleccionado = selectDept.value;
-            cargarDestinos();
-        });
-    }
-
     inicializarSlider();
 });
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ámonos - Planificador de Viajes</title>
+    <title>Ámonos - Trip Planner</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/planificador.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,33 +19,33 @@
                     <span class="logo-text">ÁMONOS</span>
                 </a>
                 <ul class="menu-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="explorar.html">Explorar destinos</a></li>
-                    <li><a href="planificador.html" class="active">Planificador</a></li>
-                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="explorar.html">Explore destinations</a></li>
+                    <li><a href="planificador.html" class="active">Planner</a></li>
+                    <li><a href="sobre-nosotros.html">About Us</a></li>
+                    <li><a href="perfil.html">Profile</a></li>
                 </ul>
-                <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+                <a href="perfil.html" class="avatar" title="My Profile">D</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <main class="planner-container">
         <div class="planner-layout">
 
             <div class="planner-main-column">
                 <section class="planner-card">
                     <div class="card-header">
                         <i class="fa-solid fa-map-location-dot"></i>
-                        <h2>Configura tu Salida</h2>
+                        <h2>Configure your Trip</h2>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="destino-select">Destino base</label>
+                            <label for="destino-select">Base destination</label>
                             <div class="custom-select-container" id="destino-select-container">
                                 <div class="custom-select-trigger">
                                     <i class="fa-solid fa-location-dot"></i>
-                                    <span class="selected-value">Selecciona un destino...</span>
+                                    <span class="selected-value">Select a destination...</span>
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="custom-options-list" id="destino-options">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="input-presupuesto">Tu Presupuesto Máximo</label>
+                            <label for="input-presupuesto">Your Maximum Budget</label>
                             <div class="input-wrapper">
                                 <span class="input-prefix">$</span>
                                 <input type="number" id="input-presupuesto" value="50" min="1">
@@ -66,12 +66,12 @@
                 <section class="inspiration-card">
                     <div class="inspiration-content">
                         <div class="inspiration-text">
-                            <h3><i class="fa-solid fa-lightbulb"></i> Tips para tu viaje</h3>
-                            <p>Recuerda que viajar con un presupuesto ajustado no significa sacrificar la experiencia. ¡Explora los mercados locales y utiliza transporte público para vivir la cultura real de El Salvador!</p>
+                            <h3><i class="fa-solid fa-lightbulb"></i> Tips for your trip</h3>
+                            <p>Remember that traveling on a budget doesn't mean sacrificing the experience. Explore local markets and use public transport to experience the real culture of El Salvador!</p>
                             <ul class="tips-list">
-                                <li><i class="fa-solid fa-check"></i> Lleva siempre efectivo para pequeños comercios.</li>
-                                <li><i class="fa-solid fa-check"></i> Pregunta a los locales por los "hidden gems".</li>
-                                <li><i class="fa-solid fa-check"></i> Planifica tus rutas para optimizar el transporte.</li>
+                                <li><i class="fa-solid fa-check"></i> Always carry cash for small shops.</li>
+                                <li><i class="fa-solid fa-check"></i> Ask locals about the "hidden gems".</li>
+                                <li><i class="fa-solid fa-check"></i> Plan your routes to optimize transport.</li>
                             </ul>
                         </div>
                         <div class="inspiration-image">
@@ -84,24 +84,24 @@
             <aside class="planner-sidebar">
                 <div class="planner-card budget-panel">
                     <div class="panel-header">
-                        <h2>Calculadora de Salida</h2>
+                        <h2>Budget Calculator</h2>
                         <i class="fa-solid fa-calculator"></i>
                     </div>
 
                     <div class="budget-metrics">
                         <div class="metric">
-                            <span class="label">Gastado</span>
+                            <span class="label">Spent</span>
                             <span class="value" id="txt-gastado">$0.00</span>
                         </div>
                         <div class="metric">
-                            <span class="label">Límite</span>
+                            <span class="label">Limit</span>
                             <span class="value" id="txt-limite">$50.00</span>
                         </div>
                     </div>
 
                     <div class="budget-main-display">
                         <span id="txt-restante">$50.00</span>
-                        <span id="txt-status-label">DISPONIBLE</span>
+                        <span id="txt-status-label">AVAILABLE</span>
                     </div>
 
                     <div class="progress-wrapper">
@@ -113,7 +113,7 @@
                     <div class="calc-inputs">
                         <div class="calc-row">
                             <div class="item-info">
-                                <span class="item-name">Parqueo</span>
+                                <span class="item-name">Parking</span>
                                 <span class="item-unit">$<span id="unit-transporte">10.00</span> / vehic.</span>
                             </div>
                             <div class="item-controls">
@@ -124,7 +124,7 @@
 
                         <div class="calc-row">
                             <div class="item-info">
-                                <span class="item-name">Alimentación</span>
+                                <span class="item-name">Food</span>
                                 <span class="item-unit">$<span id="unit-comida">12.00</span> / pers.</span>
                             </div>
                             <div class="item-controls">
@@ -135,7 +135,7 @@
 
                         <div class="calc-row">
                             <div class="item-info">
-                                <span class="item-name">Entradas / Tickets</span>
+                                <span class="item-name">Tickets / Entries</span>
                                 <span class="item-unit">$<span id="unit-entradas">3.00</span> / pers.</span>
                             </div>
                             <div class="item-controls">
@@ -146,7 +146,7 @@
 
                     </div>
 
-                    <button class="btn-save-plan">Guardar en mi Historial</button>
+                    <button class="btn-save-plan">Save to my History</button>
                 </div>
             </aside>
         </div>
