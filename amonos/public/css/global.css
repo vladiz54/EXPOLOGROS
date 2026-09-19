@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@700&display=swap');
 
 :root {
-    --primary-color: #0369a1; /* Celeste Vibrante - Profesional y con Fuerza */
-    --secondary-color: #0ea5e9; /* Celeste Brillante - Moderno y Energético */
-    --accent-color: #f97316; /* Naranja Vivo - Contraste Máximo y Llamativo */
-    --alert-color: #ef4444; /* Rojo Alerta - Claro y Directo */
-    --bg-main: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%); /* Cielo Claro: Fondo limpio que hace resaltar los colores */
-    --bg-card: rgba(255, 255, 255, 0.95);
-    --text-dark: #0f172a; /* Slate 900 - Contraste profundo para lectura óptima */
+    --primary-color: #1e3a8a; /* Deep Navy - Elegancia, confianza y profundidad */
+    --secondary-color: #3b82f6; /* Royal Blue - Modernidad y energía */
+    --accent-color: #fbbf24; /* Golden Amber - Lujo, calidez y contraste premium */
+    --alert-color: #ef4444; /* Rojo Alerta - Claridad */
+    --bg-main: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%); /* Azure Mist: Fondo aireado, limpio y sofisticado */
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --text-dark: #0f172a; /* Slate 900 - Máximo contraste y legibilidad */
     --text-muted: #475569; /* Slate 600 - Equilibrio visual */
     --white: #ffffff;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 15px 35px -5px rgba(3, 105, 161, 0.3);
-    --radius: 20px;
-    --subtle-accent: #bae6fd; /* Celeste Suave para detalles */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 20px 40px -12px rgba(30, 58, 138, 0.2);
+    --radius: 24px; /* Bordes ligeramente más suaves para un look más moderno */
+    --subtle-accent: #e0e7ff; /* Indigo suave para detalles */
 }
 
 body {
@@ -33,15 +33,15 @@ h1, h2, h3, h4, h5, h6, .logo-text, .font-bold {
 
 /* HEADER MODERNIZADO */
 header {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 3px solid var(--primary-color);
+    border-bottom: 1px solid rgba(30, 58, 138, 0.1);
 }
 
 nav {
@@ -142,16 +142,16 @@ nav {
 
 .card-modern {
     background: var(--bg-card);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
     border-radius: var(--radius);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     box-shadow: var(--shadow-md);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
 .card-modern:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(30, 58, 138, 0.2);
 }
 
 /* BOTONES VIBRANTES */
