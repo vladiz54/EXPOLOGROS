@@ -1,0 +1,146 @@
+/* --- SLIDER DE DESTINOS PREMIUM v3 --- */
+.destinos-slider-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+/* El "Contenedor Isla" con fondo ligeramente contrastado */
+.slider-master-wrapper {
+    background: #fdfdfd; /* Blanco roto para que resalten las cartas */
+    border-radius: 40px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider-header-flex {
+    display: flex;
+    justify-content: center; /* Centramos el título */
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.slider-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 2.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.slider-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* Contenedor principal para alinear botones a los lados */
+.slider-main-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.slider-container {
+    overflow-x: auto;
+    padding: 20px 0 50px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-container .grid-destinos {
+    display: flex;
+    gap: 30px;
+    padding: 0 10px;
+}
+
+/* Botones laterales flotantes y estéticos */
+.slider-btn {
+    z-index: 20;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--primary-color);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.slider-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(3, 105, 161, 0.3);
+    border-color: var(--primary-color);
+}
+
+.slider-container .destino-card {
+    min-width: 320px;
+    max-width: 320px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    background: var(--white);
+    border-radius: 25px;
+    border: 1px solid rgba(0,0,0,0.1); /* Borde más visible */
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Sombra más marcada para separar del fondo */
+}
+
+.slider-container .destino-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    border-color: var(--primary-color);
+}
+
+.slider-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.slider-footer .view-all-link {
+    background: var(--primary-color);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(3, 105, 161, 0.2);
+}
+
+.slider-footer .view-all-link:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(3, 105, 161, 0.3);
+}
