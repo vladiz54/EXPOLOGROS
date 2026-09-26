@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarSlider();
 });
 
+// Removed legacy counter functions to clean up the code
+async function cargarDestinos() {
+// ... the rest of the file remains the same ...
+
+
 async function cargarDestinos() {
     const contenedor = document.querySelector(".grid-destinos");
     if (!contenedor) return;
@@ -48,21 +53,25 @@ async function cargarDestinos() {
 
                 const tarjeta = `
                     <div class="destino-card">
-                        <a href="detalles.html?id=${destino.id}" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${destino.imagen}') center/cover;"></a>
-                        <div class="dest-body">
-                            <div>
-                                <h4><a href="detalles.html?id=${destino.id}" style="text-decoration: none; color: inherit;">${destino.nombre}</a></h4>
-                                <p class="dpto">${destino.ubicacion}</p>
-                                <p class="dest-short-desc" style="font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 15px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${descripcionCorta}</p>
+                        <a href="detalles.html?id=${destino.id}" class="card-link-wrapper" style="text-decoration: none; color: inherit; display: block;">
+                            <div class="dest-img-container">
+                                <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${destino.imagen}') center/cover; height: 230px;"></div>
                             </div>
-                            <div class="dest-footer">
-                                <span class="price">$${parseFloat(destino.precio || 0).toFixed(2)}</span>
-                                <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
-                                    <span class="rating">⭐ ${destino.rating || '0.0'}</span>
-                                    <button class="btn-heart" data-id="${destino.id}" title="Guardar" onclick="toggleHeart(this)">❤️</button>
+                            <div class="dest-body">
+                                <div class="dest-info">
+                                    <h4>${destino.nombre}</h4>
+                                    <p class="dpto">${destino.ubicacion}</p>
+                                    <p class="dest-short-desc" style="font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 15px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${descripcionCorta}</p>
+                                </div>
+                                <div class="dest-footer">
+                                    <span class="price">$${parseFloat(destino.precio || 0).toFixed(2)}</span>
+                                    <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
+                                        <span class="rating">⭐ ${destino.rating || '0.0'}</span>
+                                        <button class="btn-heart" data-id="${destino.id}" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 `;
                 contenedor.innerHTML += tarjeta;

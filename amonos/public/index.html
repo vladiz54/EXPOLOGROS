@@ -6,7 +6,13 @@
     <title>Ámonos - El Salvador</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/benefits.css">
     <link rel="stylesheet" href="css/slider-destinos.css">
+    <link rel="stylesheet" href="css/impact-style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -18,11 +24,11 @@
             </a>
 
             <ul class="menu-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="explorar.html">Explore destinations</a></li>
-                <li><a href="planificador.html">Planner</a></li>
-                <li><a href="sobre-nosotros.html">About Us</a></li>
-                <li><a href="perfil.html">Profile</a></li>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="explorar.html">Explorar destinos</a></li>
+                <li><a href="planificador.html">Planificador</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
             </ul>
             <a href="perfil.html" class="avatar" title="My Profile">D</a>
         </nav>
@@ -51,34 +57,57 @@
 
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="mover">Discover El Salvador without breaking your budget</h1>
-            <p>Find destinations, activities, and experiences tailored to your pocket.</p>
+            <h1 class="mover">Descubre El Salvador sin romper tu presupuesto</h1>
+            <p>Encuentra destinos, actividades y experiencias diseñadas a la medida de tu bolsillo.</p>
 
             <div class="hero-buttons">
-                <a href="planificador.html" class="btn btn-primary">Plan my trip ➔</a>
-                <a href="explorar.html" class="btn btn-outline">Explore destinations</a>
+                <a href="planificador.html" class="btn btn-primary">Planifica mi viaje ➔</a>
+                <a href="explorar.html" class="btn btn-outline">Explorar destinos</a>
             </div>
         </div>
     </section>
 
     <main class="container main-content">
 
-        <section class="categories-section">
+        <!-- SECCIÓN DE IMPACTO - EMOTIONAL PROMISE -->
+        <section class="immersive-trust-section">
+            <div class="trust-bg-wrapper">
+                <div class="bg-giant-icon icon-users"><i class="fa-solid fa-heart"></i></div>
+                <div class="bg-giant-icon icon-map"><i class="fa-solid fa-compass"></i></div>
+                <div class="bg-giant-icon icon-star"><i class="fa-solid fa-mountain-sun"></i></div>
+            </div>
+            <div class="immersive-container">
+                <div class="immersive-item">
+                    <span class="immersive-number">Presupuesto</span>
+                    <span class="immersive-label">Tú pones el límite, nosotros la <span class="highlight">magia</span></span>
+                </div>
+                <div class="immersive-item">
+                    <span class="immersive-number">Aventura</span>
+                    <span class="immersive-label">Escápate de lo <span class="highlight">ordinario</span></span>
+                </div>
+                <div class="immersive-item">
+                    <span class="immersive-number">Perspectiva</span>
+                    <span class="immersive-label">El Salvador como <span class="highlight">nunca lo viste</span></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section" data-aos="fade-up">
             <div class="section-title">
-                <h2 class="filter-main-title">Design your perfect getaway</h2>
-                <p class="filter-subtitle">Filter by the experience you're looking for or the destination you've always dreamed of visiting</p>
+                <h2 class="filter-main-title">Diseña tu escapada perfecta</h2>
+                <p class="filter-subtitle">Filtra por la experiencia que buscas o el destino que siempre has soñado visitar</p>
             </div>
 
             <div class="filter-wrapper">
                 <div class="categories-container">
                     <ul class="categories-list">
-                        <li><button class="cat-card active" data-cat="todos"><span>All</span></button></li>
-                        <li><button class="cat-card" data-cat="naturaleza"><span>🌿 Nature</span></button></li>
-                        <li><button class="cat-card" data-cat="aventura"><span>⛰️ Adventure</span></button></li>
-                        <li><button class="cat-card" data-cat="cultura"><span>🏛️ Culture</span></button></li>
-                        <li><button class="cat-card" data-cat="gastronomia"><span>🍲 Gastronomy</span></button></li>
-                        <li><button class="cat-card" data-cat="pueblos vivos"><span>🏡 Living Towns</span></button></li>
-                        <li><button class="cat-card" data-cat="playa"><span>🏖️ Beach</span></button></li>
+                        <li><button class="cat-card active" data-cat="todos"><span>✨</span><span>Todos</span></button></li>
+                        <li><button class="cat-card" data-cat="naturaleza"><span>🌿</span><span>Naturaleza</span></button></li>
+                        <li><button class="cat-card" data-cat="aventura"><span>⛰️</span><span>Aventura</span></button></li>
+                        <li><button class="cat-card" data-cat="cultura"><span>🏛️</span><span>Cultura</span></button></li>
+                        <li><button class="cat-card" data-cat="gastronomia"><span>🍲</span><span>Gastronomía</span></button></li>
+                        <li><button class="cat-card" data-cat="pueblos vivos"><span>🏡</span><span>Pueblos Vivos</span></button></li>
+                        <li><button class="cat-card" data-cat="playa"><span>🏖️</span><span>Playa</span></button></li>
                     </ul>
                 </div>
 
@@ -86,7 +115,7 @@
                     <div class="dept-filter-inner">
                         <i class="fa-solid fa-location-dot"></i>
                         <select id="select-departamento">
-                            <option value="Todos">All departments</option>
+                            <option value="Todos">Todos los departamentos</option>
                             <option value="Ahuachapán">Ahuachapán</option>
                             <option value="Cabañas">Cabañas</option>
                             <option value="Chalatenango">Chalatenango</option>
@@ -102,96 +131,124 @@
                             <option value="Sonsonate">Sonsonate</option>
                             <option value="Usulután">Usulután</option>
                         </select>
-                        <button class="btn-filter-submit" id="btn-filtrar">Filter now</button>
+                        <button class="btn-filter-submit" id="btn-filtrar">Filtrar ahora</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="destinos-slider-section">
-            <div class="slider-master-wrapper">
-                <div class="slider-header-flex">
-                    <h2 class="slider-title">Hidden gems you must visit</h2>
-                </div>
-
-                <div class="slider-main-container">
-                    <button class="slider-btn side-prev" id="prevDest"><i class="fa-solid fa-chevron-left"></i></button>
-
-                    <div class="slider-container">
-                        <div class="grid-destinos" id="destinosSlider">
-                            <div class="destino-card">
-                                <a href="detalles.html?destino=coatepeque" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg') center/cover;"></a>
-                                <div class="dest-body">
-                                    <div class="dest-info">
-                                        <h4><a href="detalles.html?destino=coatepeque" style="text-decoration: none; color: inherit;">Lake Coatepeque</a></h4>
-                                        <p class="dpto">Santa Ana</p>
-                                    </div>
-                                    <div class="dest-footer">
-                                        <span class="price">From $15</span>
-                                        <div class="meta-right">
-                                            <span class="rating">⭐ 4.8 (230)</span>
-                                            <button class="btn-heart" title="Save" onclick="toggleHeart(event, this)">❤️</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="destino-card">
-                                <a href="detalles.html?destino=flores" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://tse4.mm.bing.net/th/id/OIP.9i6py3r_le_EsQDkOEKzwgHaFn?r=0&rs=1&pid=ImgDetMain&o=7&rm=3') center/cover;"></a>
-                                <div class="dest-body">
-                                    <div class="dest-info">
-                                        <h4><a href="detalles.html?destino=flores" style="text-decoration: none; color: inherit;">Flower Route</a></h4>
-                                        <p class="dpto">Ahuachapán</p>
-                                    </div>
-                                    <div class="dest-footer">
-                                        <span class="price">From $20</span>
-                                        <div class="meta-right">
-                                            <span class="rating">⭐ 4.9 (185)</span>
-                                            <button class="btn-heart" title="Save" onclick="toggleHeart(event, this)">❤️</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="destino-card">
-                                <a href="detalles.html?destino=cerroverde" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://elsalvador.travel/system/wp-content/uploads/2020/01/CerroVerde1.jpg') center/cover;"></a>
-                                <div class="dest-body">
-                                    <div class="dest-info">
-                                        <h4><a href="detalles.html?destino=cerroverde" style="text-decoration: none; color: inherit;">Cerro Verde</a></h4>
-                                        <p class="dpto">Santa Ana</p>
-                                    </div>
-                                    <div class="dest-footer">
-                                        <span class="price">From $18</span>
-                                        <div class="meta-right">
-                                            <span class="rating">⭐ 4.6 (115)</span>
-                                            <button class="btn-heart" title="Save" onclick="toggleHeart(event, this)">❤️</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="destino-card">
-                                <a href="detalles.html?destino=eltunco" class="dest-img-sim" style="display: block; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://th.bing.com/th/id/R.b247efb4b22d8b17052467b266b71ac4?rik=xFaxWkCaoOBP%2fQ&pid=ImgRaw&r=0') center/cover;"></a>
-                                <div class="dest-body">
-                                    <div class="dest-info">
-                                        <h4><a href="detalles.html?destino=eltunco" style="text-decoration: none; color: inherit;">El Tunco Beach</a></h4>
-                                        <p class="dpto">La Libertad</p>
-                                    </div>
-                                    <div class="dest-footer">
-                                        <span class="price">From $12</span>
-                                        <div class="meta-right">
-                                            <span class="rating">⭐ 4.6 (210)</span>
-                                            <button class="btn-heart" title="Save" onclick="toggleHeart(event, this)">❤️</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="destinations-gallery-section">
+            <div class="gallery-header">
+                <div class="gallery-title-group">
+                    <div class="gallery-badge-top">✨ Colección Exclusiva 2026</div>
+                    <h2 class="gallery-main-title">Explora El Salvador</h2>
+                    <p class="gallery-subtitle">Desde las cumbres volcánicas de Santa Ana hasta las arenas doradas de La Libertad, descubre un país lleno de contrastes, cultura vibrante y paisajes que parecen sacados de un sueño.</p>
+                    <div class="gallery-features">
+                        <span class="feature-item"><i class="fa-solid fa-check"></i> Guías Locales</span>
+                        <span class="feature-item"><i class="fa-solid fa-check"></i> Precios Reales</span>
+                        <span class="feature-item"><i class="fa-solid fa-check"></i> Rutas Verificadas</span>
                     </div>
-                    <button class="slider-btn side-next" id="nextDest"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-                <div class="slider-footer">
-                    <a href="explorar.html" class="view-all-link">View all destinations ➔</a>
+                <div class="gallery-stats">
+                    <div class="stat-circle">45<span>+</span></div>
+                    <div class="stat-text">Destinos <br><span>Curados</span></div>
+                </div>
+            </div>
+
+            <div class="gallery-container">
+                <div class="grid-destinos" id="destinosSlider">
+                    <!-- Las tarjetas se generan dinámicamente o se mantienen aquí -->
+                    <div class="destino-card">
+                        <a href="detalles.html?destino=coatepeque" class="card-link-wrapper">
+                            <div class="dest-img-container">
+                                <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg') center/cover;"></div>
+                                <div class="dest-badge">Favorito</div>
+                                <div class="dest-price-tag">Desde $15</div>
+                            </div>
+                            <div class="dest-body">
+                                <div class="dest-info">
+                                    <div class="dest-header-row">
+                                        <h4>Lago de Coatepeque</h4>
+                                        <span class="rating">⭐ 4.8</span>
+                                    </div>
+                                    <p class="dpto"><i class="fa-solid fa-location-dot"></i> Santa Ana</p>
+                                </div>
+                                <div class="dest-action">
+                                    <span class="action-text">Ver detalles <i class="fa-solid fa-arrow-right"></i></span>
+                                    <button class="btn-heart" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="destino-card">
+                        <a href="detalles.html?destino=flores" class="card-link-wrapper">
+                            <div class="dest-img-container">
+                                <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://tse4.mm.bing.net/th/id/OIP.9i6py3r_le_EsQDkOEKzwgHaFn?r=0&rs=1&pid=ImgDetMain&o=7&rm=3') center/cover;"></div>
+                                <div class="dest-badge">Tendencia</div>
+                                <div class="dest-price-tag">Desde $20</div>
+                            </div>
+                            <div class="dest-body">
+                                <div class="dest-info">
+                                    <div class="dest-header-row">
+                                        <h4>Ruta de las Flores</h4>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                    <p class="dpto"><i class="fa-solid fa-location-dot"></i> Ahuachapán</p>
+                                </div>
+                                <div class="dest-action">
+                                    <span class="action-text">Ver detalles <i class="fa-solid fa-arrow-right"></i></span>
+                                    <button class="btn-heart" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="destino-card">
+                        <a href="detalles.html?destino=cerroverde" class="card-link-wrapper">
+                            <div class="dest-img-container">
+                                <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://elsalvador.travel/system/wp-content/uploads/2020/01/CerroVerde1.jpg') center/cover;"></div>
+                                <div class="dest-badge">Naturaleza</div>
+                                <div class="dest-price-tag">Desde $18</div>
+                            </div>
+                            <div class="dest-body">
+                                <div class="dest-info">
+                                    <div class="dest-header-row">
+                                        <h4>Cerro Verde</h4>
+                                        <span class="rating">⭐ 4.6</span>
+                                    </div>
+                                    <p class="dpto"><i class="fa-solid fa-location-dot"></i> Santa Ana</p>
+                                </div>
+                                <div class="dest-action">
+                                    <span class="action-text">Ver detalles <i class="fa-solid fa-arrow-right"></i></span>
+                                    <button class="btn-heart" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="destino-card">
+                        <a href="detalles.html?destino=eltunco" class="card-link-wrapper">
+                            <div class="dest-img-container">
+                                <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://th.bing.com/th/id/R.b247efb4b22d8b17052467b266b71ac4?rik=xFaxWkCaoOBP%2fQ&pid=ImgRaw&r=0') center/cover;"></div>
+                                <div class="dest-badge">Playa</div>
+                                <div class="dest-price-tag">Desde $12</div>
+                            </div>
+                            <div class="dest-body">
+                                <div class="dest-info">
+                                    <div class="dest-header-row">
+                                        <h4>Playa El Tunco</h4>
+                                        <span class="rating">⭐ 4.6</span>
+                                    </div>
+                                    <p class="dpto"><i class="fa-solid fa-location-dot"></i> La Libertad</p>
+                                </div>
+                                <div class="dest-action">
+                                    <span class="action-text">Ver detalles <i class="fa-solid fa-arrow-right"></i></span>
+                                    <button class="btn-heart" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -200,17 +257,17 @@
     <section class="smart-recommendation-section">
         <div class="container">
             <div class="recommendation-header">
-                <h2>Discover which places are for you</h2>
-                <p class="sub-section-text">Smart recommendations based on your travel style and adventure preferences.</p>
+                <h2>Descubre qué lugares son para ti</h2>
+                <p class="sub-section-text">Recomendaciones inteligentes basadas en tu estilo de viaje y preferencias de aventura.</p>
             </div>
 
             <div class="flex-recommendations">
                 <div class="preference-box">
                     <div class="pref-icon">✨</div>
-                    <span class="box-tag">Your ideal category</span>
-                    <h3>Culture & Gastronomy</h3>
-                    <p class="box-description">For you, the best trips are those that explore ancient stories and local flavors. You'll love museums, historical architecture, and tasting traditional dishes.</p>
-                    <a href="explorar.html?filtro=Cultura" class="btn-pref">Explore Category ➔</a>
+                    <span class="box-tag">Tu categoría ideal</span>
+                    <h3>Cultura y Gastronomía</h3>
+                    <p class="box-description">Para ti, los mejores viajes son aquellos que exploran historias antiguas y sabores locales. Te encantarán los museos, la arquitectura histórica y probar platos tradicionales.</p>
+                    <a href="explorar.html?filtro=Cultura" class="btn-pref">Explorar Categoría ➔</a>
                 </div>
 
                 <div class="featured-dest-box">
@@ -218,13 +275,13 @@
                         <img src="/amonos/img/suchitoto.jpg" alt="Suchitoto" class="featured-img">
                     </div>
                     <div class="featured-body">
-                        <span class="box-tag-alt">Suggested Destination</span>
+                        <span class="box-tag-alt">Destino Sugerido</span>
                         <h3>Suchitoto</h3>
                         <div class="featured-location">
-                            <i class="fa-solid fa-location-dot"></i> Cuscatlán — Historical
+                            <i class="fa-solid fa-location-dot"></i> Cuscatlán — Histórico
                         </div>
-                        <p class="featured-description">A beautiful colonial town that preserves the cultural essence, with cobblestone streets and perfect views of Lake Suchitlán.</p>
-                        <a href="detalles.html?destino=suchitoto" class="btn-featured">View Details ➔</a>
+                        <p class="featured-description">Un hermoso pueblo colonial que preserva la esencia cultural, con calles empedradas y vistas perfectas del Lago de Suchitlán.</p>
+                        <a href="detalles.html?destino=suchitoto" class="btn-featured">Ver Detalles ➔</a>
                     </div>
                 </div>
             </div>
@@ -232,18 +289,28 @@
             <div class="budget-banner">
                 <div class="budget-content">
                     <div class="budget-text">
-                        <h3>Not sure how much to spend?</h3>
-                        <p>Enter your budget and find ideal plans for your next adventure.</p>
+                        <h3>¿No sabes cuánto gastar?</h3>
+                        <p>Ingresa tu presupuesto y encuentra planes ideales para tu próxima aventura.</p>
                     </div>
-                    <a href="planificador.html" class="btn-budget">Start Now ➔</a>
+                    <a href="planificador.html" class="btn-budget">Empezar Ahora ➔</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="js/index.js"></script>
     <script src="js/slider-destinos.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/auth-guard.js"></script>
     <script src="js/header-effects.js"></script>
+    <script src="js/footer-loader.js"></script>
+    <!-- AOS Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+    </script>
 </body>
 </html>

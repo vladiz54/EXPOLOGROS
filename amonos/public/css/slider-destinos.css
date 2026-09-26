@@ -1,62 +1,60 @@
-/* --- SLIDER DE DESTINOS PREMIUM v3 --- */
+/* --- SLIDER DE DESTINOS ULTRA-PREMIUM (Style: Nomadic) --- */
 .destinos-slider-section {
-    padding: 80px 0;
+    padding: 120px 0;
     position: relative;
+    /* Fondo blanco puro y extendido para cubrir toda la web */
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
-/* El "Contenedor Isla" con fondo ligeramente contrastado */
 .slider-master-wrapper {
-    background: #fdfdfd; /* Blanco roto para que resalten las cartas */
-    border-radius: 40px;
-    padding: 60px 40px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.04);
-    max-width: 1300px;
+    background: transparent;
+    padding: 0 20px;
+    width: 100%;
     margin: 0 auto;
     position: relative;
 }
 
 .slider-header-flex {
     display: flex;
-    justify-content: center; /* Centramos el título */
-    align-items: center;
-    margin-bottom: 50px;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    padding: 0 20px;
 }
 
 .slider-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    color: var(--primary-color);
+    color: #1e293b;
     margin: 0;
-    font-size: 2.5rem;
-    position: relative;
+    font-size: 3.2rem;
+    line-height: 1;
+    letter-spacing: -1.5px;
     text-align: center;
 }
 
-.slider-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: var(--secondary-color);
-    border-radius: 2px;
+.slider-title span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    opacity: 0.8;
 }
 
-/* Contenedor principal para alinear botones a los lados */
 .slider-main-container {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 }
 
 .slider-container {
     overflow-x: auto;
-    padding: 20px 0 50px;
+    padding: 60px 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -70,77 +68,167 @@
 
 .slider-container .grid-destinos {
     display: flex;
-    gap: 30px;
-    padding: 0 10px;
+    /* Reducimos el gap para que los objetos no estén tan alejados */
+    gap: 25px;
+    padding: 0 40px;
 }
 
-/* Botones laterales flotantes y estéticos */
-.slider-btn {
-    z-index: 20;
-    background: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    color: var(--primary-color);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-}
-
-.slider-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 12px 30px rgba(3, 105, 161, 0.3);
-    border-color: var(--primary-color);
-}
-
+/* CARTA ESTILO NOMADIC LUXURY */
 .slider-container .destino-card {
-    min-width: 320px;
-    max-width: 320px;
-    scroll-snap-align: start;
+    /* Reducimos un poco el ancho para que quepan más y se sientan menos aisladas */
+    min-width: 310px;
+    max-width: 310px;
+    scroll-snap-align: center;
     flex-shrink: 0;
     background: var(--white);
-    border-radius: 25px;
-    border: 1px solid rgba(0,0,0,0.1); /* Borde más visible */
+    border-radius: 32px;
+    border: 1px solid rgba(0,0,0,0.05);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Sombra más marcada para separar del fondo */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    position: relative;
 }
 
 .slider-container .destino-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-    border-color: var(--primary-color);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+}
+
+.card-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.dest-img-container {
+    overflow: hidden;
+    height: 230px;
+    position: relative;
+}
+
+.dest-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.05));
+    pointer-events: none;
+}
+
+.dest-img-sim {
+    height: 100%;
+    width: 100%;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.slider-container .destino-card:hover .dest-img-sim {
+    transform: scale(1.1);
+}
+
+.dest-body {
+    padding: 25px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dest-info h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.slider-container .destino-card:hover .dest-info h4 {
+    color: var(--primary-color);
+}
+
+.dpto {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.dest-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.price {
+    color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.rating {
+    color: #fbbf24;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-heart {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.btn-heart:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    transform: scale(1.1);
 }
 
 .slider-footer {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .slider-footer .view-all-link {
-    background: var(--primary-color);
-    color: white;
-    padding: 14px 30px;
+    background: transparent;
+    color: #1e293b;
+    padding: 12px 30px;
     border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
     transition: all 0.3s ease;
+    border: 2px solid #1e293b;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 8px 20px rgba(3, 105, 161, 0.2);
 }
 
 .slider-footer .view-all-link:hover {
-    background: var(--secondary-color);
-    transform: scale(1.05);
-    box-shadow: 0 12px 25px rgba(3, 105, 161, 0.3);
+    background: #1e293b;
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .slider-title { font-size: 2.2rem; }
+    .slider-container .destino-card { min-width: 270px; }
+    .slider-container .grid-destinos { padding: 0 20px; }
 }
