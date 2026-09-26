@@ -263,7 +263,7 @@
 .dept-filter-card {
     background: var(--white);
     padding: 10px;
-    border-radius: 60px;
+    border-radius: var(--radius-full);
     box-shadow: 0 15px 35px rgba(0,0,0,0.07);
     border: 1px solid rgba(0,0,0,0.05);
     transition: all 0.4s ease;
@@ -302,11 +302,11 @@
 }
 
 .btn-filter-submit {
-    background: var(--primary-color);
+    background: var(--accent-color); /* MEJORA: Naranja para resaltar la acción principal */
     color: white;
     border: none;
     padding: 12px 28px;
-    border-radius: 50px;
+    border-radius: var(--radius-full);
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -314,9 +314,9 @@
 }
 
 .btn-filter-submit:hover {
-    background: var(--secondary-color);
+    background: #ea580c;
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(3, 105, 161, 0.3);
+    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
 }
 
 /* GRID DE DESTINOS - MODERNIZACIÓN PREMIUM */

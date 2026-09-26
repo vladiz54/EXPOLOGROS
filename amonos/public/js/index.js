@@ -46,7 +46,13 @@ async function cargarDestinos() {
 
         if (resultado.success && resultado.data.length > 0) {
             contenedor.innerHTML = "";
-            resultado.data.forEach(destino => {
+
+            // LÍMITE DE DESTINOS PARA EL INDEX (UX Optimization)
+            const LIMIT_INDEX = 8;
+            const totalDestinos = resultado.data.length;
+            const destinosAMostrar = resultado.data.slice(0, LIMIT_INDEX);
+
+            destinosAMostrar.forEach(destino => {
                 const descripcionCorta = destino.descripcion
                     ? (destino.descripcion.length > 70 ? destino.descripcion.substring(0, 67) + '...' : destino.descripcion)
                     : "Descubre este increíble destino y vive una experiencia inolvidable.";
@@ -76,6 +82,27 @@ async function cargarDestinos() {
                 `;
                 contenedor.innerHTML += tarjeta;
             });
+
+            // AGREGAR BOTÓN "VER MÁS" SI EXCEDEN EL LÍMITE
+            if (totalDestinos > LIMIT_INDEX) {
+                const btnVerMas = document.createElement("div");
+                btnVerMas.style.gridColumn = "1 / -1";
+                btnVerMas.style.display = "flex";
+                btnVerMas.style.justifyContent = "center";
+                btnVerMas.style.marginTop = "40px";
+                btnVerMas.style.marginBottom = "40px";
+
+                // Construimos la URL para explorar.html pasando los filtros actuales
+                const exploreUrl = `explorar.html?categoria=${encodeURIComponent(categoriaSeleccionada)}&departamento=${encodeURIComponent(departamentoSeleccionado)}`;
+
+                btnVerMas.innerHTML = `
+                    <a href="${exploreUrl}" class="btn-primary" style="padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);">
+                        Explorar más destinos <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                `;
+                contenedor.appendChild(btnVerMas);
+            }
+
         } else {
             contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>No se encontraron destinos.</p>";
         }

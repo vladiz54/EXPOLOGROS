@@ -12,7 +12,9 @@
     --white: #ffffff;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-md: 0 20px 40px -10px rgba(3, 105, 161, 0.15);
-    --radius: 24px;
+    --radius-lg: 24px; /* Unificado para tarjetas y contenedores */
+    --radius-sm: 12px; /* Unificado para botones y elementos pequeños */
+    --radius-full: 50px; /* Unificado para badges y botones pilulares */
     --subtle-accent: #f0f9ff; /* Celeste muy suave */
 }
 

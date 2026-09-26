@@ -3,7 +3,8 @@
     position: relative;
     padding: 120px 0;
     overflow: hidden;
-    background: var(--white);
+    /* MEJORA: Fondo con degradado sutil para conectar con el Hero oscuro */
+    background: linear-gradient(to bottom, #f1f5f9 0%, var(--white) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
