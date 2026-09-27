@@ -1,0 +1,87 @@
+/* SURPRISE ME SECTION - FINAL CTA */
+.surprise-me-section {
+    display: flex;
+    justify-content: center;
+    padding: 80px 30px;
+    margin-top: 60px;
+    background: radial-gradient(circle at center, rgba(3, 105, 161, 0.1) 0%, transparent 70%);
+}
+
+.surprise-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 60px 40px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 30px 60px rgba(3, 105, 161, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.surprise-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+    animation: rotateBg 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateBg {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.surprise-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.surprise-content p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-surprise {
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    padding: 18px 40px;
+    border-radius: var(--radius-full);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.btn-surprise:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-surprise i {
+    transition: transform 0.3s ease;
+}
+
+.btn-surprise:hover i {
+    transform: rotate(20deg) scale(1.2);
+}

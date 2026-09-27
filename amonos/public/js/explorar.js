@@ -6,6 +6,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const budgetFilters = document.querySelectorAll('.budget-filter');
     const resetBtn = document.getElementById('resetFilters');
 
+    // --- CUSTOM SELECT LOGIC ---
+    const selectTrigger = document.querySelector('.custom-select-trigger');
+    const selectWrapper = document.querySelector('.custom-select-wrapper');
+    const customOptions = document.querySelectorAll('.custom-option');
+    const selectedSortText = document.getElementById('selected-sort');
+
+    if (selectTrigger) {
+        selectTrigger.addEventListener('click', () => {
+            selectWrapper.classList.toggle('open');
+        });
+    }
+
+    customOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const value = option.getAttribute('data-value');
+            const text = option.innerText;
+
+            selectedSortText.innerText = text;
+            selectWrapper.classList.remove('open');
+
+            // Trigger a custom event or call sorting logic
+            // For now, we simulate a sort by re-applying filters (in a real app, you'd have a sort function)
+            aplicarFiltros(value);
+        });
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', (e) => {
+        if (selectWrapper && !selectWrapper.contains(e.target)) {
+            selectWrapper.classList.remove('open');
+        }
+    });
+    // -----------------------------
+
     cargarDestinos();
     initDynamicText();
 
@@ -45,6 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
             setActiveChip('todos');
             budgetFilters.forEach(f => f.checked = true);
             aplicarFiltros();
+        });
+    }
+
+    // --- SURPRISE ME LOGIC ---
+    const btnSurpriseMe = document.getElementById('btnSurpriseMe');
+    if (btnSurpriseMe) {
+        btnSurpriseMe.addEventListener('click', () => {
+            if (destinosBD.length === 0) {
+                alert("¡Primero debemos cargar los destinos!");
+                return;
+            }
+            const randomDest = destinosBD[Math.floor(Math.random() * destinosBD.length)];
+            window.location.href = `detalles.html?id=${randomDest.id}`;
         });
     }
 });
@@ -141,9 +188,24 @@ function renderizarDestinos(lista) {
         return;
     }
 
-    if (resultsCount) resultsCount.innerText = `Se encontraron ${lista.length} destinos`;
+    if (resultsCount) {
+        // Lógica de mensajes dinámicos según la cantidad
+        let label = "Destinos";
+        if (lista.length === 1) label = "joya oculta";
+        else if (lista.length < 10) label = "joyas ocultas";
 
-    lista.forEach(dest => {
+        // Animación de contador numérica
+        const currentNumber = parseInt(resultsCount.querySelector('.results-number-highlight')?.innerText) || 0;
+        const targetNumber = lista.length;
+
+        resultsCount.innerHTML = `
+            <span class="results-text-label">Encontramos</span>
+            <span class="results-number-highlight">${targetNumber}</span>
+            <span class="results-text-destinos">${label}</span>
+        `;
+    }
+
+    lista.forEach((dest, index) => {
         let imgUrl = "";
         if (dest.imagen && dest.imagen.startsWith('http')) {
             imgUrl = dest.imagen;
@@ -156,27 +218,27 @@ function renderizarDestinos(lista) {
         }
 
         const cardHTML = `
-            <div class="destino-card">
-                <a href="detalles.html?id=${dest.id}" class="dest-img-sim">
-                    <img src="${imgUrl}"
-                         alt="${dest.nombre}"
-                         class="dest-img"
-                         onerror="this.src='imagenes/destinos/img1.jpg';">
-                    <div class="dest-overlay"></div>
-                </a>
-                <div class="dest-body">
-                    <div>
-                        <h4><a href="detalles.html?id=${dest.id}" style="text-decoration: none; color: inherit;">${dest.nombre}</a></h4>
-                        <p class="dpto">${dest.ubicacion}</p>
+            <div class="destino-card" style="animation: cardEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
+                <a href="detalles.html?id=${dest.id}" class="card-link-wrapper">
+                    <div class="dest-img-container">
+                        <span class="dest-badge">${dest.categoria || 'Destino'}</span>
+                        <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${imgUrl}') center/cover; height: 230px;"></div>
                     </div>
-                    <div class="dest-footer">
-                        <span class="price">$${parseFloat(dest.precio).toFixed(2)}</span>
-                        <div class="meta-right">
-                            <span class="rating">⭐ ${dest.rating}</span>
-                            <button class="btn-heart" title="Guardar" onclick="toggleHeart(this, ${dest.id})">❤️</button>
+                    <div class="dest-body">
+                        <div class="dest-info">
+                            <h4>${dest.nombre}</h4>
+                            <p class="dpto">${dest.ubicacion}</p>
+                            <p class="dest-short-desc">${dest.descripcion ? (dest.descripcion.length > 70 ? dest.descripcion.substring(0, 67) + '...' : dest.descripcion) : "Descubre este increíble destino y vive una experiencia inolvidable."}</p>
+                        </div>
+                        <div class="dest-footer">
+                            <span class="price">$${parseFloat(dest.precio || 0).toFixed(2)}</span>
+                            <div class="meta-right">
+                                <span class="rating">⭐ ${dest.rating || '0.0'}</span>
+                                <button class="btn-heart" data-id="${dest.id}" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         `;
         cardsGrid.innerHTML += cardHTML;

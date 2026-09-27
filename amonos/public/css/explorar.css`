@@ -27,7 +27,6 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
-    background-attachment: fixed;
 }
 
 .hero-content h1 {
@@ -48,9 +47,9 @@ body {
 
 .hero-content p {
     font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    opacity: 1;
-    font-weight: 600;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    opacity: 0.95;
+    font-weight: 400;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
     margin-bottom: 40px;
     z-index: 2;
 }
@@ -814,6 +813,115 @@ body {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+}
+
+/* FEATURED GEM SECTION - EDITORIAL STYLE */
+.featured-gem {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.featured-gem:hover {
+    transform: scale(1.01);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+.gem-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gem-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+}
+
+.featured-gem:hover .gem-image img {
+    transform: scale(1.1);
+}
+
+.gem-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    z-index: 2;
+}
+
+.gem-content {
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+    color: white;
+    max-width: 600px;
+    transition: all 0.4s ease;
+}
+
+.gem-tag {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.gem-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.gem-content p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.btn-gem {
+    display: inline-block;
+    text-decoration: none;
+    background: white;
+    color: var(--text-dark);
+    padding: 12px 25px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-gem:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(249, 115, 22, 0.4);
 }
 
 /* ANIMACIONES DE ENTRADA PARA TARJETAS */
