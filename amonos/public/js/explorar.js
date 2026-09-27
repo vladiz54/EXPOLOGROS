@@ -188,18 +188,14 @@ function renderizarDestinos(lista) {
         return;
     }
 
-<<<<<<< HEAD
     if (resultsCount) {
         // Lógica de mensajes dinámicos según la cantidad
         let label = "Destinos";
         if (lista.length === 1) label = "joya oculta";
         else if (lista.length < 10) label = "joyas ocultas";
-=======
-    if (resultsCount) resultsCount.innerText = `${lista.length} destinations found`;
->>>>>>> 6845d9ae53fe4d479f743ac65bad8282bc650e20
+        else label = "destinos";
 
         // Animación de contador numérica
-        const currentNumber = parseInt(resultsCount.querySelector('.results-number-highlight')?.innerText) || 0;
         const targetNumber = lista.length;
 
         resultsCount.innerHTML = `
