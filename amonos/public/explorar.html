@@ -68,16 +68,20 @@
                     </div>
 
                     <div class="filter-section">
-                        <label class="filter-label">Category</label>
-                        <div class="chips-container" id="categoryChips">
-                            <span class="chip active" data-category="todos">All</span>
-                            <span class="chip" data-category="naturaleza">Nature</span>
-                            <span class="chip" data-category="aventura">Adventure</span>
-                            <span class="chip" data-category="cultura">Culture</span>
-                            <span class="chip" data-category="gastronomia">Gastronomy</span>
-                            <span class="chip" data-category="pueblos vivos">Living Towns</span>
-                            <span class="chip" data-category="playa">Beach</span>
-                            <span class="chip" data-category="montana">Mountain</span>
+                        <label class="filter-label">Sort by</label>
+                        <div class="custom-select-container" id="sort-select-container">
+                            <div class="custom-select-trigger">
+                                <i class="fa-solid fa-sort"></i>
+                                <span class="selected-value">Most Recent</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="custom-options-list" id="sort-options">
+                                <div class="custom-option active" data-value="desc">Most Recent</div>
+                                <div class="custom-option" data-value="rating">Best Rated</div>
+                                <div class="custom-option" data-value="price_asc">Price: Low to High</div>
+                                <div class="custom-option" data-value="price_desc">Price: High to Low</div>
+                            </div>
+                            <input type="hidden" id="sortSelect" value="desc">
                         </div>
                     </div>
 
@@ -136,15 +140,6 @@
             <section class="results-area">
                 <div class="results-info">
                     <span id="resultsCount">Loading destinations...</span>
-                    <div class="sort-options">
-                        <span>Sort by:</span>
-                        <select id="sortSelect">
-                            <option value="desc">Most Recent</option>
-                            <option value="rating">Best Rated</option>
-                            <option value="price_asc">Price: Low to High</option>
-                            <option value="price_desc">Price: High to Low</option>
-                        </select>
-                    </div>
                 </div>
 
                 <div class="cards-grid" id="cardsGrid">

@@ -65,7 +65,7 @@ async function cargarDestinos() {
     const resultsCount = document.getElementById('resultsCount');
     const cardsGrid = document.getElementById('cardsGrid');
 
-    if (resultsCount) resultsCount.innerText = "Cargando destinos...";
+    if (resultsCount) resultsCount.innerText = "Loading destinations...";
 
     try {
         const response = await fetch('../destinos/read.php');
@@ -76,11 +76,11 @@ async function cargarDestinos() {
             destinosBD = result.data;
             aplicarFiltros();
         } else {
-            mostrarError(result.message || "Error al cargar destinos");
+            mostrarError(result.message || "Error loading destinations");
         }
     } catch (error) {
         console.error("Fetch Error:", error);
-        mostrarError("No se pudo conectar con el servidor.");
+        mostrarError("Could not connect to the server.");
     }
 }
 
@@ -136,12 +136,12 @@ function renderizarDestinos(lista) {
     cardsGrid.innerHTML = "";
 
     if (lista.length === 0) {
-        cardsGrid.innerHTML = `<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No se encontraron destinos que coincidan con tus filtros.</p></div>`;
-        if (resultsCount) resultsCount.innerText = "0 resultados encontrados";
+        cardsGrid.innerHTML = `<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No destinations found matching your filters.</p></div>`;
+        if (resultsCount) resultsCount.innerText = "0 results found";
         return;
     }
 
-    if (resultsCount) resultsCount.innerText = `Se encontraron ${lista.length} destinos`;
+    if (resultsCount) resultsCount.innerText = `${lista.length} destinations found`;
 
     lista.forEach(dest => {
         let imgUrl = "";
@@ -216,7 +216,7 @@ function initDynamicText() {
     const textElement = document.getElementById('dynamic-text');
     if (!textElement) return;
 
-    const words = ['destino', 'Paraíso', 'Escape', 'Descubrimiento', 'Viaje'];
+    const words = ['destination', 'Paradise', 'Escape', 'Discovery', 'Trip'];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
