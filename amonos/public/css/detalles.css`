@@ -1,0 +1,618 @@
+/* ==========================================================================
+   DETALLES DEL DESTINO - EDICIÓN ULTRA-LUXURY 2026
+   Concepto: High-End Travel Experience
+   ========================================================================== */
+
+body {
+    background: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- HERO SECTION INMERSIVA --- */
+.destination-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 160px 0 60px 0;
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    max-width: 85%;
+}
+
+.title-badge {
+    background: linear-gradient(45deg, var(--accent-color), #facc15);
+    color: white;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: fit-content;
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.title-area h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 900;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -3px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 0;
+    overflow: visible;
+    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.title-area .stars {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.title-area .stars::before {
+    content: 'Experiencia Calificada';
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+
+.star-icon {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+}
+
+/* --- CARRUSEL CINEMATOGRÁFICO --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.2);
+    margin-bottom: 100px;
+    background: #000;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 40%, rgba(0,0,0,0.6) 100%);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.carousel-btn:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+.btn-left { left: 30px; }
+.btn-right { right: 30px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    width: 30px;
+    border-radius: 10px;
+    background: white;
+}
+
+/* --- BENTO GRID PREMIUM --- */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 120px;
+}
+
+.info-card.main-info {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 80px;
+    background: white;
+}
+
+.info-card#bloque-costos {
+    grid-column: span 1;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.info-card {
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.08);
+}
+
+.info-header-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.location-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--subtle-accent);
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.section-title-premium {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.description-text {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 2;
+    margin-bottom: 60px;
+    text-align: justify;
+}
+
+/* ACTIVIDADES GRID PREMIUM */
+.activities-wrapper {
+    margin-bottom: 60px;
+}
+
+.activities-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.activities-grid li {
+    background: var(--bg-main);
+    padding: 25px;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.activities-grid li::before {
+    content: '✦';
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+}
+
+.activities-grid li:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: white;
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow-md);
+}
+
+/* GALERÍA PREMIUM */
+.community-gallery-premium {
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.gallery-header-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.upload-btn-premium {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-btn-premium:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.user-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.user-gallery-item {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.user-gallery-item:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* PILARES DE INVERSIÓN LUXURY */
+.cost-header-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.btn-plan-small {
+    background: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-plan-small:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.investment-pillar {
+    background: white;
+    padding: 25px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.investment-pillar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.investment-pillar:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--secondary-color);
+}
+
+.investment-pillar:hover::before {
+    width: 10px;
+    background: var(--primary-color);
+}
+
+.pillar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pillar-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.pillar-title i {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
+
+.pillar-amount {
+    font-weight: 900;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 6px 15px;
+    border-radius: var(--radius-full);
+}
+
+.budget-total-premium {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+    color: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    margin-bottom: 50px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.budget-total-premium::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.total-label {
+    display: block;
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.total-value {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* RESEÑAS PREMIUM */
+.reviews-premium-section {
+    margin-top: 60px;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.comment-box {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.4s ease;
+}
+
+.comment-box:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: var(--secondary-color);
+}
+
+.comment-box strong {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.add-review-premium {
+    background: var(--subtle-accent);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    border: 2px dashed rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.review-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.star-rating-input {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.star-select {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #cbd5e1;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star-select.active {
+    color: var(--accent-color);
+    transform: scale(1.3);
+    text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+#reviewText {
+    width: 100%;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.8);
+}
+
+.btn-review-submit {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    border-radius: var(--radius-full);
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-review-submit:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ANIMACIONES */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .info-card.main-info {
+        grid-column: span 1;
+        padding: 40px;
+    }
+    .destination-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 120px;
+    }
+    .title-area {
+        max-width: 100%;
+        align-items: center;
+    }
+    .carousel-container {
+        height: 400px;
+    }
+}

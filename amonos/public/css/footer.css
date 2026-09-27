@@ -1,11 +1,16 @@
 /* --- GLOBAL FOOTER STYLES --- */
 .global-footer {
-    background-color: #0f172a; /* Slate-900 for high contrast and professional look */
-    color: #f8fafc;
+    background-color: #0f172a !important; /* Forzado para evitar interferencias de explorar.css */
+    color: #f8fafc !important;
     padding-top: 80px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     position: relative;
     overflow: hidden;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    left: 0 !important;
+    box-sizing: border-box;
 }
 
 .footer-container {
@@ -181,8 +186,10 @@
 }
 
 .footer-bottom {
-    background: #020617;
+    background: #020617 !important;
     padding: 30px 0;
+    width: 100% !important;
+    display: block;
 }
 
 .footer-bottom .footer-container {

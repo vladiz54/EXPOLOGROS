@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/detalles.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -43,7 +44,9 @@
                     <span class="star-icon">★</span>
                 </div>
             </div>
-            <button class="btn-primary" onclick="irAlPlanificador()"> <i class="fa-solid fa-calendar-check"></i> Planificar este viaje</button>
+            <button class="btn-primary" onclick="irAlPlanificador()">
+                <i class="fa-solid fa-calendar-check"></i> Planificar este viaje
+            </button>
         </section>
 
         <section class="carousel-container">
@@ -199,6 +202,7 @@
                         <a href="#">Privacidad</a>
                         <a href="#">Términos</a>
                         <a href="#">Contacto</a>
+                        <a href="#">Ayuda</a>
                     </div>
                 </div>
             </div>

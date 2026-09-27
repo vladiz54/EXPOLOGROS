@@ -185,3 +185,35 @@ function agregarFotosComunidad(event) {
         reader.readAsDataURL(file);
     }
 }
+
+// --- LÓGICA DEL CARRUSEL CINEMATOGRÁFICO ---
+let currentSlide = 0;
+
+function moverCarrusel(direction = 1) {
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.dot');
+    if (!track) return;
+
+    const totalSlides = document.querySelectorAll('.carousel-slide').length;
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function irASlide(index) {
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.dot');
+    if (!track) return;
+
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+

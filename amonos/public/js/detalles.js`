@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const idDestino = urlParams.get('id');
 
     if (!idDestino) {
-        // Redirigimos al inicio inmediatamente para evitar el alert
-        window.location.href = 'index.html';
+        mostrarError("No se proporcionó un ID de destino válido.");
         return;
     }
 
@@ -22,14 +21,11 @@ async function cargarDetalles(id) {
             const data = result.data;
             renderizarDatos(data);
         } else {
-            // En lugar de alert, podemos poner un mensaje en la página
-            const container = document.querySelector('.details-grid');
-            if (container) container.innerHTML = `<p style="text-align:center; width:100%;">${result.message}</p>`;
+            mostrarError(result.message);
         }
     } catch (error) {
         console.error("Fetch Error:", error);
-        const container = document.querySelector('.details-grid');
-        if (container) container.innerHTML = `<p style="text-align:center; width:100%;">No se pudo cargar la información del destino.</p>`;
+        mostrarError("No se pudo cargar la información del destino.");
     }
 }
 
@@ -88,11 +84,17 @@ function renderizarDatos(data) {
         for (const [key, value] of Object.entries(costs)) {
             const valNum = parseFloat(value) || 0;
             total += valNum;
+
             costBody.innerHTML += `
-                <tr>
-                    <td>${costLabels[key] || key}</td>
-                    <td>$${valNum.toFixed(2)}</td>
-                </tr>
+                <div class="investment-pillar">
+                    <div class="pillar-header">
+                        <span class="pillar-title">
+                            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                            ${costLabels[key] || key}
+                        </span>
+                        <span class="pillar-amount">$${valNum.toFixed(2)}</span>
+                    </div>
+                </div>
             `;
         }
         const totalEl = document.getElementById('totalCost');
@@ -119,7 +121,7 @@ function renderizarDatos(data) {
 }
 
 function inicializarRating() {
-    const stars = document.querySelectorAll('.star');
+    const stars = document.querySelectorAll('.star-select');
     let selectedRating = 0;
 
     stars.forEach(star => {
@@ -140,10 +142,8 @@ async function toggleHeart() {
     const icon = btn.querySelector('i');
 
     btn.classList.toggle('liked');
-    if (icon) {
-        icon.classList.toggle('fa-regular');
-        icon.classList.toggle('fa-solid');
-    }
+    icon.classList.toggle('fa-regular');
+    icon.classList.toggle('fa-solid');
 
     try {
         const response = await fetch('../favoritos/toggle.php', {
@@ -154,19 +154,15 @@ async function toggleHeart() {
         const data = await response.json();
         if (!data.success) {
             btn.classList.toggle('liked');
-            if (icon) {
-                icon.classList.toggle('fa-regular');
-                icon.classList.toggle('fa-solid');
-            }
+            icon.classList.toggle('fa-regular');
+            icon.classList.toggle('fa-solid');
             alert(data.message);
         }
     } catch (error) {
         console.error("Error:", error);
         btn.classList.toggle('liked');
-        if (icon) {
-            icon.classList.toggle('fa-regular');
-            icon.classList.toggle('fa-solid');
-        }
+        icon.classList.toggle('fa-regular');
+        icon.classList.toggle('fa-solid');
     }
 }
 
@@ -174,6 +170,10 @@ function irAlPlanificador() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
     window.location.href = `planificador.html?destino=${id}`;
+}
+
+function mostrarError(mensaje) {
+    alert(mensaje);
 }
 
 function agregarFotosComunidad(event) {
@@ -185,9 +185,46 @@ function agregarFotosComunidad(event) {
         reader.onload = (e) => {
             const img = document.createElement('img');
             img.src = e.target.result;
-            img.className = 'gallery-item';
+            img.className = 'user-gallery-item';
             grid.appendChild(img);
         };
         reader.readAsDataURL(file);
     }
+}
+
+// --- LÓGICA DEL CARRUSEL CINEMATOGRÁFICO (RESTAURADA) ---
+let currentSlide = 0;
+
+function moverCarrusel(direction = 1) {
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.dot');
+    if (!track) return;
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    // Cambiamos la dirección basándonos en el argumento
+    // Si direction es undefined o 0, podríamos asumir 1, pero la función acepta 1 o -1
+    if (direction === 0) direction = 1;
+
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function irASlide(index) {
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.dot');
+    if (!track) return;
+
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
 }
