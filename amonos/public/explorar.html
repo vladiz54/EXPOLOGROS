@@ -101,7 +101,51 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <button id="resetFilters" class="btn-reset">Limpiar Filtros</button>
+=======
+
+                    <div class="filter-section">
+                        <label class="filter-label">Sort by</label>
+                        <div class="custom-select-container" id="sort-select-container">
+                            <div class="custom-select-trigger">
+                                <i class="fa-solid fa-sort"></i>
+                                <span class="selected-value">Most Recent</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="custom-options-list" id="sort-options">
+                                <div class="custom-option active" data-value="desc">Most Recent</div>
+                                <div class="custom-option" data-value="rating">Best Rated</div>
+                                <div class="custom-option" data-value="price_asc">Price: Low to High</div>
+                                <div class="custom-option" data-value="price_desc">Price: High to Low</div>
+                            </div>
+                            <input type="hidden" id="sortSelect" value="desc">
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <label class="filter-label">Daily Budget</label>
+                        <div class="budget-options">
+                            <label class="budget-item">
+                                <input type="checkbox" class="budget-filter" value="economico" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Budget (< $20)</span>
+                            </label>
+                            <label class="budget-item">
+                                <input type="checkbox" class="budget-filter" value="conforme" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Standard ($20 - $50)</span>
+                            </label>
+                            <label class="budget-item">
+                                <input type="checkbox" class="budget-filter" value="premium" checked>
+                                <span class="checkmark"></span>
+                                <span class="label-text">Premium (> $50)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="resetFilters" class="btn-reset">Clear Filters</button>
+>>>>>>> 6845d9ae53fe4d479f743ac65bad8282bc650e20
                 </div>
 
                 <div class="sidebar-extras">
@@ -134,6 +178,7 @@
 
             <section class="results-area">
                 <div class="results-info">
+<<<<<<< HEAD
                     <div class="results-counter-wrapper">
                         <span id="resultsCount">Cargando destinos...</span>
                     </div>
@@ -152,6 +197,9 @@
                             </div>
                         </div>
                     </div>
+=======
+                    <span id="resultsCount">Loading destinations...</span>
+>>>>>>> 6845d9ae53fe4d479f743ac65bad8282bc650e20
                 </div>
 
                 <div class="cards-grid" id="cardsGrid">

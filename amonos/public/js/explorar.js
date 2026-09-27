@@ -112,7 +112,7 @@ async function cargarDestinos() {
     const resultsCount = document.getElementById('resultsCount');
     const cardsGrid = document.getElementById('cardsGrid');
 
-    if (resultsCount) resultsCount.innerText = "Cargando destinos...";
+    if (resultsCount) resultsCount.innerText = "Loading destinations...";
 
     try {
         const response = await fetch('../destinos/read.php');
@@ -123,11 +123,11 @@ async function cargarDestinos() {
             destinosBD = result.data;
             aplicarFiltros();
         } else {
-            mostrarError(result.message || "Error al cargar destinos");
+            mostrarError(result.message || "Error loading destinations");
         }
     } catch (error) {
         console.error("Fetch Error:", error);
-        mostrarError("No se pudo conectar con el servidor.");
+        mostrarError("Could not connect to the server.");
     }
 }
 
@@ -183,16 +183,20 @@ function renderizarDestinos(lista) {
     cardsGrid.innerHTML = "";
 
     if (lista.length === 0) {
-        cardsGrid.innerHTML = `<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No se encontraron destinos que coincidan con tus filtros.</p></div>`;
-        if (resultsCount) resultsCount.innerText = "0 resultados encontrados";
+        cardsGrid.innerHTML = `<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No destinations found matching your filters.</p></div>`;
+        if (resultsCount) resultsCount.innerText = "0 results found";
         return;
     }
 
+<<<<<<< HEAD
     if (resultsCount) {
         // Lógica de mensajes dinámicos según la cantidad
         let label = "Destinos";
         if (lista.length === 1) label = "joya oculta";
         else if (lista.length < 10) label = "joyas ocultas";
+=======
+    if (resultsCount) resultsCount.innerText = `${lista.length} destinations found`;
+>>>>>>> 6845d9ae53fe4d479f743ac65bad8282bc650e20
 
         // Animación de contador numérica
         const currentNumber = parseInt(resultsCount.querySelector('.results-number-highlight')?.innerText) || 0;
@@ -278,7 +282,7 @@ function initDynamicText() {
     const textElement = document.getElementById('dynamic-text');
     if (!textElement) return;
 
-    const words = ['destino', 'Paraíso', 'Escape', 'Descubrimiento', 'Viaje'];
+    const words = ['destination', 'Paradise', 'Escape', 'Discovery', 'Trip'];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
