@@ -33,22 +33,22 @@
     <main class="explore-wrapper">
         <section class="explore-hero" id="parallaxHero">
             <div class="hero-content">
-                <h1 class="hero-title">Encuentra tu próximo <span id="dynamic-text" class="highlight">destino</span></h1>
-                <p>Descubre los rincones más mágicos de El Salvador</p>
+                <h1 class="hero-title">Find Your Next <span id="dynamic-text" class="highlight">Destination</span></h1>
+                <p>Discover the most magical corners of El Salvador</p>
 
                 <div class="hero-search-container">
                     <div class="hero-search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="heroSearchInput" placeholder="¿A dónde quieres ir?">
+                        <input type="text" id="heroSearchInput" placeholder="Where do you want to go?">
                     </div>
                 </div>
 
                 <div class="hero-chips-container">
-                    <span class="hero-chip" data-category="naturaleza">🌿 Naturaleza</span>
-                    <span class="hero-chip" data-category="playa">🏖️ Playa</span>
-                    <span class="hero-chip" data-category="aventura">⛰️ Aventura</span>
-                    <span class="hero-chip" data-category="cultura">🏛️ Cultura</span>
-                    <span class="hero-chip" data-category="gastronomia">🍲 Gastronomía</span>
+                    <span class="hero-chip" data-category="naturaleza">🌿 Nature</span>
+                    <span class="hero-chip" data-category="playa">🏖️ Beach</span>
+                    <span class="hero-chip" data-category="aventura">⛰️ Adventure</span>
+                    <span class="hero-chip" data-category="cultura">🏛️ Culture</span>
+                    <span class="hero-chip" data-category="gastronomia">🍲 Gastronomy</span>
                 </div>
             </div>
         </section>
@@ -58,11 +58,11 @@
                 <div class="filter-card">
                     <div class="filter-header">
                         <i class="fa-solid fa-sliders"></i>
-                        <h3>Diseña tu Aventura Ideal</h3>
+                        <h3>Design Your Ideal Adventure</h3>
                     </div>
                     <div class="filter-card-content">
                         <div class="filter-section">
-                            <label class="filter-label">¿Cuál es tu próximo sueño?</label>
+                            <label class="filter-label">What's your next dream destination?</label>
                             <div class="search-box">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <input type="text" id="searchInput" placeholder="Ej: Volcán, Playa...">
@@ -70,29 +70,29 @@
                         </div>
 
                         <div class="filter-section">
-                            <label class="filter-label">Categoría</label>
+                            <label class="filter-label">Category</label>
                             <div class="chips-container" id="categoryChips">
-                                <span class="chip active" data-category="todos">Todos</span>
-                                <span class="chip" data-category="naturaleza">Naturaleza</span>
-                                <span class="chip" data-category="aventura">Aventura</span>
-                                <span class="chip" data-category="cultura">Cultura</span>
-                                <span class="chip" data-category="gastronomia">Gastronomía</span>
-                                <span class="chip" data-category="pueblos vivos">Pueblos Vivos</span>
-                                <span class="chip" data-category="playa">Playa</span>
-                                <span class="chip" data-category="montana">Montaña</span>
+                                <span class="chip active" data-category="todos">All</span>
+                                <span class="chip" data-category="naturaleza">Nature</span>
+                                <span class="chip" data-category="aventura">Adventure</span>
+                                <span class="chip" data-category="cultura">Culture</span>
+                                <span class="chip" data-category="gastronomia">Gastronomy</span>
+                                <span class="chip" data-category="pueblos vivos">Living Villages</span>
+                                <span class="chip" data-category="playa">Beach</span>
+                                <span class="chip" data-category="montana">Mountain</span>
                             </div>
                         </div>
 
                         <div class="filter-section">
-                            <label class="filter-label">Presupuesto Diario</label>
+                            <label class="filter-label">Daily Budget</label>
                             <div class="budget-options">
                                 <label class="budget-item">
                                     <input type="checkbox" class="budget-filter" value="economico" checked>
-                                    <span class="label-text">Económico (< $20)</span>
+                                    <span class="label-text">Economic (< $20)</span>
                                 </label>
                                 <label class="budget-item">
                                     <input type="checkbox" class="budget-filter" value="conforme" checked>
-                                    <span class="label-text">Estándar ($20 - $50)</span>
+                                    <span class="label-text">Standard ($20 - $50)</span>
                                 </label>
                                 <label class="budget-item">
                                     <input type="checkbox" class="budget-filter" value="premium" checked>
@@ -102,24 +102,24 @@
                         </div>
 
                         <div class="filter-section">
-                            <label class="filter-label">Ordenar por</label>
+                            <label class="filter-label">Sort by</label>
                             <div class="custom-select-container" id="sort-select-container">
                                 <div class="custom-select-trigger">
                                     <i class="fa-solid fa-sort"></i>
-                                    <span class="selected-value">Más Recientes</span>
+                                    <span class="selected-value">Most Recent</span>
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <div class="custom-options-list" id="sort-options">
-                                    <div class="custom-option active" data-value="desc">Más Recientes</div>
-                                    <div class="custom-option" data-value="rating">Mejor Calificados</div>
-                                    <div class="custom-option" data-value="price_asc">Precio: Menor a Mayor</div>
-                                    <div class="custom-option" data-value="price_desc">Precio: Mayor a Menor</div>
+                                    <div class="custom-option active" data-value="desc">Most Recent</div>
+                                    <div class="custom-option" data-value="rating">Best Rated</div>
+                                    <div class="custom-option" data-value="price_asc">Price: Low to High</div>
+                                    <div class="custom-option" data-value="price_desc">Price: High to Low</div>
                                 </div>
                                 <input type="hidden" id="sortSelect" value="desc">
                             </div>
                         </div>
                     </div>
-                    <button id="resetFilters" class="btn-reset">Limpiar Filtros</button>
+                    <button id="resetFilters" class="btn-reset">Clear Filters</button>
                 </div>
 
                 <div class="sidebar-extras">
@@ -128,24 +128,24 @@
                             <i class="fa-solid fa-lightbulb"></i>
                             <h4>Tip</h4>
                         </div>
-                        <p>Visita los pueblos vivos temprano en la mañana para capturar la mejor luz y evitar las multitudes.</p>
+                        <p>Visit the lively towns early in the morning to capture the best light and avoid crowds.</p>
                     </div>
 
                     <div class="extra-card secret-card">
                         <div class="extra-header">
                             <i class="fa-solid fa-gem"></i>
-                            <h4>Gema Oculta</h4>
+                            <h4>Hidden Gem</h4>
                         </div>
-                        <p>No olvides explorar las rutas menos transitadas en la zona de montaña; ahí están las mejores vistas.</p>
+                        <p>Don't forget to explore the less-traveled routes in the mountainous area; that's where the best views are.</p>
                     </div>
 
                     <div class="extra-card cta-card">
                         <div class="extra-header">
                             <i class="fa-solid fa-calculator"></i>
-                            <h4>¿Presupuesto Ajustado?</h4>
+                            <h4>Adjustable Budget?</h4>
                         </div>
-                        <p>Usa nuestro planificador inteligente para optimizar cada centavo de tu viaje.</p>
-                        <a href="planificador.html" class="btn-extra-cta">Planifica Ahora ➔</a>
+                        <p>Use our smart planner to optimize every cent of your trip.</p>
+                        <a href="planificador.html" class="btn-extra-cta">Plan Now ➔</a>
                     </div>
                 </div>
             </aside>
@@ -153,20 +153,20 @@
             <section class="results-area">
                 <div class="results-info">
                     <div class="results-counter-wrapper">
-                        <span id="resultsCount">Cargando destinos...</span>
+                        <span id="resultsCount">Loading destinations...</span>
                     </div>
                     <div class="sort-container">
-                        <span class="sort-label">Ordenar por</span>
+                        <span class="sort-label">Sort by</span>
                         <div class="custom-select-wrapper">
                             <div class="custom-select-trigger">
-                                <span id="selected-sort">Más Recientes</span>
+                                <span id="selected-sort">Most Recent</span>
                                 <i class="fa-solid fa-chevron-down"></i>
                             </div>
                             <div class="custom-options">
-                                <div class="custom-option" data-value="desc">Más Recientes</div>
-                                <div class="custom-option" data-value="rating">Mejor Calificados</div>
-                                <div class="custom-option" data-value="price_asc">Precio: Menor a Mayor</div>
-                                <div class="custom-option" data-value="price_desc">Precio: Mayor a Menor</div>
+                                <div class="custom-option" data-value="desc">Most Recent</div>
+                                <div class="custom-option" data-value="rating">Best Rated</div>
+                                <div class="custom-option" data-value="price_asc">Price: Low to High</div>
+                                <div class="custom-option" data-value="price_desc">Price: High to Low</div>
                             </div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                         <img src="imagenes/descarga.png" alt="Ámonos Logo">
                         <span>ÁMONOS</span>
                     </a>
-                    <p>Hacemos que viajar por El Salvador sea accesible, mágico y diseñado exactamente para tu presupuesto.</p>
+                    <p>We make traveling through El Salvador accessible, magical, and designed exactly for your budget.</p>
                     <div class="footer-socials">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -197,29 +197,29 @@
 
                 <div class="footer-links">
                     <div class="footer-col">
-                        <h4>Explorar</h4>
+                        <h4>Explore</h4>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="explorar.html">Destinos</a></li>
-                            <li><a href="planificador.html">Planificador</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="explorar.html">Destinations</a></li>
+                            <li><a href="planificador.html">Planner</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Soporte</h4>
+                        <h4>Support</h4>
                         <ul>
-                            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                            <li><a href="#">Términos y Condiciones</a></li>
-                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="sobre-nosotros.html">About Us</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer-newsletter">
-                    <h4>Únete a la comunidad</h4>
-                    <p>Recibe las mejores gemas ocultas y ofertas directamente en tu correo.</p>
+                    <h4>Join the Community</h4>
+                    <p>Receive the best hidden gems and offers directly to your email.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit">Suscribirse</button>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
