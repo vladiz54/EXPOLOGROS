@@ -33,7 +33,6 @@
 
         <section class="destination-header">
             <div class="title-area">
-                <div class="title-badge">Destino Destacado 2026</div>
                 <h1 id="destino-nombre">Cargando destino...</h1>
                 <div class="stars">
                     <span class="star-icon">★</span>
@@ -105,44 +104,48 @@
                 </div>
             </section>
 
-            <section class="info-card card-modern" id="bloque-costos">
-                <div class="cost-header-premium">
-                    <h2 class="section-title-premium">Guía de Inversión</h2>
-                    <button class="btn-plan-small" onclick="irAlPlanificador()">Optimizar Plan ➔</button>
-                </div>
-
-                <div class="investment-pillars" id="costTableBody">
-                    <!-- Los pilares de inversión se generan dinámicamente aquí -->
-                </div>
-
-                <div class="budget-total-premium">
-                    <span class="total-label">Inversión Total Estimada</span>
-                    <span class="total-value" id="totalCost">$0.00</span>
-                    <div class="verified-badge">
-                        <i class="fa-solid fa-circle-check"></i> Presupuesto Verificado
-                    </div>
-                </div>
-
-                <div class="reviews-premium-section">
-                    <h2 class="section-title-premium">Opiniones</h2>
-                    <div class="comments-container" id="commentsContainer">
-                        <!-- Comentarios generados dinámicamente -->
+            <div class="right-column-details">
+                <section class="info-card card-modern" id="bloque-costos">
+                    <div class="cost-header-premium">
+                        <h2 class="section-title-premium">Presupuesto Estimado</h2>
+                        <button class="btn-plan-small" onclick="irAlPlanificador()">Optimizar Plan ➔</button>
                     </div>
 
-                    <div class="add-review-premium">
-                        <h3 class="review-title">Tu experiencia</h3>
-                        <div class="star-rating-input">
-                            <span class="star-select" data-value="1">★</span>
-                            <span class="star-select" data-value="2">★</span>
-                            <span class="star-select" data-value="3">★</span>
-                            <span class="star-select" data-value="4">★</span>
-                            <span class="star-select" data-value="5">★</span>
+                    <div class="investment-pillars" id="costTableBody">
+                        <!-- Los pilares de inversión se generan dinámicamente aquí -->
+                    </div>
+
+                    <div class="budget-total-premium">
+                        <span class="total-label">Inversión Total Estimada</span>
+                        <span class="total-value" id="totalCost">$0.00</span>
+                        <div class="verified-badge">
+                            <i class="fa-solid fa-circle-check"></i> Presupuesto Verificado
                         </div>
-                        <textarea id="reviewText" placeholder="Comparte tu aventura..."></textarea>
-                        <button type="submit" class="btn-review-submit">Publicar</button>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <section class="info-card card-modern reviews-card">
+                    <div class="reviews-premium-section">
+                        <h2 class="section-title-premium">Opiniones</h2>
+                        <div class="comments-container" id="commentsContainer">
+                            <!-- Comentarios generados dinámicamente -->
+                        </div>
+
+                        <div class="add-review-premium">
+                            <h3 class="review-title">Tu experiencia</h3>
+                            <div class="star-rating-input">
+                                <span class="star-select" data-value="1">★</span>
+                                <span class="star-select" data-value="2">★</span>
+                                <span class="star-select" data-value="3">★</span>
+                                <span class="star-select" data-value="4">★</span>
+                                <span class="star-select" data-value="5">★</span>
+                            </div>
+                            <textarea id="reviewText" placeholder="Comparte tu aventura..."></textarea>
+                            <button type="submit" class="btn-review-submit">Publicar</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
 

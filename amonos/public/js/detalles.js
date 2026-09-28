@@ -74,10 +74,10 @@ function renderizarDatos(data) {
     if (costBody) {
         const costs = data.costos || {};
         const costLabels = {
-            entrada: "Entrada / Acceso",
-            comida: "Alimentación",
-            parqueo: "Parqueo / Transporte",
-            hospedaje: "Hospedaje (opcional)"
+            entrada: { text: "Entrada / Acceso", icon: "fa-ticket" },
+            comida: { text: "Alimentación", icon: "fa-utensils" },
+            parqueo: { text: "Parqueo / Transporte", icon: "fa-car" },
+            hospedaje: { text: "Hospedaje (opcional)", icon: "fa-bed" }
         };
 
         costBody.innerHTML = "";
@@ -85,11 +85,15 @@ function renderizarDatos(data) {
         for (const [key, value] of Object.entries(costs)) {
             const valNum = parseFloat(value) || 0;
             total += valNum;
+            const labelData = costLabels[key] || { text: key, icon: "fa-tag" };
             costBody.innerHTML += `
-                <tr>
-                    <td>${costLabels[key] || key}</td>
-                    <td>$${valNum.toFixed(2)}</td>
-                </tr>
+                <div class="investment-pillar">
+                    <div class="pillar-info">
+                        <i class="fa-solid ${labelData.icon}"></i>
+                        <span>${labelData.text}</span>
+                    </div>
+                    <span class="pillar-amount">$${valNum.toFixed(2)}</span>
+                </div>
             `;
         }
         const totalEl = document.getElementById('totalCost');
