@@ -88,20 +88,6 @@
                         <!-- Actividades generadas dinámicamente -->
                     </ul>
                 </div>
-
-                <div class="community-gallery-premium">
-                    <div class="gallery-header-premium">
-                        <h2 class="section-title-premium">Momentos Reales 📸</h2>
-                        <label for="userPhotoInput" class="upload-btn-premium">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> Subir mi foto
-                        </label>
-                        <input type="file" id="userPhotoInput" accept="image/*" multiple onchange="agregarFotosComunidad(event)" hidden>
-                    </div>
-                    <div class="user-gallery-grid" id="userGalleryGrid">
-                        <img src="https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg" class="user-gallery-item" alt="Lake view">
-                        <img src="https://i0.wp.com/www.chiquithetraveller.com/wp-content/uploads/2018/05/lago-coatepeque-el-salvador-muelle.jpg?w=1280&ssl=1" class="user-gallery-item" alt="Coatepeque Pier">
-                    </div>
-                </div>
             </section>
 
             <div class="right-column-details">
@@ -124,28 +110,83 @@
                     </div>
                 </section>
 
-                <section class="info-card card-modern reviews-card">
-                    <div class="reviews-premium-section">
-                        <h2 class="section-title-premium">Opiniones</h2>
-                        <div class="comments-container" id="commentsContainer">
-                            <!-- Comentarios generados dinámicamente -->
-                        </div>
-
-                        <div class="add-review-premium">
-                            <h3 class="review-title">Tu experiencia</h3>
-                            <div class="star-rating-input">
-                                <span class="star-select" data-value="1">★</span>
-                                <span class="star-select" data-value="2">★</span>
-                                <span class="star-select" data-value="3">★</span>
-                                <span class="star-select" data-value="4">★</span>
-                                <span class="star-select" data-value="5">★</span>
+                <section class="info-card quick-info-card">
+                    <h3 class="quick-info-title">Información General</h3>
+                    <div class="quick-info-grid">
+                        <div class="quick-info-item">
+                            <i class="fa-solid fa-passport"></i>
+                            <div>
+                                <strong>Documentación</strong>
+                                <p>Cédula o Pasaporte</p>
                             </div>
-                            <textarea id="reviewText" placeholder="Comparte tu aventura..."></textarea>
-                            <button type="submit" class="btn-review-submit">Publicar</button>
+                        </div>
+                        <div class="quick-info-item">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                            <div>
+                                <strong>Moneda Local</strong>
+                                <p>Dólar Americano (USD)</p>
+                            </div>
+                        </div>
+                        <div class="quick-info-item">
+                            <i class="fa-solid fa-shield-heart"></i>
+                            <div>
+                                <strong>Seguridad</strong>
+                                <p>Zonas Turísticas Seguras</p>
+                            </div>
+                        </div>
+                        <div class="quick-info-item">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div>
+                                <strong>Energía Eléctrica</strong>
+                                <p>110V - 120V</p>
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
+        </div>
+
+        <div class="community-hub-grid">
+            <section class="community-gallery-section">
+                <div class="gallery-card-premium">
+                    <div class="gallery-header-premium">
+                        <div class="gallery-title-area">
+                            <h2 class="section-title-premium">Momentos Reales 📸</h2>
+                            <p class="gallery-subtitle">Explora y comparte las capturas más increíbles de nuestra comunidad</p>
+                        </div>
+                        <label for="userPhotoInput" class="upload-btn-premium">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Subir mi foto
+                        </label>
+                        <input type="file" id="userPhotoInput" accept="image/*" multiple onchange="agregarFotosComunidad(event)" hidden>
+                    </div>
+                    <div class="user-gallery-grid" id="userGalleryGrid">
+                        <img src="https://i.pinimg.com/736x/e4/2f/02/e42f029c72f9092539f18fa5720af0c9.jpg" class="user-gallery-item" alt="Lake view">
+                        <img src="https://i0.wp.com/www.chiquithetraveller.com/wp-content/uploads/2018/05/lago-coatepeque-el-salvador-muelle.jpg?w=1280&ssl=1" class="user-gallery-item" alt="Coatepeque Pier">
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-card card-modern reviews-card">
+                <div class="reviews-premium-section">
+                    <h2 class="section-title-premium">Opiniones</h2>
+                    <div class="comments-container" id="commentsContainer">
+                        <!-- Comentarios generados dinámicamente -->
+                    </div>
+
+                    <div class="add-review-premium">
+                        <h3 class="review-title">Tu experiencia</h3>
+                        <div class="star-rating-input">
+                            <span class="star-select" data-value="1">★</span>
+                            <span class="star-select" data-value="2">★</span>
+                            <span class="star-select" data-value="3">★</span>
+                            <span class="star-select" data-value="4">★</span>
+                            <span class="star-select" data-value="5">★</span>
+                        </div>
+                        <textarea id="reviewText" placeholder="Comparte tu aventura..."></textarea>
+                        <button type="submit" class="btn-review-submit">Publicar</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 

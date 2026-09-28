@@ -120,7 +120,7 @@ function renderizarDatos(data) {
 }
 
 function inicializarRating() {
-    const stars = document.querySelectorAll('.star');
+    const stars = document.querySelectorAll('.star-select');
     let selectedRating = 0;
 
     stars.forEach(star => {
@@ -183,7 +183,13 @@ function agregarFotosComunidad(event) {
         reader.onload = (e) => {
             const img = document.createElement('img');
             img.src = e.target.result;
-            img.className = 'gallery-item';
+            img.className = 'user-gallery-item';
+
+            // Randomly assign Masonry classes for a dynamic look
+            const rand = Math.random();
+            if (rand > 0.8) img.classList.add('tall');
+            else if (rand > 0.6) img.classList.add('wide');
+
             grid.appendChild(img);
         };
         reader.readAsDataURL(file);
