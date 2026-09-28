@@ -55,7 +55,7 @@ async function cargarDestinos() {
             destinosAMostrar.forEach(destino => {
                 const descripcionCorta = destino.descripcion
                     ? (destino.descripcion.length > 70 ? destino.descripcion.substring(0, 67) + '...' : destino.descripcion)
-                    : "Descubre este increíble destino y vive una experiencia inolvidable.";
+                    : "Discover this incredible destination and live an unforgettable experience.";
 
                 const tarjeta = `
                     <div class="destino-card">
@@ -104,11 +104,12 @@ async function cargarDestinos() {
             }
 
         } else {
-            contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>No se encontraron destinos.</p>";
+            contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>No destinations found.</p>";
         }
     } catch (error) {
         console.error("Error:", error);
-        contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Error al conectar con el servidor.</p>";
+        contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Error connecting to the server.</p>";
+    }
     }
 }
 

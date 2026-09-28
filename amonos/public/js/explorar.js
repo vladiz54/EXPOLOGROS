@@ -221,20 +221,20 @@ function renderizarDestinos(lista) {
             <div class="destino-card" style="animation: cardEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
                 <a href="detalles.html?id=${dest.id}" class="card-link-wrapper">
                     <div class="dest-img-container">
-                        <span class="dest-badge">${dest.categoria || 'Destino'}</span>
+                        <span class="dest-badge">${dest.categoria || 'Destination'}</span>
                         <div class="dest-img-sim" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('${imgUrl}') center/cover; height: 230px;"></div>
                     </div>
                     <div class="dest-body">
                         <div class="dest-info">
                             <h4>${dest.nombre}</h4>
                             <p class="dpto">${dest.ubicacion}</p>
-                            <p class="dest-short-desc">${dest.descripcion ? (dest.descripcion.length > 70 ? dest.descripcion.substring(0, 67) + '...' : dest.descripcion) : "Descubre este increíble destino y vive una experiencia inolvidable."}</p>
+                            <p class="dest-short-desc">${dest.descripcion ? (dest.descripcion.length > 70 ? dest.descripcion.substring(0, 67) + '...' : dest.descripcion) : "Discover this incredible destination and live an unforgettable experience."}</p>
                         </div>
                         <div class="dest-footer">
                             <span class="price">$${parseFloat(dest.precio || 0).toFixed(2)}</span>
                             <div class="meta-right">
                                 <span class="rating">⭐ ${dest.rating || '0.0'}</span>
-                                <button class="btn-heart" data-id="${dest.id}" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                <button class="btn-heart" data-id="${dest.id}" title="Save" onclick="toggleHeart(event, this)">❤️</button>
                             </div>
                         </div>
                     </div>
