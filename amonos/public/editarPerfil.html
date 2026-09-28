@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ámonos - Editar Perfil</title>
+    <title>Ámonos - Edit Profile</title>
     <link rel="stylesheet" href="CSS/perfil.css">
     <link rel="stylesheet" href="CSS/sesion.css">
     <style>
@@ -77,10 +77,10 @@
             <nav>
                 <div class="logo">📍 ÁMONOS</div>
                 <ul class="menu-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="explorar.html">Explorar destinos</a></li>
-                    <li><a href="planificador.html">Planificador</a></li>
-                    <li><a href="perfil.html" class="active">Perfil</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="explorar.html">Explore destinations</a></li>
+                    <li><a href="planificador.html">Planner</a></li>
+                    <li><a href="perfil.html" class="active">Profile</a></li>
                 </ul>
                 <div class="avatar" style="background-color: var(--azul-profundo);"></div>
             </nav>
@@ -91,35 +91,35 @@
         <div class="edit-profile-container">
 
             <header style="text-align: center; margin-bottom: 25px;">
-                <h2 style="font-weight: 800; color: var(--azul-profundo);">Editar Perfil</h2>
-                <p style="font-size: 14px; color: var(--texto-suave);">Actualiza tu información pública y preferencias de viaje</p>
+                <h2 style="font-weight: 800; color: var(--azul-profundo);">Edit Profile</h2>
+                <p style="font-size: 14px; color: var(--texto-suave);">Update your public information and travel preferences</p>
             </header>
 
             <div class="avatar-edit-section">
                 <div class="profile-avatar-big">D</div>
-                <button type="button" class="btn-change-avatar">Cambiar foto de perfil</button>
+                <button type="button" class="btn-change-avatar">Change profile photo</button>
             </div>
 
             <form action="perfil.html" method="GET" class="login-form" style="max-width: 100%;">
 
                 <div class="form-group">
-                    <label for="edit-name">Nombre completo</label>
+                    <label for="edit-name">Full name</label>
                     <input type="text" id="edit-name" name="name" value="Diego Ayala" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="edit-email">Correo electrónico</label>
+                    <label for="edit-email">Email address</label>
                     <input type="email" id="edit-email" name="email" value="diego.ayala@ejemplo.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="edit-transport">Transporte habitual</label>
-                    <input type="text" id="edit-transport" name="transport" value="Vehículo propio">
+                    <label for="edit-transport">Usual Transport</label>
+                    <input type="text" id="edit-transport" name="transport" value="Own vehicle">
                 </div>
 
                 <div class="form-actions-row">
-                    <a href="perfil.html" class="btn-cancel">Cancelar</a>
-                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                    <a href="perfil.html" class="btn-cancel">Cancel</a>
+                    <button type="submit" class="btn-primary">Save Changes</button>
                 </div>
 
             </form>

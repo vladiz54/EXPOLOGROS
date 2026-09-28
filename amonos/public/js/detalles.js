@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const idDestino = urlParams.get('id');
-    
 
     if (!idDestino) {
-        mostrarError("No se proporcionó un ID de destino válido.");
+        mostrarError("A valid destination ID was not provided.");
         return;
     }
 
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function cargarDetalles(id) {
     try {
         const response = await fetch(`../destinos/read_one.php?id=${id}`);
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
         const result = await response.json();
         if (result.success) {
@@ -26,8 +25,40 @@ async function cargarDetalles(id) {
         }
     } catch (error) {
         console.error("Fetch Error:", error);
-        mostrarError("No se pudo cargar la información del destino.");
+        mostrarError("Could not load destination information.");
     }
+}
+
+function translateText(text) {
+    if (!text) return "";
+
+    const translations = {
+        // Activities
+        "nadar en zonas seguras": "swim in safe areas",
+        "disfrutar el atardecer": "enjoy the sunset",
+        "senderismo por el volcán": "hiking through the volcano",
+        "visitar el casco histórico": "visit the historic downtown",
+        "probar la comida local": "try local food",
+        "fotografía de paisajes": "landscape photography",
+        "visitar museos": "visit museums",
+        "explorar rutas ocultas": "explore hidden routes",
+        "paseo en bote": "boat ride",
+        "observación de aves": "bird watching",
+        "visita a cafeterías locales": "visit local coffee shops",
+
+        // Categories/General
+        "Destino Turístico": "Tourist Destination",
+        "Naturaleza": "Nature",
+        "Playa": "Beach",
+        "Aventura": "Adventure",
+        "Cultura": "Culture",
+        "Gastronomía": "Gastronomy",
+        "Pueblos Vivos": "Living Towns",
+        "Montaña": "Mountain"
+    };
+
+    const lowerText = text.toLowerCase().trim();
+    return translations[lowerText] || text;
 }
 
 function renderizarDatos(data) {
@@ -35,11 +66,13 @@ function renderizarDatos(data) {
 
     const setText = (id, value) => {
         const el = document.getElementById(id);
-        if (el) el.innerText = value || "Información no disponible";
+        if (el) el.innerText = value || "Information not available";
     };
 
     setText('destino-nombre', data.nombre);
     setText('destino-ubicacion', data.departamento);
+
+    // Translate description if it exists (simple replacement or you can add more logic here)
     setText('destino-descripcion', data.descripcion);
 
     const mainImg = document.getElementById('mainImage');
@@ -47,11 +80,11 @@ function renderizarDatos(data) {
         if (data.imagenes && data.imagenes.length > 0) {
             mainImg.style.backgroundImage = `url('${data.imagenes[0]}')`;
         } else {
-            mainImg.style.backgroundImage = `url('https://via.placeholder.com/1200x600?text=Sin+Imagen')`;
+            mainImg.style.backgroundImage = `url('https://via.placeholder.com/1200x600?text=No+Image')`;
         }
     }
 
-    setText('destino-categoria', data.categoria || "Destino Turístico");
+    setText('destino-categoria', translateText(data.categoria || "Destino Turístico"));
 
     const avgRating = data.resenas && data.resenas.length > 0
         ? (data.resenas.reduce((acc, curr) => acc + curr.puntuacion, 0) / data.resenas.length).toFixed(1)
@@ -63,10 +96,10 @@ function renderizarDatos(data) {
         activitiesList.innerHTML = "";
         if (data.actividades && data.actividades.length > 0) {
             data.actividades.forEach(act => {
-                activitiesList.innerHTML += `<li>${act}</li>`;
+                activitiesList.innerHTML += `<li>${translateText(act)}</li>`;
             });
         } else {
-            activitiesList.innerHTML = "<li>No hay actividades registradas.</li>";
+            activitiesList.innerHTML = "<li>No activities registered.</li>";
         }
     }
 
@@ -74,10 +107,10 @@ function renderizarDatos(data) {
     if (costBody) {
         const costs = data.costos || {};
         const costLabels = {
-            entrada: { text: "Entrada / Acceso", icon: "fa-ticket" },
-            comida: { text: "Alimentación", icon: "fa-utensils" },
-            parqueo: { text: "Parqueo / Transporte", icon: "fa-car" },
-            hospedaje: { text: "Hospedaje (opcional)", icon: "fa-bed" }
+            entrada: { text: "Entrance / Access", icon: "fa-ticket" },
+            comida: { text: "Food & Dining", icon: "fa-utensils" },
+            parqueo: { text: "Parking / Transport", icon: "fa-car" },
+            hospedaje: { text: "Lodging (optional)", icon: "fa-bed" }
         };
 
         costBody.innerHTML = "";
@@ -107,14 +140,14 @@ function renderizarDatos(data) {
             data.resenas.forEach(res => {
                 commentsContainer.innerHTML += `
                     <div class="comment-box">
-                        <strong>${res.usuario || 'Usuario'}</strong>
+                        <strong>${res.usuario || 'User'}</strong>
                         <p>${res.comentario || ''}</p>
                         <div class="stars-sub">${"★".repeat(res.puntuacion || 0)}${"☆".repeat(5 - (res.puntuacion || 0))}</div>
                     </div>
                 `;
             });
         } else {
-            commentsContainer.innerHTML = "<p style='text-align:center; color:#666;'>Aún no hay reseñas.</p>";
+            commentsContainer.innerHTML = "<p style='text-align:center; color:#666;'>No reviews yet.</p>";
         }
     }
 }
@@ -196,7 +229,7 @@ function agregarFotosComunidad(event) {
     }
 }
 
-// --- LÓGICA DEL CARRUSEL CINEMATOGRÁFICO ---
+// --- CINEMATIC CAROUSEL LOGIC ---
 let currentSlide = 0;
 
 function moverCarrusel(direction = 1) {
@@ -226,4 +259,3 @@ function irASlide(index) {
         dot.classList.toggle('active', index === currentSlide);
     });
 }
-

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ámonos - Detalles del Destino</title>
+    <title>Ámonos - Destination Details</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/detalles.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -19,13 +19,13 @@
             </a>
 
             <ul class="menu-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="explorar.html">Explorar destinos</a></li>
-                <li><a href="planificador.html">Planificador</a></li>
-                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorar.html">Explore destinations</a></li>
+                <li><a href="planificador.html">Planner</a></li>
+                <li><a href="sobre-nosotros.html">About Us</a></li>
+                <li><a href="perfil.html">Profile</a></li>
             </ul>
-            <a href="perfil.html" class="avatar" title="Mi Perfil">D</a>
+            <a href="perfil.html" class="avatar" title="My Profile">D</a>
         </nav>
     </header>
 
@@ -33,7 +33,7 @@
 
         <section class="destination-header">
             <div class="title-area">
-                <h1 id="destino-nombre">Cargando destino...</h1>
+                <h1 id="destino-nombre">Loading destination...</h1>
                 <div class="stars">
                     <span class="star-icon">★</span>
                     <span class="star-icon">★</span>
@@ -42,7 +42,7 @@
                     <span class="star-icon">★</span>
                 </div>
             </div>
-            <button class="btn-primary" onclick="irAlPlanificador()"> <i class="fa-solid fa-calendar-check"></i> Planificar este viaje</button>
+            <button class="btn-primary" onclick="irAlPlanificador()"> <i class="fa-solid fa-calendar-check"></i> Plan this trip</button>
         </section>
 
         <section class="carousel-container">
@@ -75,17 +75,17 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <span class="location-tag" id="destino-ubicacion"> Santa Ana, El Salvador</span>
                     </div>
-                    <h2 class="section-title-premium">La Experiencia</h2>
+                    <h2 class="section-title-premium">The Experience</h2>
                 </div>
 
                 <p class="description-text" id="destino-descripcion">
-                    Cargando descripción...
+                    Loading description...
                 </p>
 
                 <div class="activities-wrapper">
-                    <h2 class="section-title-premium">Lo que no te puedes perder</h2>
+                    <h2 class="section-title-premium">Must-see activities</h2>
                     <ul class="activities-grid" id="activitiesList">
-                        <!-- Actividades generadas dinámicamente -->
+                        <!-- Activities generated dynamically -->
                     </ul>
                 </div>
             </section>
@@ -93,36 +93,35 @@
             <div class="right-column-details">
                 <section class="info-card card-modern" id="bloque-costos">
                     <div class="cost-header-premium">
-                        <h2 class="section-title-premium">Presupuesto Estimado</h2>
-                        <button class="btn-plan-small" onclick="irAlPlanificador()">Optimizar Plan ➔</button>
+                        <h2 class="section-title-premium">Estimated Budget</h2>
+                        <button class="btn-plan-small" onclick="irAlPlanificador()">Optimize Plan ➔</button>
                     </div>
 
                     <div class="investment-pillars" id="costTableBody">
-                        <!-- Los pilares de inversión se generan dinámicamente aquí -->
+                        <!-- Investment pillars generated dynamically here -->
                     </div>
 
                     <div class="budget-total-premium">
-                        <span class="total-label">Inversión Total Estimada</span>
+                        <span class="total-label">Estimated Total Investment</span>
                         <span class="total-value" id="totalCost">$0.00</span>
                         <div class="verified-badge">
-                            <i class="fa-solid fa-circle-check"></i> Presupuesto Verificado
+                            <i class="fa-solid fa-circle-check"></i> Verified Budget
                         </div>
                     </div>
                 </section>
             </div>
             </div>
-        </div>
 
         <div class="community-hub-grid">
             <section class="community-gallery-section">
                 <div class="gallery-card-premium">
                     <div class="gallery-header-premium">
                         <div class="gallery-title-area">
-                            <h2 class="section-title-premium">Momentos Reales 📸</h2>
-                            <p class="gallery-subtitle">Explora y comparte las capturas más increíbles de nuestra comunidad</p>
+                            <h2 class="section-title-premium">Real Moments 📸</h2>
+                            <p class="gallery-subtitle">Explore and share the most incredible captures from our community</p>
                         </div>
                         <label for="userPhotoInput" class="upload-btn-premium">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> Subir mi foto
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Upload my photo
                         </label>
                         <input type="file" id="userPhotoInput" accept="image/*" multiple onchange="agregarFotosComunidad(event)" hidden>
                     </div>
@@ -135,13 +134,13 @@
 
             <section class="info-card card-modern reviews-card">
                 <div class="reviews-premium-section">
-                    <h2 class="section-title-premium">Opiniones</h2>
+                    <h2 class="section-title-premium">Reviews</h2>
                     <div class="comments-container" id="commentsContainer">
-                        <!-- Comentarios generados dinámicamente -->
+                        <!-- Comments generated dynamically -->
                     </div>
 
                     <div class="add-review-premium">
-                        <h3 class="review-title">Tu experiencia</h3>
+                        <h3 class="review-title">Your experience</h3>
                         <div class="star-rating-input">
                             <span class="star-select" data-value="1">★</span>
                             <span class="star-select" data-value="2">★</span>
@@ -149,8 +148,8 @@
                             <span class="star-select" data-value="4">★</span>
                             <span class="star-select" data-value="5">★</span>
                         </div>
-                        <textarea id="reviewText" placeholder="Comparte tu aventura..."></textarea>
-                        <button type="submit" class="btn-review-submit">Publicar</button>
+                        <textarea id="reviewText" placeholder="Share your adventure..."></textarea>
+                        <button type="submit" class="btn-review-submit">Post</button>
                     </div>
                 </div>
             </section>
@@ -165,7 +164,7 @@
                         <img src="imagenes/descarga.png" alt="Ámonos Logo">
                         <span>ÁMONOS</span>
                     </a>
-                    <p>Hacemos que viajar por El Salvador sea accesible, mágico y diseñado exactamente para tu presupuesto.</p>
+                    <p>We make traveling through El Salvador accessible, magical, and designed exactly for your budget.</p>
                     <div class="footer-socials">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -176,41 +175,41 @@
 
                 <div class="footer-links">
                     <div class="footer-col">
-                        <h4>Explorar</h4>
+                        <h4>Explore</h4>
                         <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="explorar.html">Destinos</a></li>
-                            <li><a href="planificador.html">Planificador</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="explorar.html">Destinations</a></li>
+                            <li><a href="planificador.html">Planner</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Soporte</h4>
+                        <h4>Support</h4>
                         <ul>
-                            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                            <li><a href="#">Términos y Condiciones</a></li>
-                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="sobre-nosotros.html">About Us</a></li>
+                            <li><a href="#">Terms and Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer-newsletter">
-                    <h4>Únete a la comunidad</h4>
-                    <p>Recibe las mejores gemas ocultas y ofertas directamente en tu correo.</p>
+                    <h4>Join the community</h4>
+                    <p>Receive the best hidden gems and offers directly in your email.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit">Suscribirse</button>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
+        </div>
 
-            <div class="footer-bottom">
-                <div class="footer-container">
-                    <p>&copy; 2026 Ámonos. Todos los derechos reservados.</p>
-                    <div class="footer-legal">
-                        <a href="#">Privacidad</a>
-                        <a href="#">Términos</a>
-                        <a href="#">Contacto</a>
-                    </div>
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>&copy; 2026 Ámonos. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
                 </div>
             </div>
         </div>

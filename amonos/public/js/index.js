@@ -28,16 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarSlider();
 });
 
-// Removed legacy counter functions to clean up the code
-async function cargarDestinos() {
-// ... the rest of the file remains the same ...
-
-
 async function cargarDestinos() {
     const contenedor = document.querySelector(".grid-destinos");
     if (!contenedor) return;
 
-    contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Cargando destinos...</p>";
+    contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Loading destinations...</p>";
 
     try {
         const url = `../destinos/read.php?categoria=${encodeURIComponent(categoriaSeleccionada)}&departamento=${encodeURIComponent(departamentoSeleccionado)}`;
@@ -47,7 +42,7 @@ async function cargarDestinos() {
         if (resultado.success && resultado.data.length > 0) {
             contenedor.innerHTML = "";
 
-            // LÍMITE DE DESTINOS PARA EL INDEX (UX Optimization)
+            // LIMIT OF DESTINATIONS FOR INDEX (UX Optimization)
             const LIMIT_INDEX = 8;
             const totalDestinos = resultado.data.length;
             const destinosAMostrar = resultado.data.slice(0, LIMIT_INDEX);
@@ -73,7 +68,7 @@ async function cargarDestinos() {
                                     <span class="price">$${parseFloat(destino.precio || 0).toFixed(2)}</span>
                                     <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
                                         <span class="rating">⭐ ${destino.rating || '0.0'}</span>
-                                        <button class="btn-heart" data-id="${destino.id}" title="Guardar" onclick="toggleHeart(event, this)">❤️</button>
+                                        <button class="btn-heart" data-id="${destino.id}" title="Save" onclick="toggleHeart(event, this)">❤️</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +78,7 @@ async function cargarDestinos() {
                 contenedor.innerHTML += tarjeta;
             });
 
-            // AGREGAR BOTÓN "VER MÁS" SI EXCEDEN EL LÍMITE
+            // ADD "VIEW MORE" BUTTON IF LIMIT IS EXCEEDED
             if (totalDestinos > LIMIT_INDEX) {
                 const btnVerMas = document.createElement("div");
                 btnVerMas.style.gridColumn = "1 / -1";
@@ -92,12 +87,12 @@ async function cargarDestinos() {
                 btnVerMas.style.marginTop = "40px";
                 btnVerMas.style.marginBottom = "40px";
 
-                // Construimos la URL para explorar.html pasando los filtros actuales
+                // Build the URL for explorar.html passing current filters
                 const exploreUrl = `explorar.html?categoria=${encodeURIComponent(categoriaSeleccionada)}&departamento=${encodeURIComponent(departamentoSeleccionado)}`;
 
                 btnVerMas.innerHTML = `
                     <a href="${exploreUrl}" class="btn-primary" style="padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(3, 105, 161, 0.2);">
-                        Explorar más destinos <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+                        Explore more destinations <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
                     </a>
                 `;
                 contenedor.appendChild(btnVerMas);
@@ -109,7 +104,6 @@ async function cargarDestinos() {
     } catch (error) {
         console.error("Error:", error);
         contenedor.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Error connecting to the server.</p>";
-    }
     }
 }
 
