@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById('searchInput');
+    // Elements
     const heroSearchInput = document.getElementById('heroSearchInput');
     const categoryChips = document.querySelectorAll('.chip[data-category]');
     const heroChips = document.querySelectorAll('.hero-chip');
@@ -8,33 +8,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- CUSTOM SELECT LOGIC ---
     const selectTrigger = document.querySelector('.custom-select-trigger');
-    const selectWrapper = document.querySelector('.custom-select-wrapper');
+    const selectWrapper = document.getElementById('sort-select-container');
     const customOptions = document.querySelectorAll('.custom-option');
-    const selectedSortText = document.getElementById('selected-sort');
 
     if (selectTrigger) {
-        selectTrigger.addEventListener('click', () => {
-            selectWrapper.classList.toggle('open');
+        selectTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (selectWrapper) selectWrapper.classList.toggle('open');
         });
     }
 
     customOptions.forEach(option => {
-        option.addEventListener('click', () => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
             const value = option.getAttribute('data-value');
             const text = option.innerText;
 
-            selectedSortText.innerText = text;
-            selectWrapper.classList.remove('open');
+            if (selectTrigger) {
+                const selectedValueEl = selectTrigger.querySelector('.selected-value');
+                if (selectedValueEl) selectedValueEl.innerText = text;
+            }
 
-            // Trigger a custom event or call sorting logic
-            // For now, we simulate a sort by re-applying filters (in a real app, you'd have a sort function)
+            const sortHiddenInput = document.getElementById('sortSelect');
+            if (sortHiddenInput) sortHiddenInput.value = value;
+
+            if (selectWrapper) selectWrapper.classList.remove('open');
             aplicarFiltros(value);
         });
     });
 
-    // Close dropdown when clicking outside
-    window.addEventListener('click', (e) => {
-        if (selectWrapper && !selectWrapper.contains(e.target)) {
+    window.addEventListener('click', () => {
+        if (selectWrapper) {
             selectWrapper.classList.remove('open');
         }
     });
@@ -43,13 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarDestinos();
     initDynamicText();
 
-    if (searchInput) {
-        searchInput.addEventListener('input', aplicarFiltros);
-    }
-
     if (heroSearchInput) {
         heroSearchInput.addEventListener('input', (e) => {
-            if (searchInput) searchInput.value = e.target.value;
             aplicarFiltros();
         });
     }
@@ -74,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (searchInput) searchInput.value = "";
             if (heroSearchInput) heroSearchInput.value = "";
             setActiveChip('todos');
             budgetFilters.forEach(f => f.checked = true);
@@ -82,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- SURPRISE ME LOGIC ---
     const btnSurpriseMe = document.getElementById('btnSurpriseMe');
     if (btnSurpriseMe) {
         btnSurpriseMe.addEventListener('click', () => {
@@ -110,8 +107,6 @@ let destinosBD = [];
 
 async function cargarDestinos() {
     const resultsCount = document.getElementById('resultsCount');
-    const cardsGrid = document.getElementById('cardsGrid');
-
     if (resultsCount) resultsCount.innerText = "Loading destinations...";
 
     try {
@@ -131,25 +126,27 @@ async function cargarDestinos() {
     }
 }
 
-function aplicarFiltros() {
-    const searchInput = document.getElementById('searchInput');
-    const cardsGrid = document.getElementById('cardsGrid');
+function aplicarFiltros(sortValue) {
+    const heroSearchInput = document.getElementById('heroSearchInput');
     const resultsCount = document.getElementById('resultsCount');
 
-    const texto = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    const texto = heroSearchInput ? heroSearchInput.value.toLowerCase().trim() : "";
     const activeChip = document.querySelector('.chip[data-category].active');
     const cat = activeChip ? activeChip.getAttribute('data-category').toLowerCase() : "todos";
 
     const selectedBudgets = Array.from(document.querySelectorAll('.budget-filter:checked')).map(f => f.value);
 
-    const filtrados = destinosBD.filter(dest => {
-        const nombre = dest.nombre.toLowerCase();
-        const ubicacion = dest.ubicacion.toLowerCase();
+    let filtrados = destinosBD.filter(dest => {
+        // 1. Search by name or location
+        const nombre = (dest.nombre || "").toLowerCase();
+        const ubicacion = (dest.ubicacion || "").toLowerCase();
         const coincidenTexto = nombre.includes(texto) || ubicacion.includes(texto);
 
-        const coincidenCat = (cat === "todos") || (dest.categoria.toLowerCase() === cat);
+        // 2. Category filter
+        const coincidenCat = (cat === "todos") || (dest.categoria && dest.categoria.toLowerCase() === cat);
 
-        const precio = parseFloat(dest.precio);
+        // 3. Budget filter
+        const precio = parseFloat(dest.precio) || 0;
         let coincidePresupuesto = true;
         if (selectedBudgets.length < 3) {
             const esEconomico = precio < 20;
@@ -165,6 +162,19 @@ function aplicarFiltros() {
 
         return coincidenTexto && coincidenCat && coincidePresupuesto;
     });
+
+    // --- SORTING LOGIC ---
+    const currentSort = sortValue || document.getElementById('sortSelect')?.value || 'desc';
+
+    if (currentSort === 'rating') {
+        filtrados.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0));
+    } else if (currentSort === 'price_asc') {
+        filtrados.sort((a, b) => (parseFloat(a.precio) || 0) - (parseFloat(b.precio) || 0));
+    } else if (currentSort === 'price_desc') {
+        filtrados.sort((a, b) => (parseFloat(b.precio) || 0) - (parseFloat(a.precio) || 0));
+    } else if (currentSort === 'desc') {
+        filtrados.sort((a, b) => parseInt(b.id) - parseInt(a.id));
+    }
 
     renderizarDestinos(filtrados);
 }
@@ -189,33 +199,20 @@ function renderizarDestinos(lista) {
     }
 
     if (resultsCount) {
-        // Lógica de mensajes dinámicos según la cantidad
         let label = "Destinos";
         if (lista.length === 1) label = "joya oculta";
         else if (lista.length < 10) label = "joyas ocultas";
         else label = "destinos";
 
-        // Animación de contador numérica
-        const targetNumber = lista.length;
-
         resultsCount.innerHTML = `
             <span class="results-text-label">Encontramos</span>
-            <span class="results-number-highlight">${targetNumber}</span>
+            <span class="results-number-highlight">${lista.length}</span>
             <span class="results-text-destinos">${label}</span>
         `;
     }
 
     lista.forEach((dest, index) => {
-        let imgUrl = "";
-        if (dest.imagen && dest.imagen.startsWith('http')) {
-            imgUrl = dest.imagen;
-        }
-        else if (dest.imagen && dest.imagen.trim() !== "") {
-            imgUrl = dest.imagen;
-        }
-        else {
-            imgUrl = getRelevantImage(dest);
-        }
+        let imgUrl = dest.imagen && dest.imagen.trim() !== "" ? dest.imagen : getRelevantImage(dest);
 
         const cardHTML = `
             <div class="destino-card" style="animation: cardEntrance 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
@@ -228,7 +225,7 @@ function renderizarDestinos(lista) {
                         <div class="dest-info">
                             <h4>${dest.nombre}</h4>
                             <p class="dpto">${dest.ubicacion}</p>
-                            <p class="dest-short-desc">${dest.descripcion ? (dest.descripcion.length > 70 ? dest.descripcion.substring(0, 67) + '...' : dest.descripcion) : "Discover this incredible destination and live an unforgettable experience."}</p>
+                            <p class="dest-short-desc">${dest.descripcion ? (dest.descripcion.length > 70 ? dest.descripcion.substring(0, 67) + '...' : dest.descripcion) : "Discover this incredible destination."}</p>
                         </div>
                         <div class="dest-footer">
                             <span class="price">$${parseFloat(dest.precio || 0).toFixed(2)}</span>
@@ -245,7 +242,9 @@ function renderizarDestinos(lista) {
     });
 }
 
-async function toggleHeart(btn, idDestino) {
+async function toggleHeart(event, btn) {
+    event.preventDefault();
+    const idDestino = btn.getAttribute('data-id');
     btn.classList.toggle('liked');
     btn.style.transform = "scale(1.3)";
     setTimeout(() => btn.style.transform = "scale(1)", 150);
@@ -277,7 +276,6 @@ function mostrarError(mensaje) {
 function initDynamicText() {
     const textElement = document.getElementById('dynamic-text');
     if (!textElement) return;
-
     const words = ['destination', 'Paradise', 'Escape', 'Discovery', 'Trip'];
     let wordIndex = 0;
     let charIndex = 0;
@@ -286,12 +284,8 @@ function initDynamicText() {
 
     function type() {
         const currentWord = words[wordIndex];
-        const currentText = isDeleting
-            ? currentWord.substring(0, charIndex - 1)
-            : currentWord.substring(0, charIndex);
-
+        const currentText = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex);
         textElement.innerText = currentText;
-
         if (!isDeleting && charIndex < currentWord.length) {
             charIndex++;
             setTimeout(type, typeSpeed);
@@ -300,12 +294,9 @@ function initDynamicText() {
             setTimeout(type, typeSpeed / 2);
         } else {
             isDeleting = !isDeleting;
-            if (!isDeleting) {
-                wordIndex = (wordIndex + 1) % words.length;
-            }
+            if (!isDeleting) wordIndex = (wordIndex + 1) % words.length;
             setTimeout(type, isDeleting ? 1000 : 500);
         }
     }
-
     type();
 }
