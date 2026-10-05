@@ -9,7 +9,7 @@ try {
     // 1. Verificar archivos físicos
     echo "Checking physical files:\n";
     for ($i = 1; $i <= 5; $i++) {
-        $path = "public/imagenes/juquila-$i.webp";
+        $path = "C:/laragon/www/EXPOLOGROS/amonos/public/imagenes/juquila-$i.webp";
         echo $path . " -> " . (file_exists($path) ? "EXISTS" : "MISSING") . "\n";
     }
 
