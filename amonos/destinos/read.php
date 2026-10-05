@@ -20,7 +20,7 @@ try {
                      (d.precio_entrada + d.precio_comida + d.precio_parqueo) AS precio,
                      d.puntaje AS rating,
                      c.nombre_categoria AS categoria,
-                     (SELECT imagen_url FROM imagenes_destino img WHERE img.id_destino = d.id_destino LIMIT 1) AS imagen,
+                     (SELECT imagen_url FROM imagenes_destino img WHERE img.id_destino = d.id_destino AND img.orden = 1 LIMIT 1) AS imagen,
                      d.descripcion
               FROM destinos d
               INNER JOIN categorias_destino c ON d.id_categoria = c.id_categoria

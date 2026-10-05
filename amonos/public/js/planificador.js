@@ -167,4 +167,40 @@ document.addEventListener("DOMContentLoaded", () => {
             barraProgreso.style.width = '100%';
         }
     }
+
+    // Evento para guardar en historial
+    const btnSavePlan = document.querySelector('.btn-save-plan');
+    if (btnSavePlan) {
+        btnSavePlan.addEventListener('click', async () => {
+            const idDestino = selectDestino.value;
+            if (idDestino === "Todos" || !idDestino) {
+                alert("Por favor, selecciona un destino primero.");
+                return;
+            }
+
+            // Simulamos el ID del usuario (en un sistema real, vendría de la sesión/localStorage)
+            const idUsuario = 1;
+
+            try {
+                const response = await fetch('../visitados/save_visit.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id_usuario: idUsuario,
+                        id_destino: idDestino
+                    })
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    alert("¡Guardado en tu historial de visitas!");
+                } else {
+                    alert("Error: " + result.message);
+                }
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                alert("No se pudo conectar con el servidor.");
+            }
+        });
+    }
 });

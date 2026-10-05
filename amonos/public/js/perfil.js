@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosPerfil();
     cargarFavoritosPerfil();
+    cargarVisitadosPerfil();
 
     const openBtn = document.getElementById('openModalBtn');
     const closeBtn = document.getElementById('closeModalBtn');
@@ -125,6 +126,35 @@ async function guardarPerfil() {
         }
     } catch (error) {
         console.error('Error guardando perfil:', error);
+    }
+}
+
+async function cargarVisitadosPerfil() {
+    const container = document.getElementById('visitedPlacesContainer');
+    if (!container) return;
+
+    try {
+        const response = await fetch('../visitados/read_visits.php');
+        const result = await response.json();
+        if (result.success) {
+            const visitados = result.data;
+            if (visitados.length === 0) {
+                container.innerHTML = `<p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">Aún no has guardado visitas en tu historial.</p>`;
+                return;
+            }
+            container.innerHTML = visitados.map(dest => `
+                <div class="profile-item-row">
+                    <div class="item-thumb" style="background: linear-gradient(135deg, var(--coral-marca), #f97316)"></div>
+                    <div class="item-info">
+                        <h4>${dest.nombre}</h4>
+                        <p>Total spent: <b>$${parseFloat(dest.total).toFixed(2)}</b></p>
+                    </div>
+                    <span class="item-meta-badge badge-history">Visited</span>
+                </div>
+            `).join('');
+        }
+    } catch (error) {
+        console.error('Error cargando visitados:', error);
     }
 }
 
