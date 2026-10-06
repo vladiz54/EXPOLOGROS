@@ -199,13 +199,13 @@ function renderizarDestinos(lista) {
     }
 
     if (resultsCount) {
-        let label = "Destinos";
-        if (lista.length === 1) label = "joya oculta";
-        else if (lista.length < 10) label = "joyas ocultas";
-        else label = "destinos";
+        let label = "Destinations";
+        if (lista.length === 1) label = "hidden gem";
+        else if (lista.length < 10) label = "hidden gems";
+        else label = "destinations";
 
         resultsCount.innerHTML = `
-            <span class="results-text-label">Encontramos</span>
+            <span class="results-text-label">We found</span>
             <span class="results-number-highlight">${lista.length}</span>
             <span class="results-text-destinos">${label}</span>
         `;

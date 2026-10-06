@@ -48,18 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutLink) {
         logoutLink.addEventListener('click', async (e) => {
             e.preventDefault();
-            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+            if (confirm('Are you sure you want to log out?')) {
                 try {
                     const response = await fetch('../auth/logout.php');
                     const result = await response.json();
                     if (result.success) {
                         window.location.href = 'sesion.html';
                     } else {
-                        alert('Error al cerrar sesión: ' + result.message);
+                        alert('Error logging out: ' + result.message);
                     }
                 } catch (error) {
-                    console.error('Error en logout:', error);
-                    alert('Ocurrió un error al intentar cerrar la sesión.');
+                    console.error('Error in logout:', error);
+                    alert('An error occurred while trying to log out.');
                 }
             }
         });
@@ -120,7 +120,7 @@ async function guardarPerfil() {
         if (result.success) {
             document.getElementById('userNameDisplay').innerText = nombre;
             document.getElementById('editProfileModal').classList.remove('active');
-            alert("Perfil actualizado");
+            alert("Profile updated");
         } else {
             alert(result.message);
         }
@@ -139,7 +139,7 @@ async function cargarVisitadosPerfil() {
         if (result.success) {
             const visitados = result.data;
             if (visitados.length === 0) {
-                container.innerHTML = `<p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">Aún no has guardado visitas en tu historial.</p>`;
+                container.innerHTML = `<p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">You haven't saved any visits in your history yet.</p>`;
                 return;
             }
             container.innerHTML = visitados.map(dest => `
@@ -168,7 +168,7 @@ async function cargarFavoritosPerfil() {
         if (result.success) {
             const favoritos = result.data;
             if (favoritos.length === 0) {
-                container.innerHTML = `<p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">Aún no tienes favoritos.</p>`;
+                container.innerHTML = `<p style="font-size: 13px; color: #64748b; text-align: center; padding: 15px 0;">You have no favorites yet.</p>`;
                 return;
             }
             container.innerHTML = favoritos.map(dest => `
@@ -188,7 +188,7 @@ async function cargarFavoritosPerfil() {
 }
 
 async function eliminarFavorito(id) {
-    if (!confirm("¿Eliminar este destino de tus favoritos?")) return;
+    if (!confirm("Delete this destination from your favorites?")) return;
     try {
         const response = await fetch('../favoritos/toggle.php', {
             method: 'POST',

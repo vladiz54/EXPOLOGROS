@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         boton.addEventListener("click", (e) => {
             botonesCategoria.forEach(b => b.classList.remove("active"));
             boton.classList.add("active");
-            categoriaSeleccionada = boton.textContent.trim();
+            categoriaSeleccionada = boton.getAttribute("data-cat") === "todos" ? "Todos" : boton.getAttribute("data-cat");
             cargarDestinos();
         });
     });

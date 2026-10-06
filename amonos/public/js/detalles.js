@@ -75,16 +75,36 @@ function renderizarDatos(data) {
     // Translate description if it exists (simple replacement or you can add more logic here)
     setText('destino-descripcion', data.descripcion);
 
-    const mainImg = document.getElementById('mainImage');
-    if (mainImg) {
-        if (data.imagenes && data.imagenes.length > 0) {
-            mainImg.style.backgroundImage = `url('${data.imagenes[0]}')`;
-        } else {
-            mainImg.style.backgroundImage = `url('https://via.placeholder.com/1200x600?text=No+Image')`;
-        }
+    const track = document.getElementById('track');
+    const dotsContainer = document.getElementById('carouselDots');
+    if (!track || !dotsContainer) return;
+
+    const images = data.imagenes || [];
+    track.innerHTML = "";
+    dotsContainer.innerHTML = "";
+
+    if (images.length > 0) {
+        images.forEach((url, index) => {
+            // Create slide
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.style.backgroundImage = `url('${url}')`;
+            track.appendChild(slide);
+
+            // Create dot
+            const dot = document.createElement('span');
+            dot.className = `dot ${index === 0 ? 'active' : ''}`;
+            dot.onclick = () => irASlide(index);
+            dotsContainer.appendChild(dot);
+        });
+    } else {
+        track.innerHTML = '<div class="carousel-slide" style="background-image: url(\'https://via.placeholder.com/1200x600?text=No+Images+Available\')"></div>';
     }
 
-    setText('destino-categoria', translateText(data.categoria || "Destino Turístico"));
+    // Reset carousel position
+    currentSlide = 0;
+    track.style.transform = 'translateX(0%)';
+
 
     const avgRating = data.resenas && data.resenas.length > 0
         ? (data.resenas.reduce((acc, curr) => acc + curr.puntuacion, 0) / data.resenas.length).toFixed(1)
