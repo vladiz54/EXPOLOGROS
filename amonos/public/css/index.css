@@ -132,8 +132,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.08), transparent),
-                radial-gradient(circle at bottom left, rgba(3, 105, 161, 0.08), transparent);
+    background: var(--color-bg-light);
     border: none;
 }
 
@@ -260,65 +259,6 @@
     border-color: var(--primary-color);
 }
 
-.dept-filter-card {
-    background: var(--white);
-    padding: 10px;
-    border-radius: var(--radius-full);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.4s ease;
-}
-
-.dept-filter-card:hover {
-    box-shadow: 0 20px 45px rgba(0,0,0,0.1);
-    transform: scale(1.02);
-}
-
-.dept-filter-inner {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #f8fafc;
-    padding: 8px 8px 8px 25px;
-    border-radius: 50px;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.dept-filter-inner i {
-    color: var(--primary-color);
-    font-size: 18px;
-}
-
-#select-departamento {
-    border: none;
-    background: transparent;
-    padding: 10px 15px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-dark);
-    outline: none;
-    cursor: pointer;
-    min-width: 220px;
-}
-
-.btn-filter-submit {
-    background: var(--accent-color); /* MEJORA: Naranja para resaltar la acción principal */
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    border-radius: var(--radius-full);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-}
-
-.btn-filter-submit:hover {
-    background: #ea580c;
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
-}
-
 /* GRID DE DESTINOS - MODERNIZACIÓN PREMIUM */
 .grid-header {
     display: flex;
@@ -372,7 +312,7 @@
 
 .destino-card {
     background: var(--white);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(0,0,0,0.05);
     overflow: hidden;
     box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);

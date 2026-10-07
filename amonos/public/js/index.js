@@ -65,7 +65,7 @@ async function cargarDestinos() {
                                     <p class="dest-short-desc" style="font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 15px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${descripcionCorta}</p>
                                 </div>
                                 <div class="dest-footer">
-                                    <span class="price">$${parseFloat(destino.precio || 0).toFixed(2)}</span>
+                                    <span class="price">$${Math.round(parseFloat(destino.precio || 0))}</span>
                                     <div class="meta-right" style="display: flex; align-items: center; gap: 8px;">
                                         <span class="rating">⭐ ${destino.rating || '0.0'}</span>
                                         <button class="btn-heart" data-id="${destino.id}" title="Save" onclick="toggleHeart(event, this)">❤️</button>
