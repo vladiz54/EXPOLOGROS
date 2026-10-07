@@ -403,7 +403,7 @@
 
 .dest-body {
     padding: 25px;
-    background: var(--white);
+    background: var(--bg-card);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -802,8 +802,8 @@
 }
 
 .destino-card {
-    background: var(--white);
-    border-radius: var(--radius);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(0,0,0,0.05);
     overflow: hidden;
     box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
@@ -834,7 +834,7 @@
 
 .dest-body {
     padding: 25px;
-    background: var(--white);
+    background: var(--bg-card);
     display: flex;
     flex-direction: column;
     gap: 10px;
