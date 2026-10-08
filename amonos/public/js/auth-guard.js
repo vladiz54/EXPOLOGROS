@@ -1,7 +1,3 @@
-/**
- * AuthGuard - Sistema de protección de rutas y anti-caché
- * Asegura que el usuario tenga una sesión activa y evita el acceso mediante el botón "Atrás"
- */
 
 (function() {
     // 1. Forzar recarga si la página viene del BFCache (botón atrás/adelante)
