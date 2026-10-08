@@ -109,18 +109,27 @@ async function cargarDatosPerfil() {
 async function guardarPerfil() {
     const nombre = document.getElementById('modal-name').value.trim();
     const correo = document.getElementById('modal-email').value.trim();
+    const avatarInput = document.getElementById('modal-avatar-input');
+
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('correo', correo);
+
+    if (avatarInput && avatarInput.files[0]) {
+        formData.append('foto', avatarInput.files[0]);
+    }
 
     try {
         const response = await fetch('../auth/update_profile.php', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre, correo })
+            body: formData
         });
         const result = await response.json();
         if (result.success) {
             document.getElementById('userNameDisplay').innerText = nombre;
             document.getElementById('editProfileModal').classList.remove('active');
             alert("Profile updated");
+            cargarDatosPerfil();
         } else {
             alert(result.message);
         }
