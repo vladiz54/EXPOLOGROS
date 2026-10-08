@@ -23,9 +23,9 @@ try {
                     FROM destinos d
                     WHERE d.id_destino = :id";
     $stmt = $db->prepare($queryDestino);
-    $stmt->bindParam(":id", $id_destino, PDO::PARAM_INT);
-    $stmt->execute();
+    $stmt->execute([":id" => $id_destino]);
     $destino = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
     if (!$destino) {
         http_response_code(404);
@@ -35,15 +35,15 @@ try {
 
     $queryImg = "SELECT imagen_url FROM imagenes_destino WHERE id_destino = :id";
     $stmtImg = $db->prepare($queryImg);
-    $stmtImg->bindParam(":id", $id_destino, PDO::PARAM_INT);
-    $stmtImg->execute();
+    $stmtImg->execute([":id" => $id_destino]);
     $imagenes = $stmtImg->fetchAll(PDO::FETCH_COLUMN);
+
 
     $queryAct = "SELECT nombre FROM actividades WHERE id_destino = :id";
     $stmtAct = $db->prepare($queryAct);
-    $stmtAct->bindParam(":id", $id_destino, PDO::PARAM_INT);
-    $stmtAct->execute();
+    $stmtAct->execute([":id" => $id_destino]);
     $actividades = $stmtAct->fetchAll(PDO::FETCH_COLUMN);
+
 
     $queryResenas = "SELECT r.puntuacion, r.comentario, u.nombre AS usuario
                      FROM resenas r
@@ -51,9 +51,9 @@ try {
                      WHERE r.id_destino = :id
                      ORDER BY r.fecha DESC";
     $stmtResenas = $db->prepare($queryResenas);
-    $stmtResenas->bindParam(":id", $id_destino, PDO::PARAM_INT);
-    $stmtResenas->execute();
+    $stmtResenas->execute([":id" => $id_destino]);
     $resenas = $stmtResenas->fetchAll(PDO::FETCH_ASSOC);
+
 
     echo json_encode([
         "success" => true,

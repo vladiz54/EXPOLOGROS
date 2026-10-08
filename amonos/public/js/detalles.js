@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cargarDetalles(idDestino);
     inicializarRating();
+
+    // Review submission listener
+    const btnPostReview = document.getElementById('btn-post-review');
+    if (btnPostReview) {
+        btnPostReview.addEventListener('click', () => submitReview(idDestino));
+    }
 });
 
 async function cargarDetalles(id) {
@@ -184,6 +190,51 @@ function inicializarRating() {
             });
         });
     });
+}
+
+async function submitReview(idDestino) {
+    const reviewText = document.getElementById('reviewText');
+    const stars = document.querySelectorAll('.star-select');
+
+    let selectedRating = 0;
+    stars.forEach(s => {
+        if (s.classList.contains('active')) {
+            selectedRating = s.getAttribute('data-value');
+        }
+    });
+
+    const comment = reviewText.value.trim();
+
+    if (!selectedRating || !comment) {
+        alert("Please select a rating and write a comment.");
+        return;
+    }
+
+    try {
+        const response = await fetch('../destinos/create_review.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id_destino: idDestino,
+                puntuacion: selectedRating,
+                comentario: comment
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert(result.message);
+            reviewText.value = "";
+            stars.forEach(s => s.classList.remove('active'));
+            cargarDetalles(idDestino); // Refresh reviews list
+        } else {
+            alert(result.message);
+        }
+    } catch (error) {
+        console.error("Error posting review:", error);
+        alert("An error occurred while posting your review.");
+    }
 }
 
 async function toggleHeart() {
